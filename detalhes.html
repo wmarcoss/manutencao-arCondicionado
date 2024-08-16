@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ver Mais</title>
+    <link rel="stylesheet" href="detalhes.css">
+</head>
+<body>
+    <header>
+        <div class="fundo">
+            <div class="logo"><img src="imagens/logo.png" alt="logo" style="width: 90px;"></div>
+            <div class="nav-bar">
+                <ul class="nav-style">
+                    <li class="nav-link"><a href="#">Página Inicial</a></li>
+                    <li class="nav-link"><a href="preenchimento.html">Adicionar Manutenção</a></li>
+                    <li class="nav-link"><a href="historico.html">Ver Histórico</a></li>
+                </ul>
+            </div>
+        </div>
+    </header>
+
+    <div class="titulo">
+        <h1>INFORMAÇÕES ESPECIFICADAS</h1>
+        <p>Visualização detalhada da Manutenção</p>
+    </div>
+
+    <main>
+        <div class="container">
+            <table>
+                <thead>
+                    <tr>
+                        <th>LOCAL</th>
+                        <th>MODELO</th>
+                        <th>DATA</th>
+                        <th>PROFISSIONAL</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <tr>
+                        <tr>
+                            <td>sala 01</td>
+                            <td>modelo 02</td>
+                            <td>08/10/2024</td>
+                            <td>marquin</td>
+                        </tr>
+                    </tr>
+                </tbody>
+
+                <div class="especificacoes">
+                    <div class="tipo-manutencao">
+                        <textarea name="tipo" id="tipo" rows="4" placeholder="Tipo da manutenção"></textarea>
+                    </div>
+                    <div class="detalhes">
+                        <textarea name="detalhes" id="detalhes" rows="6" placeholder="Detalhes"></textarea>
+                    </div>
+                    <div class="custo">
+                        <textarea name="custo" id="custo" rows="1" placeholder="Custo"></textarea>
+                    </div>
+                </div>
+            </table>
+
+        </div>
+    </main>
+    <button id="voltar"><a href="historico.html">VOLTAR</a></button>
+
+    <footer>
+        <div class="footer-fundo">
+            <div class="sobre">
+                <h3 id="sobre-titulo">Sobre</h3>
+                <p id="sobre-subtitulo">Há mais de 65 anos. A tradição <br> que não parou no tempo.</p>
+            
+                <div class="contatos">
+                    <a href="#" class="footer-link" id="facebook"><i class="fa-brands fa-facebook"></i></a>
+                    <a href="#" class="footer-link" id="instagram"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="#" class="footer-link" id="youtube"><i class="fa-brands fa-youtube"></i></a>
+                    <a href="#" class="footer-link" id="google"><i class="fa-brands fa-google"></i></a>
+                </div>
+            </div>
+
+            <div class="mapa">
+                <h3 id="mapa-titulo">Mapa do Site</h3>
+                <a class="footer-list" href="#">Início</a>
+                <a class="footer-list" href="#">Sobre</a>
+                <a class="footer-list" href="#">Projetos</a>
+                <a class="footer-list" href="#">Informativos</a>
+                <a class="footer-list" href="#">Fale Conosco</a>
+            </div>
+
+            <div class="informativos">
+                <h3 id="informativos-titulo">Informações de Contato</h3>
+                <p id="informativos-subtitulo">R. Nossa Sra. de Lourdes, 193 - <br> Jardim Tavares, Campina <br> Grande - PB, 58402-045</p>
+                <p>83 3182-3600</p>
+            </div>
+
+            <div class="creditos">
+                <p>© Colégio Lourdinas.<p id="criador">Criado por Marquin</p></p>
+            </div>
+            
+        </div>
+    </footer>
+    
+</body>
+</html>

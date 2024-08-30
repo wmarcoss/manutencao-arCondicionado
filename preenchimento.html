@@ -23,12 +23,12 @@
 
     <main>
         <div class="titulo">
-            <h1>ABA PARA INSERÇÃO DE TODOS OS DADOS</h1>
-            <h1>REFERENTES A MANUTENÇÃO</h1>
+            <h2>ABA PARA INSERÇÃO DE TODOS OS DADOS</h1>
+            <h2>REFERENTES A MANUTENÇÃO</h1>
         </div>
 
         <div class="select">
-            <select name="local" id="local">
+            <select name="local" id="local" required>
                 <option disabled selected value="local">LOCAL</option>
             </select>
 
@@ -62,7 +62,7 @@
         </div>
 
         <div class="preenchiveis2">
-            <label for="profissional">profissional
+            <label for="profissional" required>profissional
                 <input id="profissional" type="text" placeholder="Digite seu nome">
             </label>
 
@@ -73,7 +73,7 @@
 
         <div class="text-box">
             <label for="detalhes">Detalhes (peças trocadas, reparos, entre outros)
-                <textarea name="detalhes" id="detalhes" rows="6" placeholder="Digite aqui"></textarea>
+                <textarea name="detalhes" id="detalhes" rows="6" placeholder="Digite aqui" required></textarea>
             </label>
         </div>
 

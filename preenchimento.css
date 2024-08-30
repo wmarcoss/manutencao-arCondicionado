@@ -62,7 +62,7 @@ body {
 .select {
     display: flex;
     justify-content: center;
-    gap: 100px;
+    gap: 60px;
     margin-bottom: 80px;
 }
 
@@ -78,14 +78,14 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 100px;
+    gap: 60px;
     font-weight: bold;
     margin: 40px;
 }
 
 #data, #data2, #profissional, #custo {
     display: block;
-    width: 480px;
+    width: 485px;
     height: 42px;
     font-weight: bold;
     border: 1px solid black;
@@ -97,7 +97,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 100px;
+    gap: 60px;
     font-weight: bold;
     margin-bottom: 40px;
 }
@@ -112,8 +112,9 @@ body {
 
 #detalhes, #observacoes {
     display: block;
-    width: 1072px;
+    width: 1038px;
     height: 80px;
+    padding-left: 4px;
     box-shadow: 2px 4px 5px rgba(0, 0, 0, 0.548);
 }
 

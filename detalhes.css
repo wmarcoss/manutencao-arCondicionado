@@ -69,7 +69,7 @@ table {
     border-left: 40px;
     border-bottom: 360px;
     border-style: solid;
-    border-radius: 40px;
+    border-radius: 24px;
     border-color: var(--cor3);
     margin-bottom: 60px;
 }
@@ -146,8 +146,9 @@ button {
     display: flex;
     height: 360px;
     width: 100%;
-    border-top-left-radius: 30px;
-    border-top-right-radius: 30px;
+    margin-top: 120px;
+    border-top-left-radius: 24px;
+    border-top-right-radius: 24px;
 }
 
 .sobre {

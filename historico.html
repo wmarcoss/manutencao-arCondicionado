@@ -26,22 +26,37 @@
             <p>Gerenciamento das manutenções realizadas</p>
         </div>
 
+        
     <div class="filter-box">
-        <select name="filtrar" id="filtrar">
-            <option disabled selected value="filtrar">FILTRAR</option>
-            <option value="local">Local</option>
-            <option value="modelo">Modelo</option>
-            <option value="data">Data</option>
-            <option value="profissional">Profissional</option>
+        
+        <select id="filtrar">
+            <option value="">Selecione</option>
+            <option value="mostrar">Mostrar segundo menu</option>
+            <option value="outra">Outra opção</option>
         </select>
-
-        <div class="search-bar">
-            <input type="text" id="pesquisar" placeholder="Pesquisar..." class="search-input">
-        </div>
-
-        <div class="botao-buscar"><button>Buscar</button></div>
-
+        <label for="select2" id="select2-label" style="display: none;">Escolha uma opção adicional:</label>
+        <select id="select2">
+            <option value="">Selecione</option>
+            <option value="opcao1">Opção 1</option>
+            <option value="opcao2">Opção 2</option>
+        </select>
     </div>
+
+    <script>
+        // Script para mostrar o segundo select quando uma opção específica é selecionada no primeiro select
+        document.getElementById('filtrar').addEventListener('change', function() {
+            let select2 = document.getElementById('select2');
+            let select2Label = document.getElementById('select2-label');
+            
+            if (this.value === 'mostrar') {
+                select2.style.display = 'inline';
+                select2Label.style.display = 'inline';
+            } else {
+                select2.style.display = 'none';
+                select2Label.style.display = 'none';
+            }
+        });
+    </script>
 
         <div class="container">
           
@@ -96,12 +111,35 @@
                         <td>marquin</td>
                         <td><a href="detalhes.html"><img src="imagens/126474.png" alt="lupa" style="width: 25px;"></a></td>
                     </tr>
+
+                    <tr>
+                        <td>sala 01</td>
+                        <td>modelo 02</td>
+                        <td>08/10/2024</td>
+                        <td>marquin</td>
+                        <td><a href="detalhes.html"><img src="imagens/126474.png" alt="lupa" style="width: 25px;"></a></td>
+                    </tr>
+
+                    <tr>
+                        <td>sala 01</td>
+                        <td>modelo 02</td>
+                        <td>08/10/2024</td>
+                        <td>marquin</td>
+                        <td><a href="detalhes.html"><img src="imagens/126474.png" alt="lupa" style="width: 25px;"></a></td>
+                    </tr>
+
+                    <tr>
+                        <td>sala 01</td>
+                        <td>modelo 02</td>
+                        <td>08/10/2024</td>
+                        <td>marquin</td>
+                        <td><a href="detalhes.html"><img src="imagens/126474.png" alt="lupa" style="width: 25px;"></a></td>
+                    </tr>
                 </tbody>
             </table>
         </div>
 
     </main>
-    <button id="voltar"><a href="home.html">VOLTAR</a></button>
 
     <footer>
         <div class="footer-fundo">

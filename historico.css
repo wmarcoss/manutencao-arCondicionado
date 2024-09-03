@@ -46,7 +46,8 @@ body {
 .titulo {
     display: flex;
     flex-direction: column;
-    margin: 40px 0px 40px 285px ;
+    margin: 40px 40px;
+    text-align: center;
 }
 
 .titulo p {
@@ -61,32 +62,21 @@ body {
     margin-bottom: 100px;
 }
 
-.filter-box{
+.filter-box {
     display: flex;
     position: absolute;
-    margin-left: 26.7%;
-    margin-top: 8px;
-    gap: 105%;
-
-}
-
-#pesquisar {
-    padding: 4px 8px;
-    border-radius: 12px;
-    height: 20px;
-}
-
-.botao-buscar {
-    position: absolute;
-    display: block;
-
+    margin-left: 26.5%;
+    margin-top: 20px;
 }
 
 #filtrar {
-    padding: 8px;
-    border-radius: 15px;
-    font-weight: bold;
-    color: var(--cor3);
+    border-radius: 12px;
+    height: 25px;
+    padding-left: 4px;
+}
+
+#select2 {
+    display: none;
 }
 
 table {
@@ -94,7 +84,7 @@ table {
     border-collapse: collapse;
     align-items: center;
     justify-content: center;
-    border-top: 90px;
+    border-top: 100px;
     border-right: 40px;
     border-left: 40px;
     border-bottom: 70px;
@@ -126,6 +116,7 @@ tbody {
     justify-content: center;
 }
 
+/*
 button {
     display: flex;
     gap: 20px;
@@ -133,17 +124,7 @@ button {
     margin-top: -150px;
     position: absolute;
 }
-
-#voltar a {
-    text-decoration: none;
-    font-weight: bold;
-    color: var(--cor3);
-}
-
-#voltar {
-    padding: 8px 16px 8px 16px;
-    border-radius: 12px;
-}
+*/
 
 .footer-fundo {
     background-color: var(--cor3);

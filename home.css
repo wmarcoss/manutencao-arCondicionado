@@ -81,7 +81,7 @@ main h1, h2{
     padding: 80px 120px 150px 120px;
     background-color: white;
     box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.548);
-    border-radius: 5px;
+    border-radius: 4px;
 }
 
 .botao-historico {
@@ -94,7 +94,7 @@ main h1, h2{
     padding: 70px 110px 140px 110px;
     background-color: white;
     box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.548);
-    border-radius: 5px;
+    border-radius: 4px;
 }
 
 #titulo-botoes {
@@ -116,8 +116,8 @@ main h1, h2{
     height: 360px;
     width: 100%;
     margin-top: 120px;
-    border-top-left-radius: 30px;
-    border-top-right-radius: 30px;
+    border-top-left-radius: 24px;
+    border-top-right-radius: 24px;
 }
 
 .sobre {

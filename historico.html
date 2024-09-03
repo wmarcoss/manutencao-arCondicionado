@@ -25,12 +25,24 @@
             <h1>HISTÓRICO DE SERVIÇOS</h1>
             <p>Gerenciamento das manutenções realizadas</p>
         </div>
-    <div class="pesquisa">
+
+    <div class="filter-box">
         <select name="filtrar" id="filtrar">
             <option disabled selected value="filtrar">FILTRAR</option>
+            <option value="local">Local</option>
+            <option value="modelo">Modelo</option>
+            <option value="data">Data</option>
+            <option value="profissional">Profissional</option>
         </select>
-        <input type="text" id="pesquisar" placeholder="Pesquisar..." class="search-input">
+
+        <div class="search-bar">
+            <input type="text" id="pesquisar" placeholder="Pesquisar..." class="search-input">
+        </div>
+
+        <div class="botao-buscar"><button>Buscar</button></div>
+
     </div>
+
         <div class="container">
           
             <table>

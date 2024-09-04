@@ -21,6 +21,10 @@
         </div>
     </header>
 
+    <div class="seta-voltar">
+        <a href="home.html"><img src="imagens/seta.png" alt="seta" style="width: 38px;"></a>
+    </div>
+
     <main>
         <div class="titulo">
             <h1>HISTÓRICO DE SERVIÇOS</h1>
@@ -31,30 +35,80 @@
     <div class="filter-box">
         
         <select id="filtrar">
-            <option value="">Selecione</option>
-            <option value="mostrar">Mostrar segundo menu</option>
-            <option value="outra">Outra opção</option>
+            <option value="">FILTRAR</option>
+            <option value="mostrarLocal">Local</option>
+            <option value="mostrarModelo">Modelo</option>
+            <option value="mostrarData">Data</option>
+            <option value="mostrarProfissional">Profissional</option>
         </select>
-        <label for="select2" id="select2-label" style="display: none;">Escolha uma opção adicional:</label>
-        <select id="select2">
-            <option value="">Selecione</option>
-            <option value="opcao1">Opção 1</option>
-            <option value="opcao2">Opção 2</option>
+
+        <select id="local">
+            <option value="">Selecione o Local</option>
+            <option value="opcao1">sala 1</option>
+            <option value="opcao2">sala 2</option>
+        </select>
+
+        <select id="modelo">
+            <option value="">Selecione o Modelo</option>
+            <option value="opcao1">modelo 1</option>
+            <option value="opcao2">modelo 2</option>
+        </select>
+
+        <select id="data">
+            <option value="">Selecione a Data</option>
+            <option value="opcao1">data 1</option>
+            <option value="opcao2">data 2</option>
+        </select>
+
+        <select id="profissional">
+            <option value="">Selecione o Profissional</option>
+            <option value="opcao1">profissional 1</option>
+            <option value="opcao2">profissional 2</option>
         </select>
     </div>
 
     <script>
         // Script para mostrar o segundo select quando uma opção específica é selecionada no primeiro select
         document.getElementById('filtrar').addEventListener('change', function() {
-            let select2 = document.getElementById('select2');
-            let select2Label = document.getElementById('select2-label');
-            
-            if (this.value === 'mostrar') {
-                select2.style.display = 'inline';
-                select2Label.style.display = 'inline';
+            let local = document.getElementById('local');
+
+            if (this.value === 'mostrarLocal') {
+                local.style.display = 'inline';
             } else {
-                select2.style.display = 'none';
-                select2Label.style.display = 'none';
+                local.style.display = 'none';
+            }
+        });
+
+        // Script para mostrar o segundo select quando uma opção específica é selecionada no primeiro select
+        document.getElementById('filtrar').addEventListener('change', function() {
+            let modelo = document.getElementById('modelo');
+
+            if (this.value === 'mostrarModelo') {
+                modelo.style.display = 'inline';
+            } else {
+                modelo.style.display = 'none';
+            }
+        });
+
+        // Script para mostrar o segundo select quando uma opção específica é selecionada no primeiro select
+        document.getElementById('filtrar').addEventListener('change', function() {
+            let data = document.getElementById('data');
+
+            if (this.value === 'mostrarData') {
+                data.style.display = 'inline';
+            } else {
+                data.style.display = 'none';
+            }
+        });
+
+        // Script para mostrar o segundo select quando uma opção específica é selecionada no primeiro select
+        document.getElementById('filtrar').addEventListener('change', function() {
+            let profissional = document.getElementById('profissional');
+
+            if (this.value === 'mostrarProfissional') {
+                profissional.style.display = 'inline';
+            } else {
+                profissional.style.display = 'none';
             }
         });
     </script>

@@ -43,10 +43,15 @@ body {
     background-color: var(--cor2);
 }
 
+.seta-voltar {
+    display: flex;
+    margin: 20px 20px;
+}
+
 .titulo {
     display: flex;
     flex-direction: column;
-    margin: 40px 40px;
+    margin: 20px 40px;
     text-align: center;
 }
 
@@ -73,10 +78,17 @@ body {
     border-radius: 12px;
     height: 25px;
     padding-left: 4px;
+    margin-right: 16px;
+    cursor: pointer;
 }
 
-#select2 {
+#local, #modelo, #data, #profissional {
     display: none;
+    border-radius: 12px;
+    height: 25px;
+    padding-left: 4px;
+    margin-right: 16px;
+    cursor: pointer;
 }
 
 table {
@@ -84,7 +96,7 @@ table {
     border-collapse: collapse;
     align-items: center;
     justify-content: center;
-    border-top: 100px;
+    border-top: 90px;
     border-right: 40px;
     border-left: 40px;
     border-bottom: 70px;

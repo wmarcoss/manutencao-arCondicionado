@@ -3,18 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home</title>
+    <title>Ver Mais</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="stylesheet" href="home.css">
+    <link rel="stylesheet" href="detalhes.css">
 </head>
-
 <body>
     <header>
         <div class="fundo">
-            <div class="logo"><img src="imagens/logo.png" alt="logo" style="width: 90px;"></div>
+            <div class="logo"><img src="assets/imagens/logo.png" alt="logo" style="width: 90px;"></div>
             <div class="nav-bar">
                 <ul class="nav-style">
-                    <li class="nav-link"><a href="#">Página Inicial</a></li>
+                    <li class="nav-link"><a href="home.html">Página Inicial</a></li>
                     <li class="nav-link"><a href="preenchimento.html">Adicionar Manutenção</a></li>
                     <li class="nav-link"><a href="historico.html">Ver Histórico</a></li>
                 </ul>
@@ -22,22 +21,51 @@
         </div>
     </header>
 
-    <main>
-        <h1 id="titulo">MANUTENÇÃO DE AR CONDICIONADO</h1>
-        <h2 id="subtitulo">COLÉGIO NOSSA SENHORA DE LOURDES</h2>
-        <h2 id="subtitulo2">ADICIONAR MANUTENÇÃO --- VISUALIZAR HISTÓRICO</h2>
+    <div class="seta-voltar">
+        <a href="historico.html"><img src="assets/imagens/seta.png" alt="seta" style="width: 38px;"></a>
+    </div>
 
-        <div class="botoes-principais">
-            <div class="botao-adicionar">
-                <a href="preenchimento.html"><img class="adicionar" src="imagens/Vector.png" alt="adicionar"></a>
-                <h2 id="titulo-botoes">Adicionar Manutenção</h2>
-                <p id="subtitulo-botoes">campo para preencher a tabela de manutenções</p>
-            </div>
-            <div class="botao-historico">
-                <a href="historico.html"><img class="historico" src="imagens/ion_calendar-outline.png" alt="calendario"></a>
-                <h2 id="titulo-botoes">Ver Histórico</h2>
-                <p id="subtitulo-botoes">campo para visualizar o histórico de manutenções</p>
-            </div>
+    <div class="titulo">
+        <h1>INFORMAÇÕES ESPECIFICADAS</h1>
+        <p>Visualização detalhada da Manutenção</p>
+    </div>
+
+    <main>
+        <div class="container">
+            <table>
+                <thead>
+                    <tr>
+                        <th>LOCAL</th>
+                        <th>MODELO</th>
+                        <th>DATA</th>
+                        <th>PROFISSIONAL</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <tr>
+                        <tr>
+                            <td>sala 01</td>
+                            <td>modelo 02</td>
+                            <td>08/10/2024</td>
+                            <td>marquin</td>
+                        </tr>
+                    </tr>
+                </tbody>
+
+                <div class="especificacoes">
+                    <div class="tipo-manutencao">
+                        <textarea name="tipo" id="tipo" rows="4" placeholder="Tipo da manutenção"></textarea>
+                    </div>
+                    <div class="detalhes">
+                        <textarea name="detalhes" id="detalhes" rows="6" placeholder="Detalhes"></textarea>
+                    </div>
+                    <div class="custo">
+                        <textarea name="custo" id="custo" rows="1" placeholder="Custo"></textarea>
+                    </div>
+                </div>
+            </table>
+
         </div>
     </main>
 

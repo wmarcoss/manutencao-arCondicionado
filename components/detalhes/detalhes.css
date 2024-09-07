@@ -43,71 +43,89 @@ body {
     background-color: var(--cor2);
 }
 
-main h1, h2{
+.titulo {
     display: flex;
-    justify-content: center;
+    flex-direction: column;
     align-items: center;
+    margin-left: 305px;
+    margin: 60px;
 }
 
-#titulo {
-    padding-top: 50px;
-    padding-bottom: 40px;
+.titulo p {
+    color: black;
 }
 
-#subtitulo {
-    padding-bottom: 20px;
-    font-weight: normal;
-}
-
-#subtitulo2 {
-    padding-bottom: 30px;
-    margin-left: -28px;
-    font-weight: normal;
-}
-
-.botoes-principais {
+.seta-voltar {
     display: flex;
-    gap: 70px;
-    justify-content: center;
-}
-
-.botao-adicionar {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.adicionar {
-    padding: 80px 120px 150px 120px;
-    background-color: white;
-    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.548);
-    border-radius: 4px;
-}
-
-.botao-historico {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.historico {
-    padding: 70px 110px 140px 110px;
-    background-color: white;
-    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.548);
-    border-radius: 4px;
-}
-
-#titulo-botoes {
-    display: flex;
+    margin: 60px 20px;
     position: absolute;
-    margin-top: 200px;
 }
 
-#subtitulo-botoes {
+.container {
     display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+table {
+    display: block;
+    border-collapse: collapse;
+    text-align: center;
+    border-top: 40px;
+    border-right: 40px;
+    border-left: 40px;
+    border-bottom: 300px;
+    border-style: solid;
+    border-radius: 24px;
+    border-color: var(--cor3);
+}
+
+th {
+    background-color: rgb(97, 97, 97);
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-weight: bold;
+    padding: 16px 64px 16px 64px;
+    border: 1px solid black;
+}
+
+td {
+    background-color: var(--cor2);
+    padding: 12px 42px 12px 42px;
+    border: 1px solid black;
+}
+
+.especificacoes {
+    display: block;
     position: absolute;
-    margin-top: 250px;
-    color: rgb(58, 57, 57);
+    margin-top: 155px;
+}
+
+::placeholder {
+    padding-left: 4px;
+    padding-top: 4px
+}
+
+#tipo {
+    width: 800px;
+    height: 70px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+}
+
+#detalhes {
+    width: 800px;
+    height: 80px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+}
+
+#custo {
+    width: 800px;
+    height: 30px;
+    margin-bottom: 30px;
+    border-radius: 5px;
 }
 
 .footer-fundo {
@@ -115,7 +133,7 @@ main h1, h2{
     display: flex;
     height: 360px;
     width: 100%;
-    margin-top: 120px;
+    margin-top: 60px;
     border-top-left-radius: 24px;
     border-top-right-radius: 24px;
 }

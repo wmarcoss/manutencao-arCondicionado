@@ -11,7 +11,7 @@
 
     <header>
         <div class="fundo">
-            <div class="logo"><img src="imagens/logo.png" alt="logo" style="width: 90px;"></div>
+            <div class="logo"><img src="assets/imagens/logo.png" alt="logo" style="width: 90px;"></div>
             <div class="nav-bar">
                 <ul class="nav-style">
                     <li class="nav-link"><a href="home.html">Página Inicial</a></li>
@@ -22,6 +22,10 @@
         </div>
     </header>
 
+    <div class="seta-voltar">
+        <a href="home.html"><img src="assets/imagens/seta.png" alt="seta" style="width: 38px;"></a>
+    </div>
+
     <main>
         <div class="titulo">
             <h2>ABA PARA INSERÇÃO DE TODOS OS DADOS</h1>
@@ -29,69 +33,72 @@
         </div>
 
         <div class="select">
-            <select name="local" id="local" required>
-                <option disabled selected value="local">LOCAL</option>
-            </select>
+            <label for="local">Local *
+                <select name="local" id="local" required>
+                    <option disabled selected value="local">Selecione o local</option>
+                </select>
+            </label>
 
-            <select name="modelo" id="modelo">
-                <option disabled selected value="modelo">FABRICANTE/MODELO</option>
-            </select>
-        </div>
-
-        <div class="subtitulo">
-            <h3>TIPO DA MANUTENÇÃO</h3>
+            <label for="modelo">Modelo *
+                <select name="modelo" id="modelo">
+                    <option disabled selected value="modelo">Selecione o modelo ou fabricante</option>
+                </select>
+            </label>
         </div>
 
         <div class="select">
-            <select name="preventiva" id="preventiva">
-                <option disabled selected value="preventiva">SELECIONE</option>
-                <option value="preventiva">Preventiva</option>
-                <option value="corretiva">Corretiva</option>
-            </select>
+            <label for="tipo-manutencao">Tipo da manutenção *
+                <select name="preventiva" id="preventiva">
+                    <option disabled selected value="preventiva">Selecione o tipo</option>
+                    <option value="preventiva">Preventiva</option>
+                    <option value="corretiva">Corretiva</option>
+                </select>
+            </label>
 
-            <select name="corretiva" id="corretiva">
-                <option disabled selected value="corretiva">TIPO DE CONSERTO</option>
-                <option value="">limpeza</option>
-                <option value="">troca de gás</option>
-                <option value="">reparos</option>
-                <option value="">passou fita isolante</option>
-            </select>
+            <label for="tipo-conserto">Tipo de conserto *
+                <select name="corretiva" id="corretiva">
+                    <option disabled selected value="corretiva">Selecione o tipo</option>
+                    <option value="">limpeza</option>
+                    <option value="">troca de gás</option>
+                    <option value="">reparos</option>
+                    <option value="">passou fita isolante</option>
+                </select>
+            </label>
         </div>
 
         <div class="preenchiveis">
-            <label for="data">Data
+            <label for="data">Data *
                 <input id="data" type="date">
             </label>
             
-            <label for="data2">Previsão da Próxima Manutenção
+            <label for="data2">Previsão da próxima manutenção
                 <input id="data2" type="date">
             </label>
         </div>
 
         <div class="preenchiveis2">
-            <label for="profissional" required>profissional
+            <label for="profissional">Profissional *
                 <input id="profissional" type="text" placeholder="Digite seu nome">
             </label>
 
-            <label for="custo">Custo
+            <label for="custo">Custo (opcional, caso o profissional seja terceirizado)
                 <input id="custo" type="number" placeholder="R$">
             </label>
         </div>
 
         <div class="text-box">
-            <label for="detalhes">Detalhes (peças trocadas, reparos, entre outros)
-                <textarea name="detalhes" id="detalhes" rows="6" placeholder="Digite aqui" required></textarea>
+            <label for="detalhes">Detalhes (opcional, para destacar peças trocadas, reparos, entre outros)
+                <textarea name="detalhes" id="detalhes" rows="6" placeholder="Digite aqui"></textarea>
             </label>
         </div>
 
         <div class="text-box">
-            <label for="observacoes">Observações (opcional para anotar informações adicionais relevantes que o técnico tenha observado)
+            <label for="observacoes">Observações (opcional, para anotar informações adicionais relevantes que o técnico tenha observado)
                 <textarea name="observacoes" id="observacoes" rows="6" placeholder="Digite aqui"></textarea>
             </label>
         </div>
     
-        <div class="botoes">
-            <button id="voltar"><a href="home.html">VOLTAR</a></button>
+        <div class="botoao-salvar">
             <button id="salvar">SALVAR</button>
         </div>
     </main>

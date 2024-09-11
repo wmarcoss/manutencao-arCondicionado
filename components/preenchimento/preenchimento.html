@@ -11,30 +11,31 @@
 
     <header>
         <div class="fundo">
-            <div class="logo"><img src="assets/imagens/logo.png" alt="logo" style="width: 90px;"></div>
+            <div class="logo"><img src="/images/logo.png" alt="logo" style="width: 90px;"></div>
             <div class="nav-bar">
                 <ul class="nav-style">
-                    <li class="nav-link"><a href="home.html">Página Inicial</a></li>
-                    <li class="nav-link"><a href="preenchimento.html">Adicionar Manutenção</a></li>
-                    <li class="nav-link"><a href="historico.html">Ver Histórico</a></li>
+                    <li class="nav-link"><a href="../home/home.html">Página Inicial</a></li>
+                    <li class="nav-link"><a href="../preenchimento/preenchimento.html">Adicionar Manutenção</a></li>
+                    <li class="nav-link"><a href="../historico/historico.html">Ver Histórico</a></li>
                 </ul>
             </div>
         </div>
     </header>
 
     <div class="seta-voltar">
-        <a href="home.html"><img src="assets/imagens/seta.png" alt="seta" style="width: 38px;"></a>
+        <a href="../home/home.html"><img src="/images/seta voltar2.png" alt="seta" style="width: 45px;"></a>
     </div>
 
     <main>
         <div class="titulo">
-            <h2>ABA PARA INSERÇÃO DE TODOS OS DADOS</h1>
-            <h2>REFERENTES A MANUTENÇÃO</h1>
+            <h2>ADICIONAR MANUTENÇÃO</h2>
+            <h4>Aba para inserção de todos os dados</h4>
+            <h4>referentes a manutenção</h4>
         </div>
 
         <div class="select">
             <label for="local">Local *
-                <select name="local" id="local" required>
+                <select name="local" id="local">
                     <option disabled selected value="local">Selecione o local</option>
                 </select>
             </label>
@@ -99,7 +100,9 @@
         </div>
     
         <div class="botoao-salvar">
+            <button id="cancelar">CANCELAR</button>
             <button id="salvar">SALVAR</button>
+            
         </div>
     </main>
 

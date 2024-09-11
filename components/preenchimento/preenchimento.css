@@ -44,25 +44,33 @@ body {
 }
 
 .titulo {
-    margin-top: 60px;
-    margin-bottom: 60px;
+    margin-top: 32px;
+    margin-bottom: 32px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
 }
 
+.titulo h2 {
+    padding-bottom: 8px;
+}
+
+.titulo h4 {
+    font-weight: lighter;
+}
+
 .seta-voltar {
     display: flex;
-    margin: 60px 20px;
+    margin: 32px 28px;
     position: absolute;
 }
 
 .select {
     display: flex;
     justify-content: center;
-    gap: 60px;
-    margin-bottom: 60px;
+    gap: 32px;
+    margin-bottom: 32px;
     font-weight: bold;
 }
 
@@ -71,25 +79,27 @@ body {
     width: 491.5px;
     height: 40px;
     border: 1px solid black;
+    border-radius: 8px;
     box-shadow: 2px 4px 5px rgba(0, 0, 0, 0.548);
+    cursor: pointer;
 }
 
 .preenchiveis {
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 60px;
+    gap: 32px;
     font-weight: bold;
-    margin-bottom: 60px;
+    margin-bottom: 32px;
 }
 
 .preenchiveis2 {
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 60px;
+    gap: 32px;
     font-weight: bold;
-    margin-bottom: 60px;
+    margin-bottom: 32px;
 }
 
 #data, #data2, #profissional, #custo {
@@ -97,6 +107,7 @@ body {
     width: 485px;
     height: 40px;
     border: 1px solid black;
+    border-radius: 8px;
     box-shadow: 2px 4px 5px rgba(0, 0, 0, 0.548);
     padding-left:5px ;
 }
@@ -106,7 +117,7 @@ body {
     justify-content: center;
     align-items: center;
     font-weight: bold;
-    margin-bottom: 60px;
+    margin-bottom: 32px;
 }
 
 textarea {
@@ -115,9 +126,10 @@ textarea {
 
 #detalhes, #observacoes {
     display: block;
-    width: 1038px;
+    width: 1009px;
     height: 80px;
     padding-left: 4px;
+    border-radius: 8px;
     box-shadow: 2px 4px 5px rgba(0, 0, 0, 0.548);
 }
 
@@ -128,15 +140,25 @@ textarea {
 
 .botoao-salvar {
     display: flex;
-    margin-left: 154px;
+    margin-left: 12.4%;
+    gap: 12px;
 }
 
 #salvar {
     padding: 8px 16px 8px 16px;
-    border-radius: 12px;
+    border-radius: 16px;
     background-color: var(--cor3);
     font-weight: bold;
     color: white;
+    cursor: pointer;
+}
+
+#cancelar {
+    padding: 8px 16px 8px 16px;
+    border-radius: 12px;
+    background-color: white;
+    font-weight: bold;
+    color: black;
     cursor: pointer;
 }
 
@@ -145,7 +167,7 @@ textarea {
     display: flex;
     height: 360px;
     width: 100%;
-    margin-top: 60px;
+    margin-top: 32px;
     border-top-left-radius: 24px;
     border-top-right-radius: 24px;
 }

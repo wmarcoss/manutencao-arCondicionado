@@ -10,27 +10,27 @@
 <body>
     <header>
         <div class="fundo">
-            <div class="logo"><img src="assets/imagens/logo.png" alt="logo" style="width: 90px;"></div>
+            <div class="logo"><img src="/images/logo.png" alt="logo" style="width: 90px;"></div>
             <div class="nav-bar">
                 <ul class="nav-style">
-                    <li class="nav-link"><a href="home.html">Página Inicial</a></li>
-                    <li class="nav-link"><a href="preenchimento.html">Adicionar Manutenção</a></li>
-                    <li class="nav-link"><a href="historico.html">Ver Histórico</a></li>
+                    <li class="nav-link"><a href="../home/home.html">Página Inicial</a></li>
+                    <li class="nav-link"><a href="../preenchimento/preenchimento.html">Adicionar Manutenção</a></li>
+                    <li class="nav-link"><a href="../historico/historico.html">Ver Histórico</a></li>
                 </ul>
             </div>
         </div>
     </header>
 
     <div class="seta-voltar">
-        <a href="home.html"><img src="assets/imagens/seta.png" alt="seta" style="width: 38px;"></a>
+        <a href="../home/home.html"><img src="/images/seta voltar2.png" alt="seta" style="width: 45px;"></a>
     </div>
 
     <main>
-        <div class="titulo">
-            <h1>HISTÓRICO DE SERVIÇOS</h1>
-            <p>Gerenciamento das manutenções realizadas</p>
-        </div>
 
+        <div class="titulo">
+            <h2>HISTÓRICO DE SERVIÇOS</h2>
+            <h4>Gerenciamento das manutenções realizadas</h4>
+        </div>
         
     <div class="filter-box">
         
@@ -56,8 +56,12 @@
 
         <select id="data">
             <option value="">Selecione a Data</option>
-            <option value="opcao1">data 1</option>
-            <option value="opcao2">data 2</option>
+            <option value="opcao1">Últimos 7 dias</option>
+            <option value="opcao2">Últimos 15 dias</option>
+            <option value="opcao3">Últimos 30 dias</option>
+            <option value="opcao4">Últimos 3 meses</option>
+            <option value="opcao5">Últimos 6 meses</option>
+            <option value="opcao6">Últimos 12 meses</option>
         </select>
 
         <select id="profissional">
@@ -70,7 +74,6 @@
             <button id="buscar">Buscar</button>
         </div>
     </div>
-
 
     <script>
         // Script para mostrar o segundo select quando uma opção específica é selecionada no primeiro select
@@ -116,10 +119,27 @@
                 profissional.style.display = 'none';
             }
         });
+
+        document.getElementById("linkExcluir").addEventListener("change", function() {
+                    let confirmar = document.getElementById("confirmar_excluir")
+
+                    if (this.value === "close") {
+                        confirmar.style.display = "block"
+                    }else {
+                        confirmar.style.display = "none"
+                    }
+                })
     </script>
 
         <div class="container">
-          
+            <div class="confirmar_excluir">
+                <p>Deseja realmente excluir a manutenção?</p>
+                <div>
+                    <button><img id="check" src="/images/check-icon.png" alt="check" style="width: 25px;"></button>
+                    <button id="close"><img id="close" src="/images/close-icon.png" alt="close" style="width: 25px;"></button>
+                </div>
+            </div>
+
             <table>
                 <thead>
                     <tr>
@@ -127,7 +147,7 @@
                         <th>MODELO</th>
                         <th>DATA</th>
                         <th>PROFISSIONAL</th>
-                        <th>MAIS</th>
+                        <th>OPÇÕES</th>
                     </tr>
                 </thead>
 
@@ -137,7 +157,8 @@
                         <td>modelo 02</td>
                         <td>08/10/2024</td>
                         <td>marquin</td>
-                        <td><a href="detalhes.html"><img src="assets/imagens/126474.png" alt="lupa" style="width: 25px;"></a></td>
+                        <td><a id="linkExcluir" href="../detalhes/detalhes.html"><img src="/images/lupa.png" alt="lupa" style="width: 24px; padding-right: 38px;"></a>
+                        <a href="confirmar_excluir"><img src="/images/lixeira.png" alt="lixeira" style="width: 24px;"></a></td>
                     </tr>
 
                     <tr>
@@ -145,7 +166,8 @@
                         <td>modelo 02</td>
                         <td>08/10/2024</td>
                         <td>marquin</td>
-                        <td><a href="detalhes.html"><img src="assets/imagens/126474.png" alt="lupa" style="width: 25px;"></a></td>
+                        <td><a href="../detalhes/detalhes.html"><img src="/images/lupa.png" alt="lupa" style="width: 24px; padding-right: 38px;"></a>
+                        <a href="#"><img src="/images/lixeira.png" alt="lixeira" style="width: 24px;"></a></td>
                     </tr>
 
                     <tr>
@@ -153,16 +175,10 @@
                         <td>modelo 02</td>
                         <td>08/10/2024</td>
                         <td>marquin</td>
-                        <td><a href="detalhes.html"><img src="assets/imagens/126474.png" alt="lupa" style="width: 25px;"></a></td>
+                        <td><a href="../detalhes/detalhes.html"><img src="/images/lupa.png" alt="lupa" style="width: 24px; padding-right: 38px;"></a>
+                        <a href="#"><img src="/images/lixeira.png" alt="lixeira" style="width: 24px;"></a></td>
                     </tr>
 
-                    <tr>
-                        <td>sala 20</td>
-                        <td>modelo 02</td>
-                        <td>08/10/2024</td>
-                        <td>marquin</td>
-                        <td><a href="detalhes.html"><img src="assets/imagens/126474.png" alt="lupa" style="width: 25px;"></a></td>
-                    </tr>
                 </tbody>
             </table>
         </div>

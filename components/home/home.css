@@ -43,31 +43,31 @@ body {
     background-color: var(--cor2);
 }
 
-main h1, h3{
+main h2, h4{
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
 #titulo {
-    margin-top: 60px;
-    margin-bottom: 40px;
+    margin-top: 38px;
+    margin-bottom: 38px;
 }
 
 #subtitulo {
-    padding-bottom: 20px;
+    padding-bottom: 16px;
     font-weight: normal;
 }
 
 #subtitulo2 {
-    margin-bottom: 40px;
+    margin-bottom: 38px;
     margin-left: -28px;
     font-weight: normal;
 }
 
 .botoes-principais {
     display: flex;
-    gap: 50px;
+    gap: 38px;
     justify-content: center;
 }
 
@@ -115,7 +115,7 @@ main h1, h3{
     display: flex;
     height: 360px;
     width: 100%;
-    margin-top: 60px;
+    margin-top: 32px;
     border-top-left-radius: 24px;
     border-top-right-radius: 24px;
 }

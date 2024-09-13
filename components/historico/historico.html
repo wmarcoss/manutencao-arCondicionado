@@ -6,11 +6,12 @@
     <title>Histórico</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="historico.css">
+    <script src="../historico/historico.js" defer></script>
 </head>
 <body>
     <header>
         <div class="fundo">
-            <div class="logo"><img src="/images/logo.png" alt="logo" style="width: 90px;"></div>
+            <div class="logo"><a href="../home/home.html"><img src="/images/logo.png" alt="logo" style="width: 90px;"></a></div>
             <div class="nav-bar">
                 <ul class="nav-style">
                     <li class="nav-link"><a href="../home/home.html">Página Inicial</a></li>
@@ -75,67 +76,12 @@
         </div>
     </div>
 
-    <script>
-        // Script para mostrar o segundo select quando uma opção específica é selecionada no primeiro select
-        document.getElementById('filtrar').addEventListener('change', function() {
-            let local = document.getElementById('local');
-
-            if (this.value === 'mostrarLocal') {
-                local.style.display = 'inline';
-            } else {
-                local.style.display = 'none';
-            }
-        });
-
-        // Script para mostrar o segundo select quando uma opção específica é selecionada no primeiro select
-        document.getElementById('filtrar').addEventListener('change', function() {
-            let modelo = document.getElementById('modelo');
-
-            if (this.value === 'mostrarModelo') {
-                modelo.style.display = 'inline';
-            } else {
-                modelo.style.display = 'none';
-            }
-        });
-
-        // Script para mostrar o segundo select quando uma opção específica é selecionada no primeiro select
-        document.getElementById('filtrar').addEventListener('change', function() {
-            let data = document.getElementById('data');
-
-            if (this.value === 'mostrarData') {
-                data.style.display = 'inline';
-            } else {
-                data.style.display = 'none';
-            }
-        });
-
-        // Script para mostrar o segundo select quando uma opção específica é selecionada no primeiro select
-        document.getElementById('filtrar').addEventListener('change', function() {
-            let profissional = document.getElementById('profissional');
-
-            if (this.value === 'mostrarProfissional') {
-                profissional.style.display = 'inline';
-            } else {
-                profissional.style.display = 'none';
-            }
-        });
-
-        document.getElementById("linkExcluir").addEventListener("change", function() {
-                    let confirmar = document.getElementById("confirmar_excluir")
-
-                    if (this.value === "close") {
-                        confirmar.style.display = "block"
-                    }else {
-                        confirmar.style.display = "none"
-                    }
-                })
-    </script>
-
         <div class="container">
+            <!--div que estará oculta-->
             <div class="confirmar_excluir">
                 <p>Deseja realmente excluir a manutenção?</p>
-                <div>
-                    <button><img id="check" src="/images/check-icon.png" alt="check" style="width: 25px;"></button>
+                <div id="botoesConfirmacao">
+                    <button id="check"><img src="/images/check-icon.png" alt="check" style="width: 25px;"></button>
                     <button id="close"><img id="close" src="/images/close-icon.png" alt="close" style="width: 25px;"></button>
                 </div>
             </div>
@@ -157,8 +103,11 @@
                         <td>modelo 02</td>
                         <td>08/10/2024</td>
                         <td>marquin</td>
-                        <td><a id="linkExcluir" href="../detalhes/detalhes.html"><img src="/images/lupa.png" alt="lupa" style="width: 24px; padding-right: 38px;"></a>
-                        <a href="confirmar_excluir"><img src="/images/lixeira.png" alt="lixeira" style="width: 24px;"></a></td>
+                        <!--link em que, ao clicar na imagem "lixeira" a div confirmar_excluir será exibida na tela-->
+                        <td class="lupaElixeira">
+                            <a href="../detalhes/detalhes.html"><button><img src="/images/lupa.png" alt="lupa" style="width: 25px;"></button></a>
+                            <button class="linkExcluir"><img src="/images/lixeira.png" alt="lixeira" style="width: 25px;"></button>
+                        </td>
                     </tr>
 
                     <tr>
@@ -166,8 +115,11 @@
                         <td>modelo 02</td>
                         <td>08/10/2024</td>
                         <td>marquin</td>
-                        <td><a href="../detalhes/detalhes.html"><img src="/images/lupa.png" alt="lupa" style="width: 24px; padding-right: 38px;"></a>
-                        <a href="#"><img src="/images/lixeira.png" alt="lixeira" style="width: 24px;"></a></td>
+                        <!--link em que, ao clicar na imagem "lixeira" a div confirmar_excluir será exibida na tela-->
+                        <td class="lupaElixeira">
+                            <a href="../detalhes/detalhes.html"><button><img src="/images/lupa.png" alt="lupa" style="width: 25px;"></button></a>
+                            <button class="linkExcluir"><img src="/images/lixeira.png" alt="lixeira" style="width: 25px;"></button>
+                        </td>
                     </tr>
 
                     <tr>
@@ -175,8 +127,23 @@
                         <td>modelo 02</td>
                         <td>08/10/2024</td>
                         <td>marquin</td>
-                        <td><a href="../detalhes/detalhes.html"><img src="/images/lupa.png" alt="lupa" style="width: 24px; padding-right: 38px;"></a>
-                        <a href="#"><img src="/images/lixeira.png" alt="lixeira" style="width: 24px;"></a></td>
+                        <!--link em que, ao clicar na imagem "lixeira" a div confirmar_excluir será exibida na tela-->
+                        <td class="lupaElixeira">
+                            <a href="../detalhes/detalhes.html"><button><img src="/images/lupa.png" alt="lupa" style="width: 25px;"></button></a>
+                            <button class="linkExcluir"><img src="/images/lixeira.png" alt="lixeira" style="width: 25px;"></button>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>sala 20</td>
+                        <td>modelo 02</td>
+                        <td>08/10/2024</td>
+                        <td>marquin</td>
+                        <!--link em que, ao clicar na imagem "lixeira" a div confirmar_excluir será exibida na tela-->
+                        <td class="lupaElixeira">
+                            <a href="../detalhes/detalhes.html"><button><img src="/images/lupa.png" alt="lupa" style="width: 25px;"></button></a>
+                            <button class="linkExcluir"><img src="/images/lixeira.png" alt="lixeira" style="width: 25px;"></button>
+                        </td>
                     </tr>
 
                 </tbody>

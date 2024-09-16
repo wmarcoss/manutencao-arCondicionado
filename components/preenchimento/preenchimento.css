@@ -64,6 +64,10 @@ body {
     display: flex;
     margin: 32px 28px;
     position: absolute;
+    justify-content: center;
+    align-items: center;
+    padding-bottom: 10px;
+    margin-bottom: 35px;
 }
 
 .select {
@@ -90,7 +94,6 @@ body {
     align-items: center;
     gap: 32px;
     font-weight: bold;
-    margin-bottom: 32px;
 }
 
 .preenchiveis2 {
@@ -110,6 +113,7 @@ body {
     border-radius: 8px;
     box-shadow: 2px 4px 5px rgba(0, 0, 0, 0.548);
     padding-left:5px ;
+    margin-bottom: 32px;
 }
 
 .text-box {
@@ -122,6 +126,7 @@ body {
 
 textarea {
     border: 1px solid black;
+    padding-bottom: 60px;
 }
 
 #detalhes, #observacoes {

@@ -54,18 +54,19 @@ body {
     align-items: center;
     justify-content: center;
     text-align: center;
-    position: absolute;
+    position: fixed;
     background-color: white;
-    width: 400px;
-    height: 60px;
+    width: 420px;
+    height: 110px;
     border: 1px solid black;
     border-radius: 8px;
     margin-top: -225px;
 }
 
-.confirmar_excluir p {
+.confirmar_excluir h4 {
     color: black;
-    padding: 6px;
+    padding: 12px;
+    margin-top: 8px;
 }
 
 .lupaElixeira {
@@ -83,15 +84,14 @@ body {
 #check {
     background-color: green;
     cursor: pointer;
-    margin: -2px;
-    margin-bottom: -5px;
+    padding: 2px;
+    margin-right: 6px;
 }
 
 #close {
     background-color: rgb(235, 10, 10);
     cursor: pointer;
-    margin: -2px;
-    margin-bottom: -5px;
+    padding: 1px;
 }
 
 .titulo {

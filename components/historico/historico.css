@@ -1,0 +1,266 @@
+@charset "UTF-8";
+
+* {
+    margin: 0px;
+    padding: 0px;
+    font-family: sans-serif;
+}
+
+:root {
+    --cor0: #FFFF;
+    --cor2: #D7D7D7;
+    --cor3: #0054A6;
+}
+
+.fundo {
+    background-color: var(--cor3);
+    display: flex;
+    width: 100%;
+    height: 130px;
+    align-items: center;
+    justify-content: center;
+}
+
+.logo {
+    display: flex;
+    position: absolute;
+    margin-left: -1220px;
+}
+
+.nav-style {
+    display: flex;
+    gap: 200px;
+    list-style: none;
+}
+
+.nav-link a{
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+}
+
+body {
+    background-color: var(--cor2);
+}
+
+.seta-voltar {
+    display: flex;
+    margin: 32px 28px;
+    position: fixed;
+}
+
+.confirmar_excluir {
+    display: none;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    position: fixed;
+    background-color: white;
+    width: 420px;
+    height: 110px;
+    border: 1px solid black;
+    border-radius: 8px;
+    margin-top: -225px;
+}
+
+.confirmar_excluir h4 {
+    color: black;
+    padding: 12px;
+    margin-top: 8px;
+}
+
+.lupaElixeira {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+}
+
+.lupaElixeira button {
+    cursor: pointer;
+    border-style: none;
+    background-color: rgba(0, 0, 255, 0);
+}
+
+#check {
+    background-color: green;
+    cursor: pointer;
+    padding: 2px;
+    margin-right: 6px;
+}
+
+#close {
+    background-color: rgb(235, 10, 10);
+    cursor: pointer;
+    padding: 1px;
+}
+
+.titulo {
+    display: flex;
+    flex-direction: column;
+    margin: 32px;
+    text-align: center;
+}
+
+.titulo h2 {
+    padding-bottom: 8px;
+}
+
+.titulo h4 {
+    font-weight: lighter;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow-x: auto;
+}
+
+.filter-box {
+    display: flex;
+    position: absolute;
+    margin-left: 12.8%;
+    margin-top: 32px;
+}
+
+#filtrar {
+    border-radius: 12px;
+    padding: 8px;
+    margin-right: 16px;
+    cursor: pointer;
+}
+
+.botao-buscar {
+    position: absolute;
+    display: flex;
+    margin-left: 100%;
+}
+
+#buscar {
+    padding: 8px 16px 8px 16px;
+    border-radius: 12px;
+    background-color: var(--cor3);
+    font-weight: bold;
+    background-color: white;
+    color: var(--cor3);
+    cursor: pointer;
+}
+
+#local, #modelo, #data, #profissional {
+    display: none;
+    border-radius: 12px;
+    padding: 8px;
+    padding-left: 4px;
+    margin-right: 16px;
+    cursor: pointer;
+}
+
+table {
+    display: block;
+    text-align: center;
+    border-collapse: collapse;
+    border-top: 90px;
+    border-right: 40px;
+    border-left: 40px;
+    border-bottom: 40px;
+    border-style: solid;
+    border-radius: 24px;
+    border-color: var(--cor3);
+}
+
+th {
+    background-color: var(--cor2);
+    color: var(--cor3);
+    font-weight: bold;
+    padding: 16px 64px 16px 64px;
+    border: 2px solid black;
+}
+
+td {
+    background-color: rgba(0, 0, 255, 0.082);
+    padding: 8px;
+    border: 1.5px solid black;
+}
+
+.footer-fundo {
+    background-color: var(--cor3);
+    display: flex;
+    height: 360px;
+    width: 100%;
+    margin-top: 38px;
+    border-top-left-radius: 24px;
+    border-top-right-radius: 24px;
+}
+
+.sobre {
+    color: white;
+    padding-top: 80px;
+    padding-left: 90px;
+}
+
+#sobre-titulo {
+    padding-bottom: 30px;
+}
+
+#sobre-subtitulo {
+    color: rgba(255, 255, 255, 0.849);
+}
+
+.contatos {
+    padding-top: 20px;
+    margin-left: -5px;
+}
+
+.footer-link {
+    margin: 0 8px;
+    color: white;
+}
+
+.mapa {
+    color: white;
+    padding-top: 80px;
+    padding-left: 150px;
+}
+
+#mapa-titulo {
+    margin-bottom: 30px;
+}
+
+.footer-list {
+    display: block;
+    padding-bottom: 5px;
+    color: rgba(255, 255, 255, 0.849);
+    text-decoration: none;
+}
+
+.informativos {
+    color: white;
+    padding-top: 80px;
+    padding-left: 150px;
+}
+
+#informativos-titulo {
+    padding-bottom: 30px;
+}
+
+p {
+    color: rgba(255, 255, 255, 0.849);
+}
+
+#informativos-subtitulo {
+    padding-bottom: 20px;
+}
+
+.creditos {
+    display: flex;
+    position: absolute;
+    margin-top: 315px;
+    margin-left: 525px;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+}
+
+#criador {
+    color: #6985ff;
+}

@@ -43,99 +43,71 @@ body {
     background-color: var(--cor2);
 }
 
-.titulo {
-    display: flex;
-    flex-direction: column;
-    margin: 40px 0px 40px 285px ;
-}
-
-.titulo p {
-    color: black;
-}
-
-.container {
+main h2, h3, h4{
     display: flex;
     justify-content: center;
     align-items: center;
-    overflow-x: auto;
-    margin-bottom: 100px;
 }
 
-.pesquisa{
+#titulo {
+    margin-top: 38px;
+    margin-bottom: 28px;
+}
+
+#subtitulo {
+    padding-bottom: 16px;
+    font-weight: normal;
+}
+
+#subtitulo2 {
+    margin-bottom: 38px;
+    margin-left: -22px;
+    font-weight: normal;
+}
+
+.botoes-principais {
+    display: flex;
+    gap: 38px;
+    justify-content: center;
+}
+
+.botao-adicionar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.adicionar {
+    padding: 80px 120px 150px 120px;
+    background-color: white;
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.548);
+    border-radius: 4px;
+}
+
+.botao-historico {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.historico {
+    padding: 70px 110px 140px 110px;
+    background-color: white;
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.548);
+    border-radius: 4px;
+}
+
+#titulo-botoes {
     display: flex;
     position: absolute;
-    margin-left: 26.7%;
-    margin-top: 24px;
-    gap: 116%;
-
+    margin-top: 200px;
 }
 
-#pesquisar {
-    padding: 4px 8px;
-    border-radius: 12px;
-}
-
-#filtrar {
-    padding: 10px;
-    border-radius: 15px;
-    font-weight: bold;
-    color: var(--cor3);
-}
-
-table {
-    display: block;
-    border-collapse: collapse;
-    align-items: center;
-    justify-content: center;
-    border-top: 90px;
-    border-right: 40px;
-    border-left: 40px;
-    border-bottom: 70px;
-    border-style: solid;
-    border-radius: 24px;
-    border-color: var(--cor3);
-}
-
-th {
-    background-color: rgb(97, 97, 97);
-    align-items: center;
-    justify-content: center;
-    color: white;
-    font-weight: bold;
-    padding: 15px 30px 15px 30px;
-    border: 1px solid black;
-}
-
-td {
-    background-color: var(--cor2);
-    padding: 5px;
-    border: 1px solid black;
-    align-items: center;
-    justify-content: center;
-}
-
-tbody {
-    align-items: center;
-    justify-content: center;
-}
-
-button {
+#subtitulo-botoes {
     display: flex;
-    gap: 20px;
-    margin-left: 358px;
-    margin-top: -150px;
     position: absolute;
-}
-
-#voltar a {
-    text-decoration: none;
-    font-weight: bold;
-    color: var(--cor3);
-}
-
-#voltar {
-    padding: 8px 16px 8px 16px;
-    border-radius: 12px;
+    margin-top: 250px;
+    color: rgb(58, 57, 57);
 }
 
 .footer-fundo {
@@ -143,7 +115,7 @@ button {
     display: flex;
     height: 360px;
     width: 100%;
-    margin-top: 120px;
+    margin-top: 38px;
     border-top-left-radius: 24px;
     border-top-right-radius: 24px;
 }

@@ -44,101 +44,127 @@ body {
 }
 
 .titulo {
+    margin-top: 32px;
+    margin-bottom: 32px;
     display: flex;
     flex-direction: column;
-    margin-left: 305px;
-    margin-top: 40px;
-    margin-bottom: 40px;
+    justify-content: center;
+    align-items: center;
 }
 
-.titulo p {
-    color: black;
+.titulo h2 {
+    padding-bottom: 8px;
 }
 
-.container {
+.titulo h4 {
+    font-weight: lighter;
+}
+
+.seta-voltar {
+    display: flex;
+    margin: 32px 28px;
+    position: absolute;
+    justify-content: center;
+    align-items: center;
+    padding-bottom: 10px;
+    margin-bottom: 35px;
+}
+
+.select {
+    display: flex;
+    justify-content: center;
+    gap: 32px;
+    margin-bottom: 32px;
+    font-weight: bold;
+}
+
+#local, #modelo, #preventiva, #corretiva {
+    display: block;
+    width: 491.5px;
+    height: 40px;
+    border: 1px solid black;
+    border-radius: 8px;
+    box-shadow: 2px 4px 5px rgba(0, 0, 0, 0.548);
+    cursor: pointer;
+}
+
+.preenchiveis {
     display: flex;
     justify-content: center;
     align-items: center;
-}
-
-table {
-    display: block;
-    border-collapse: collapse;
-    border-top: 40px;
-    border-right: 40px;
-    border-left: 40px;
-    border-bottom: 360px;
-    border-style: solid;
-    border-radius: 24px;
-    border-color: var(--cor3);
-    margin-bottom: 60px;
-}
-
-th {
-    background-color: rgb(97, 97, 97);
-    align-items: center;
-    justify-content: center;
-    color: white;
+    gap: 32px;
     font-weight: bold;
-    padding: 15px 40px 15px 40px;
-    border: 1px solid black;
 }
 
-td {
-    background-color: var(--cor2);
-    padding: 10px 40px 10px 40px;
-    border: 1px solid black;
+.preenchiveis2 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 32px;
+    font-weight: bold;
+    margin-bottom: 32px;
 }
 
-.especificacoes {
+#data, #data2, #profissional, #custo {
     display: block;
-    position: absolute;
-    margin-top: 60px;
+    width: 485px;
+    height: 40px;
+    border: 1px solid black;
+    border-radius: 8px;
+    box-shadow: 2px 4px 5px rgba(0, 0, 0, 0.548);
+    padding-left:5px ;
+    margin-bottom: 32px;
+}
+
+.text-box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    margin-bottom: 32px;
+}
+
+textarea {
+    border: 1px solid black;
+    padding-bottom: 60px;
+}
+
+#detalhes, #observacoes {
+    display: block;
+    width: 1009px;
+    height: 80px;
+    padding-left: 4px;
+    border-radius: 8px;
+    box-shadow: 2px 4px 5px rgba(0, 0, 0, 0.548);
 }
 
 ::placeholder {
-    padding-left: 5px;
-    padding-top: 5px
+    padding-left: 4px;
+    padding-top: 4px;
 }
 
-#tipo {
-    width: 650px;
-    height: 70px;
-    margin-bottom: 20px;
-    border-radius: 5px;
-}
-
-#detalhes {
-    width: 650px;
-    height: 80px;
-    margin-bottom: 20px;
-    border-radius: 5px;
-}
-
-#custo {
-    width: 650px;
-    height: 30px;
-    margin-bottom: 30px;
-    border-radius: 5px;
-}
-
-button {
+.botoao-salvar {
     display: flex;
-    gap: 20px;
-    margin-left: 348px;
-    margin-top: -120px;
-    position: absolute;
+    margin-left: 12.4%;
+    gap: 12px;
 }
 
-#voltar a {
-    text-decoration: none;
+#salvar {
+    padding: 8px 16px 8px 16px;
+    border-radius: 16px;
+    background-color: var(--cor3);
     font-weight: bold;
-    color: var(--cor3);
+    color: white;
+    cursor: pointer;
 }
 
-#voltar {
-    padding: 5px 10px 5px 10px;
-    border-radius: 10px;
+#cancelar {
+    padding: 8px 16px 8px 16px;
+    border-radius: 12px;
+    background-color: white;
+    font-weight: bold;
+    color: black;
+    cursor: pointer;
 }
 
 .footer-fundo {
@@ -146,7 +172,7 @@ button {
     display: flex;
     height: 360px;
     width: 100%;
-    margin-top: 120px;
+    margin-top: 32px;
     border-top-left-radius: 24px;
     border-top-right-radius: 24px;
 }

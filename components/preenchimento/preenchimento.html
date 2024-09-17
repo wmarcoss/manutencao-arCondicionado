@@ -11,7 +11,7 @@
 
     <header>
         <div class="fundo">
-            <div class="logo"><img src="/images/logo.png" alt="logo" style="width: 90px;"></div>
+            <div class="logo"><img src="/assets/images/logo.png" alt="logo" style="width: 90px;"></div>
             <div class="nav-bar">
                 <ul class="nav-style">
                     <li class="nav-link"><a href="../home/home.html">Página Inicial</a></li>
@@ -23,7 +23,7 @@
     </header>
 
     <div class="seta-voltar">
-        <a href="../home/home.html"><img src="/images/seta voltar2.png" alt="seta" style="width: 45px;"></a>
+        <a href="../home/home.html"><img src="/assets/images/seta voltar2.png" alt="seta" style="width: 45px;"></a>
     </div>
 
     <main>
@@ -41,7 +41,7 @@
             </label>
 
             <label for="modelo">Modelo *
-                <select name="modelo" id="modelo">
+                <select name="modelo" id="modelo" required>
                     <option disabled selected value="modelo">Selecione o modelo ou fabricante</option>
                 </select>
             </label>
@@ -49,7 +49,7 @@
 
         <div class="select">
             <label for="tipo-manutencao">Tipo da manutenção *
-                <select name="preventiva" id="preventiva">
+                <select name="preventiva" id="preventiva" required>
                     <option disabled selected value="preventiva">Selecione o tipo</option>
                     <option value="preventiva">Preventiva</option>
                     <option value="corretiva">Corretiva</option>
@@ -57,7 +57,7 @@
             </label>
 
             <label for="tipo-conserto">Tipo de conserto *
-                <select name="corretiva" id="corretiva">
+                <select name="corretiva" id="corretiva" required>
                     <option disabled selected value="corretiva">Selecione o tipo</option>
                     <option value="">limpeza</option>
                     <option value="">troca de gás</option>
@@ -69,7 +69,7 @@
 
         <div class="preenchiveis">
             <label for="data">Data *
-                <input id="data" type="date">
+                <input id="data" type="date" required>
             </label>
             
             <label for="data2">Previsão da próxima manutenção

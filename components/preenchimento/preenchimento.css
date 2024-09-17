@@ -102,7 +102,6 @@ body {
     align-items: center;
     gap: 32px;
     font-weight: bold;
-    margin-bottom: 32px;
 }
 
 #data, #data2, #profissional, #custo {
@@ -126,7 +125,8 @@ body {
 
 textarea {
     border: 1px solid black;
-    padding-bottom: 60px;
+    padding-bottom: 32px;
+    resize: none;
 }
 
 #detalhes, #observacoes {

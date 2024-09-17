@@ -9,138 +9,102 @@
 </head>
 <body>
 
-    <header>
-        <div class="fundo">
-            <div class="logo"><img src="/assets/images/logo.png" alt="logo" style="width: 90px;"></div>
-            <div class="nav-bar">
-                <ul class="nav-style">
-                    <li class="nav-link"><a href="../home/home.html">Página Inicial</a></li>
-                    <li class="nav-link"><a href="../preenchimento/preenchimento.html">Adicionar Manutenção</a></li>
-                    <li class="nav-link"><a href="../historico/historico.html">Ver Histórico</a></li>
-                </ul>
-            </div>
-        </div>
-    </header>
+    <header id="header-geral"></header>
 
     <div class="seta-voltar">
-        <a href="../home/home.html"><img src="/assets/images/seta voltar2.png" alt="seta" style="width: 45px;"></a>
+        <a href="../home/home.html"><img src="/assets/icons/seta voltar2.png" alt="seta" style="width: 45px;"></a>
     </div>
 
     <main>
-        <div class="titulo">
-            <h2>ADICIONAR MANUTENÇÃO</h2>
-            <h4>Aba para inserção de todos os dados</h4>
-            <h4>referentes a manutenção</h4>
-        </div>
-
-        <div class="select">
-            <label for="local">Local *
-                <select name="local" id="local" required>
-                    <option disabled selected value="local">Selecione o local</option>
-                </select>
-            </label>
-
-            <label for="modelo">Modelo *
-                <select name="modelo" id="modelo" required>
-                    <option disabled selected value="modelo">Selecione o modelo ou fabricante</option>
-                </select>
-            </label>
-        </div>
-
-        <div class="select">
-            <label for="tipo-manutencao">Tipo da manutenção *
-                <select name="preventiva" id="preventiva" required>
-                    <option disabled selected value="preventiva">Selecione o tipo</option>
-                    <option value="preventiva">Preventiva</option>
-                    <option value="corretiva">Corretiva</option>
-                </select>
-            </label>
-
-            <label for="tipo-conserto">Tipo de conserto *
-                <select name="corretiva" id="corretiva" required>
-                    <option disabled selected value="corretiva">Selecione o tipo</option>
-                    <option value="">limpeza</option>
-                    <option value="">troca de gás</option>
-                    <option value="">reparos</option>
-                    <option value="">passou fita isolante</option>
-                </select>
-            </label>
-        </div>
-
-        <div class="preenchiveis">
-            <label for="data">Data *
-                <input id="data" type="date" required>
-            </label>
-            
-            <label for="data2">Previsão da próxima manutenção
-                <input id="data2" type="date">
-            </label>
-        </div>
-
-        <div class="preenchiveis2">
-            <label for="profissional">Profissional *
-                <input id="profissional" type="text" placeholder="Digite seu nome">
-            </label>
-
-            <label for="custo">Custo (opcional, caso o profissional seja terceirizado)
-                <input id="custo" type="number" placeholder="R$">
-            </label>
-        </div>
-
-        <div class="text-box">
-            <label for="detalhes">Detalhes (opcional, para destacar peças trocadas, reparos, entre outros)
-                <textarea name="detalhes" id="detalhes" rows="6" placeholder="Digite aqui"></textarea>
-            </label>
-        </div>
-
-        <div class="text-box">
-            <label for="observacoes">Observações (opcional, para anotar informações adicionais relevantes que o técnico tenha observado)
-                <textarea name="observacoes" id="observacoes" rows="6" placeholder="Digite aqui"></textarea>
-            </label>
-        </div>
+        <form id="manutencao-form">
+            <div class="titulo">
+                <h2>ADICIONAR MANUTENÇÃO</h2>
+                <h4>Aba para inserção de todos os dados</h4>
+                <h4>referentes a manutenção</h4>
+            </div>
     
-        <div class="botoao-salvar">
-            <button id="cancelar">CANCELAR</button>
-        <div class="botoes">
-            <button type="submit" id="salvar">SALVAR</button>
-        </div>
-    </main>
-
-    <footer>
-        <div class="footer-fundo">
-            <div class="sobre">
-                <h3 id="sobre-titulo">Sobre</h3>
-                <p id="sobre-subtitulo">Há mais de 65 anos. A tradição <br> que não parou no tempo.</p>
-            
-                <div class="contatos">
-                    <a href="https://www.facebook.com/lourdinascg/" class="footer-link" id="facebook" target=”_blank” rel="externos"><i class="fa-brands fa-facebook"></i></a>
-                    <a href="https://www.instagram.com/lourdinascg?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" class="footer-link" id="instagram" target=”_blank” rel="externos"><i class="fa-brands fa-instagram"></i></a>
-                    <a href="https://www.youtube.com/user/evlcg" class="footer-link" id="youtube" target=”_blank” rel="externos"><i class="fa-brands fa-youtube"></i></a>
-                    <a href="https://maps.app.goo.gl/A12xVRmpZMXRmC6Y8" class="footer-link" id="google" target=”_blank” rel="externos"><i class="fa-brands fa-google"></i></a>
+            <div class="select">
+                <label for="local">Local *
+                    <select name="local" id="local" required>
+                        <option disabled selected value="">Selecione o local</option>
+                        <option value="Sala 1">Sala 1</option>
+                        <option value="Sala 2">Sala 2</option>
+                    </select>
+                </label>
+    
+                <label for="modelo">Modelo *
+                    <select name="modelo" id="modelo" required>
+                        <option disabled selected value="">Selecione o modelo ou fabricante</option>
+                        <option value="Daikin-FTXS25J">Daikin-FTXS25J</option>
+                        <option value="LG-Dual Inverter">LG-Dual Inverter</option>
+                    </select>
+                </label>
+            </div>
+    
+            <div class="select">
+                <label for="tipo-manutencao">Tipo da manutenção *
+                    <select name="tipo-manutencao" id="tipo-manutencao" required>
+                        <option disabled selected value="">Selecione o tipo</option>
+                        <option value="preventiva">Preventiva</option>
+                        <option value="corretiva">Corretiva</option>
+                    </select>
+                </label>
+    
+                <label for="tipo-conserto">Tipo de conserto *
+                    <select name="tipo-conserto" id="tipo-conserto" required>
+                        <option disabled selected value="">Selecione o tipo</option>
+                        <option value="Limpeza">Limpeza</option>
+                        <option value="Troca de gás">Troca de gás</option>
+                        <option value="Reparos">Reparos</option>
+                        <option value="Passou fita isolante">Passou fita isolante</option>
+                    </select>
+                </label>
+            </div>
+    
+            <div class="preenchiveis">
+                <label for="data">Data *
+                    <input id="data" type="date" required>
+                </label>
+                
+                <label for="data2">Previsão da próxima manutenção
+                    <input id="data2" type="date">
+                </label>
+            </div>
+    
+            <div class="preenchiveis2">
+                <label for="profissional">Profissional *
+                    <input id="profissional" type="text" placeholder="Digite seu nome" required>
+                </label>
+    
+                <label for="custo">Custo (opcional, caso o profissional seja terceirizado)
+                    <input id="custo" type="number" placeholder="R$">
+                </label>
+            </div>
+    
+            <div class="text-box">
+                <label for="detalhes">Detalhes (opcional, para destacar peças trocadas, reparos, entre outros)
+                    <textarea name="detalhes" id="detalhes" rows="6" placeholder="Digite aqui"></textarea>
+                </label>
+            </div>
+    
+            <div class="text-box">
+                <label for="observacoes">Observações (opcional, para anotar informações adicionais relevantes que o técnico tenha observado)
+                    <textarea name="observacoes" id="observacoes" rows="6" placeholder="Digite aqui"></textarea>
+                </label>
+            </div>
+        
+            <div class="botoao-salvar">
+                <button id="cancelar" type="button">CANCELAR</button>
+                <div class="botoes">
+                    <button type="submit" id="salvar">SALVAR</button>
                 </div>
             </div>
+        </form>
+    </main>
+    
 
-            <div class="mapa">
-                <h3 id="mapa-titulo">Mapa do Site</h3>
-                <a class="footer-list" href="https://www.lourdinascg.com.br/" target=”_blank” rel="externos">Início</a>
-                <a class="footer-list" href="https://www.lourdinascg.com.br/sobre" target=”_blank” rel="externos">Sobre</a>
-                <a class="footer-list" href="https://www.lourdinascg.com.br/projetos" target=”_blank” rel="externos">Projetos</a>
-                <a class="footer-list" href="https://www.lourdinascg.com.br/informativos" target=”_blank” rel="externos">Informativos</a>
-                <a class="footer-list" href="https://lourdinascg.com.br/fale-conosco" target=”_blank” rel="externos">Fale Conosco</a>
-            </div>
-
-            <div class="informativos">
-                <h3 id="informativos-titulo">Informações de Contato</h3>
-                <p id="informativos-subtitulo">R. Nossa Sra. de Lourdes, 193 - <br> Jardim Tavares, Campina <br> Grande - PB, 58402-045</p>
-                <p>83 3182-3600</p>
-            </div>
-
-            <div class="creditos">
-                <p>© Colégio Lourdinas.<p id="criador">Criado por Marcos, Iann, Marcos</p></p>
-            </div>
-            
-        </div>
-    </footer>
+    <footer id="footer-geral"></footer>
+    <script src="./preenchimento.js"></script>
     
 </body>
 </html>

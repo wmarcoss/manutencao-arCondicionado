@@ -1,80 +1,78 @@
-// Mostrar o segundo select quando uma opção específica é selecionada no primeiro select
-document.getElementById('filtrar').addEventListener('change', function() {
-    let local = document.getElementById('local');
+document.addEventListener('DOMContentLoaded', () => {
+    const historicList = document.getElementById('historicList');
 
-    if (this.value === 'mostrarLocal') {
-        local.style.display = 'inline';
-    } else {
-        local.style.display = 'none';
-    }
-});
+    // Função para formatar a data no padrão brasileiro (dd/mm/aaaa)
+    const formatDate = (dateString) => {
+        // Supondo que dateString esteja no formato ISO (aaaa-mm-dd)
+        const options = { day: '2-digit', month: '2-digit', year: 'numeric' };
+        const date = new Date(dateString);
+        return date.toLocaleDateString('pt-BR', options);
+    };
 
-// Mostrar o segundo select quando uma opção específica é selecionada no primeiro select
-document.getElementById('filtrar').addEventListener('change', function() {
-    let modelo = document.getElementById('modelo');
+    const fetchManuntencao = async () => {
+        try {
+            const response = await fetch('http://localhost:3000/manutencao');
+            const data = await response.json();
+            historicList.innerHTML = data.map(manutencao => `
+                <tr>
+                    <td>${manutencao.lugar}</td>
+                    <td>${manutencao.modelo_marca}</td>
+                    <td>${formatDate(manutencao.data_manutencao)}</td>
+                    <td>${manutencao.nome}</td>
+                    <td class="lupaElixeira">
+                        <a href="../detalhes/detalhes.html"><button><img src="../../assets/icons/lupa.png" alt="lupa" style="width: 25px;"></button></a>
+                        <button class="linkExcluir"><img src="../../assets/icons/lixeira.png" alt="lixeira" style="width: 25px;"></button>
+                    </td>
+                </tr>
+            `).join('');
+        } catch (error) {
+            console.error('Erro ao buscar manutenção:', error);
+        }
+    };
 
-    if (this.value === 'mostrarModelo') {
-        modelo.style.display = 'inline';
-    } else {
-        modelo.style.display = 'none';
-    }
-});
+    fetchManuntencao();
 
-// Mostrar o segundo select quando uma opção específica é selecionada no primeiro select
-document.getElementById('filtrar').addEventListener('change', function() {
-    let data = document.getElementById('data');
+    // Mostrar os selects com base na opção selecionada
+    document.getElementById('filtrar').addEventListener('change', function() {
+        let local = document.getElementById('local');
+        let modelo = document.getElementById('modelo');
+        let data = document.getElementById('data');
+        let profissional = document.getElementById('profissional');
 
-    if (this.value === 'mostrarData') {
-        data.style.display = 'inline';
-    } else {
-        data.style.display = 'none';
-    }
-});
-
-// Mostrar o segundo select quando uma opção específica é selecionada no primeiro select
-document.getElementById('filtrar').addEventListener('change', function() {
-    let profissional = document.getElementById('profissional');
-
-    if (this.value === 'mostrarProfissional') {
-        profissional.style.display = 'inline';
-    } else {
-        profissional.style.display = 'none';
-    }
-});
-
-document.addEventListener('DOMContentLoaded', function() {
-    // Seleciona todos os botões com a classe 'linkExcluir'
-    const linkExcluirButtons = document.querySelectorAll('.linkExcluir');
-
-    // Seleciona a div que deve ser exibida
-    const confirmarExcluirDiv = document.querySelector('.confirmar_excluir');
-
-    // Função para exibir a div de confirmação
-    function mostrarConfirmacao() {
-        confirmarExcluirDiv.style.display = 'block';
-    }
-
-    // Adiciona um evento de clique a cada botão com a classe 'linkExcluir'
-    linkExcluirButtons.forEach(button => {
-        button.addEventListener('click', mostrarConfirmacao);
+        local.style.display = this.value === 'mostrarLocal' ? 'inline' : 'none';
+        modelo.style.display = this.value === 'mostrarModelo' ? 'inline' : 'none';
+        data.style.display = this.value === 'mostrarData' ? 'inline' : 'none';
+        profissional.style.display = this.value === 'mostrarProfissional' ? 'inline' : 'none';
     });
 
-    // Adiciona funcionalidade aos botões de confirmação e fechamento
-    const checkButton = document.getElementById('check');
-    const closeButton = document.getElementById('close');
+    // Funcionalidade de confirmação de exclusão
+    document.addEventListener('DOMContentLoaded', function() {
+        const linkExcluirButtons = document.querySelectorAll('.linkExcluir');
+        const confirmarExcluirDiv = document.querySelector('.confirmar_excluir');
 
-    // Função para esconder a div de confirmação
-    function esconderConfirmacao() {
-        confirmarExcluirDiv.style.display = 'none';
-    }
+        function mostrarConfirmacao() {
+            confirmarExcluirDiv.style.display = 'block';
+        }
 
-    checkButton.addEventListener('click', function() {
-        // Lógica para confirmar a exclusão
-        esconderConfirmacao();
-    });
+        linkExcluirButtons.forEach(button => {
+            button.addEventListener('click', mostrarConfirmacao);
+        });
 
-    closeButton.addEventListener('click', function() {
-        // Lógica para cancelar a exclusão
-        esconderConfirmacao();
+        const checkButton = document.getElementById('check');
+        const closeButton = document.getElementById('close');
+
+        function esconderConfirmacao() {
+            confirmarExcluirDiv.style.display = 'none';
+        }
+
+        checkButton.addEventListener('click', function() {
+            // Lógica para confirmar a exclusão
+            esconderConfirmacao();
+        });
+
+        closeButton.addEventListener('click', function() {
+            // Lógica para cancelar a exclusão
+            esconderConfirmacao();
+        });
     });
 });

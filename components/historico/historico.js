@@ -1,14 +1,17 @@
 document.addEventListener('DOMContentLoaded', () => {
     const historicList = document.getElementById('historicList');
+    const confirmarExcluirDiv = document.querySelector('.confirmar_excluir');
+    const mensagemTempora = document.getElementById('mensagemTempora');
+    let currentDeleteId = null;
 
     // Função para formatar a data no padrão brasileiro (dd/mm/aaaa)
     const formatDate = (dateString) => {
-        // Supondo que dateString esteja no formato ISO (aaaa-mm-dd)
         const options = { day: '2-digit', month: '2-digit', year: 'numeric' };
         const date = new Date(dateString);
         return date.toLocaleDateString('pt-BR', options);
     };
 
+    // Função para buscar as manutenções
     const fetchManuntencao = async () => {
         try {
             const response = await fetch('http://localhost:3000/manutencao');
@@ -21,15 +24,60 @@ document.addEventListener('DOMContentLoaded', () => {
                     <td>${manutencao.nome}</td>
                     <td class="lupaElixeira">
                         <a href="../detalhes/detalhes.html"><button><img src="../../assets/icons/lupa.png" alt="lupa" style="width: 25px;"></button></a>
-                        <button class="linkExcluir"><img src="../../assets/icons/lixeira.png" alt="lixeira" style="width: 25px;"></button>
+                        <button class="linkExcluir" data-id="${manutencao.id}"><img src="../../assets/icons/lixeira.png" alt="lixeira" style="width: 25px;"></button>
                     </td>
                 </tr>
             `).join('');
+
+            // Adiciona event listeners aos botões de exclusão
+            const deleteButtons = document.querySelectorAll('.linkExcluir');
+            deleteButtons.forEach(button => {
+                button.addEventListener('click', (event) => {
+                    currentDeleteId = event.target.closest('.linkExcluir').getAttribute('data-id');
+                    confirmarExcluirDiv.style.display = 'flex'; // Exibe o modal de confirmação
+                });
+            });
         } catch (error) {
             console.error('Erro ao buscar manutenção:', error);
         }
     };
 
+    // Função para deletar manutenção
+    const deleteManutencao = async (id) => {
+        try {
+            const response = await fetch(`http://localhost:3000/manutencao/${id}`, {
+                method: 'DELETE'
+            });
+
+            if (response.ok) {
+                confirmarExcluirDiv.style.display = 'none'; // Fecha o modal de confirmação
+                mensagemTempora.style.display = 'block'; // Exibe a mensagem temporária
+                // Oculta a mensagem temporária após 3 segundos
+                setTimeout(() => {
+                    mensagemTempora.style.display = 'none';
+                }, 3000);
+                fetchManuntencao(); // Atualiza a lista de manutenções após a exclusão
+            } else {
+                alert('Erro ao deletar manutenção');
+            }
+        } catch (error) {
+            console.error('Erro ao deletar manutenção:', error);
+        }
+    };
+
+    // Event listener para confirmar exclusão
+    document.getElementById('check').addEventListener('click', () => {
+        if (currentDeleteId) {
+            deleteManutencao(currentDeleteId);
+        }
+    });
+
+    // Event listener para cancelar exclusão
+    document.getElementById('close').addEventListener('click', () => {
+        confirmarExcluirDiv.style.display = 'none'; // Fecha o modal de confirmação
+    });
+
+    // Chama a função para carregar as manutenções
     fetchManuntencao();
 
     // Mostrar os selects com base na opção selecionada
@@ -45,39 +93,6 @@ document.addEventListener('DOMContentLoaded', () => {
         profissional.style.display = this.value === 'mostrarProfissional' ? 'inline' : 'none';
     });
 
-    // Funcionalidade de confirmação de exclusão
-    document.addEventListener('DOMContentLoaded', function() {
-        const linkExcluirButtons = document.querySelectorAll('.linkExcluir');
-        const confirmarExcluirDiv = document.querySelector('.confirmar_excluir');
-
-        function mostrarConfirmacao() {
-            confirmarExcluirDiv.style.display = 'block';
-        }
-
-        linkExcluirButtons.forEach(button => {
-            button.addEventListener('click', mostrarConfirmacao);
-        });
-
-        const checkButton = document.getElementById('check');
-        const closeButton = document.getElementById('close');
-
-        function esconderConfirmacao() {
-            confirmarExcluirDiv.style.display = 'none';
-        }
-
-        checkButton.addEventListener('click', function() {
-            // Lógica para confirmar a exclusão
-            esconderConfirmacao();
-        });
-
-        closeButton.addEventListener('click', function() {
-            // Lógica para cancelar a exclusão
-            esconderConfirmacao();
-        });
-    });
-});
-
-document.addEventListener("DOMContentLoaded", function() {
     // Carregar o Header
     const headerElement = document.getElementById('header-geral');
     fetch('../header/header.html')
@@ -93,7 +108,7 @@ document.addEventListener("DOMContentLoaded", function() {
         .catch(error => {
             console.error('Erro ao carregar o header:', error);
         });
-  
+
     // Carregar o Footer
     const footerElement = document.getElementById('footer-geral');
     fetch('../footer/footer.html')
@@ -109,4 +124,4 @@ document.addEventListener("DOMContentLoaded", function() {
         .catch(error => {
             console.error('Erro ao carregar o footer:', error);
         });
-  });
+});

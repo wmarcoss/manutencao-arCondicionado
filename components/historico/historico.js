@@ -42,29 +42,58 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     };
 
-    // Função para deletar manutenção
-    const deleteManutencao = async (id) => {
-        try {
-            const response = await fetch(`http://localhost:3000/manutencao/${id}`, {
-                method: 'DELETE'
-            });
+// Função para deletar manutenção
+const deleteManutencao = async (id) => {
+    try {
+        const response = await fetch(`http://localhost:3000/manutencao/${id}`, {
+            method: 'DELETE'
+        });
 
-            if (response.ok) {
-                confirmarExcluirDiv.style.display = 'none'; // Fecha o modal de confirmação
-                mensagemTempora.style.display = 'block'; // Exibe a mensagem temporária
-                // Oculta a mensagem temporária após 3 segundos
+        if (response.ok) {
+            confirmarExcluirDiv.style.display = 'none'; // Fecha o modal de confirmação
+            mensagemTempora.classList.add('show'); // Adiciona a classe para mostrar a mensagem
+            mensagemTempora.style.display = 'block'; // Torna a mensagem visível
+            
+            // Oculta a mensagem temporária após 3 segundos
+            setTimeout(() => {
+                mensagemTempora.classList.remove('show'); // Remove a classe de exibição
+                mensagemTempora.classList.add('hide'); // Adiciona a classe de ocultação
+                
+                // Espera a animação de saída e então oculta completamente
                 setTimeout(() => {
-                    mensagemTempora.style.display = 'none';
-                }, 3000);
-                fetchManuntencao(); // Atualiza a lista de manutenções após a exclusão
-            } else {
-                alert('Erro ao deletar manutenção');
-            }
-        } catch (error) {
-            console.error('Erro ao deletar manutenção:', error);
+                    mensagemTempora.style.display = 'none'; // Oculta a mensagem
+                    mensagemTempora.classList.remove('hide'); // Remove a classe de ocultação para próxima exibição
+                }, 500); // Tempo da animação
+            }, 3000);
+            fetchManuntencao(); // Atualiza a lista de manutenções após a exclusão
+        } else {
+            alert('Erro ao deletar manutenção');
         }
-    };
+    } catch (error) {
+        console.error('Erro ao deletar manutenção:', error);
+    }
+};
 
+
+
+    document.addEventListener('DOMContentLoaded', () => {
+        const historicList = document.getElementById('historicList');
+        const confirmarExcluirDiv = document.querySelector('.confirmar_excluir');
+        const mensagemTempora = document.getElementById('mensagemTempora');
+        let currentDeleteId = null;
+    
+        // (Outras funções e lógicas...)
+    
+        // Adiciona event listener para clicar fora do modal
+        document.addEventListener('click', (event) => {
+            if (!confirmarExcluirDiv.contains(event.target) && event.target.closest('.linkExcluir')) {
+                confirmarExcluirDiv.style.display = 'none'; // Fecha o modal de confirmação
+            }
+        });
+    
+        // (Resto do código...)
+    });
+    
     // Event listener para confirmar exclusão
     document.getElementById('check').addEventListener('click', () => {
         if (currentDeleteId) {

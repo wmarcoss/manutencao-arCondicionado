@@ -6,83 +6,76 @@
     <title>Histórico</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="historico.css">
-    <script src="../historico/historico.js" defer></script>
 </head>
+
 <body>
-    <header>
-        <div class="fundo">
-            <div class="logo"><a href="../home/home.html"><img src="/assets/images/logo.png" alt="logo" style="width: 90px;"></a></div>
-            <div class="nav-bar">
-                <ul class="nav-style">
-                    <li class="nav-link"><a href="../home/home.html">Página Inicial</a></li>
-                    <li class="nav-link"><a href="../preenchimento/preenchimento.html">Adicionar Manutenção</a></li>
-                    <li class="nav-link"><a href="../historico/historico.html">Ver Histórico</a></li>
-                </ul>
-            </div>
-        </div>
-    </header>
+    <!-- O header será carregado aqui dinamicamente -->
+    <header id="header-geral"></header>
 
     <div class="seta-voltar">
-        <a href="../home/home.html"><img src="/assets/icons/seta voltar2.png" alt="seta" style="width: 45px;"></a>
+        <a href="../home/home.html"><img src="../../assets/icons/setavoltar2.png" alt="seta" style="width: 45px;"></a>
     </div>
 
     <main>
-
         <div class="titulo">
             <h2>HISTÓRICO DE SERVIÇOS</h2>
             <h4>Gerenciamento das manutenções realizadas</h4>
         </div>
         
-    <div class="filter-box">
-        <select id="filtrar">
-            <option value="">FILTRAR</option>
-            <option value="mostrarLocal">Local</option>
-            <option value="mostrarModelo">Modelo</option>
-            <option value="mostrarData">Data</option>
-            <option value="mostrarProfissional">Profissional</option>
-        </select>
+        <div class="filter-box">
+            <ul id="listFilter"></ul> <!-- Alterado ID para evitar duplicação -->
+            <select id="filtrar">
+                <option value="">FILTRAR</option>
+                <option value="mostrarLocal">Local</option>
+                <option value="mostrarModelo">Modelo</option>
+                <option value="mostrarData">Data</option>
+                <option value="mostrarProfissional">Profissional</option>
+            </select>
 
-        <select id="local">
-            <option value="">Selecione o Local</option>
-            <option value="opcao1">sala 1</option>
-            <option value="opcao2">sala 2</option>
-        </select>
+            <select id="local">
+                <option value="">Selecione o Local</option>
+                <option value="opcao1">sala 1</option>
+                <option value="opcao2">sala 2</option>
+            </select>
 
-        <select id="modelo">
-            <option value="">Selecione o Modelo</option>
-            <option value="opcao1">modelo 1</option>
-            <option value="opcao2">modelo 2</option>
-        </select>
+            <select id="modelo">
+                <option value="">Selecione o Modelo</option>
+                <option value="opcao1">modelo 1</option>
+                <option value="opcao2">modelo 2</option>
+            </select>
 
-        <select id="data">
-            <option value="">Selecione a Data</option>
-            <option value="opcao1">Últimos 7 dias</option>
-            <option value="opcao2">Últimos 15 dias</option>
-            <option value="opcao3">Últimos 30 dias</option>
-            <option value="opcao4">Últimos 3 meses</option>
-            <option value="opcao5">Últimos 6 meses</option>
-            <option value="opcao6">Últimos 12 meses</option>
-        </select>
+            <select id="data">
+                <option value="">Selecione a Data</option>
+                <option value="opcao1">Últimos 7 dias</option>
+                <option value="opcao2">Últimos 15 dias</option>
+                <option value="opcao3">Últimos 30 dias</option>
+                <option value="opcao4">Últimos 3 meses</option>
+                <option value="opcao5">Últimos 6 meses</option>
+                <option value="opcao6">Últimos 12 meses</option>
+            </select>
 
-        <select id="profissional">
-            <option value="">Selecione o Profissional</option>
-            <option value="opcao1">profissional 1</option>
-            <option value="opcao2">profissional 2</option>
-        </select>
-        
-        <div class="botao-buscar">
-            <button id="buscar">Buscar</button>
+            <select id="profissional">
+                <option value="">Selecione o Profissional</option>
+                <option value="opcao1">profissional 1</option>
+                <option value="opcao2">profissional 2</option>
+            </select>
+            
+            <div class="botao-buscar">
+                <button id="buscar">Buscar</button>
+            </div>
         </div>
-    </div>
 
         <div class="container">
-            <!--div que estará oculta-->
             <div class="confirmar_excluir">
                 <h4>Deseja realmente excluir a manutenção?</h4>
                 <div id="botoesConfirmacao">
-                    <button id="check"><img src="/assets/icons/check-icon.png" alt="check" style="width: 25px;"></button>
-                    <button id="close"><img id="close" src="/assets/icons/close-icon.png" alt="close" style="width: 25px;"></button>
+                    <button id="check"><img src="../../assets/icons/check-icon.png" alt="check" style="width: 25px;"></button>
+                    <button id="close"><img id="close" src="../../assets/icons/close-icon.png" alt="close" style="width: 25px;"></button>
                 </div>
+            </div>
+            <!-- Mensagem Temporária de Exclusão Bem-Sucedida -->
+            <div class="mensagem_tempora" id="mensagemTempora" style="display: none;">
+                <p>Manutenção excluída com sucesso!</p>
             </div>
 
             <table>
@@ -96,95 +89,12 @@
                     </tr>
                 </thead>
 
-                <tbody>
-                    <tr>
-                        <td>sala 20</td>
-                        <td>modelo 02</td>
-                        <td>08/10/2024</td>
-                        <td>marquin</td>
-                        <!--link em que, ao clicar na imagem "lixeira" a div confirmar_excluir será exibida na tela-->
-                        <td class="lupaElixeira">
-                            <a href="../detalhes/detalhes.html"><button><img src="/assets/icons/lupa.png" alt="lupa" style="width: 25px;"></button></a>
-                            <button class="linkExcluir"><img src="/assets/icons/lixeira.png" alt="lixeira" style="width: 25px;"></button>
-                        </td>
-                    </tr>
-
-                    <tr>
-                        <td>sala 20</td>
-                        <td>modelo 02</td>
-                        <td>08/10/2024</td>
-                        <td>marquin</td>
-                        <!--link em que, ao clicar na imagem "lixeira" a div confirmar_excluir será exibida na tela-->
-                        <td class="lupaElixeira">
-                            <a href="../detalhes/detalhes.html"><button><img src="/assets/icons/lupa.png" alt="lupa" style="width: 25px;"></button></a>
-                            <button class="linkExcluir"><img src="/assets/icons/lixeira.png" alt="lixeira" style="width: 25px;"></button>
-                        </td>
-                    </tr>
-
-                    <tr>
-                        <td>sala 20</td>
-                        <td>modelo 02</td>
-                        <td>08/10/2024</td>
-                        <td>marquin</td>
-                        <!--link em que, ao clicar na imagem "lixeira" a div confirmar_excluir será exibida na tela-->
-                        <td class="lupaElixeira">
-                            <a href="../detalhes/detalhes.html"><button><img src="/assets/icons/lupa.png" alt="lupa" style="width: 25px;"></button></a>
-                            <button class="linkExcluir"><img src="/assets/icons/lixeira.png" alt="lixeira" style="width: 25px;"></button>
-                        </td>
-                    </tr>
-
-                    <tr>
-                        <td>sala 20</td>
-                        <td>modelo 02</td>
-                        <td>08/10/2024</td>
-                        <td>marquin</td>
-                        <!--link em que, ao clicar na imagem "lixeira" a div confirmar_excluir será exibida na tela-->
-                        <td class="lupaElixeira">
-                            <a href="../detalhes/detalhes.html"><button><img src="/assets/icons/lupa.png" alt="lupa" style="width: 25px;"></button></a>
-                            <button class="linkExcluir"><img src="/assets/icons/lixeira.png" alt="lixeira" style="width: 25px;"></button>
-                        </td>
-                    </tr>
-
-                </tbody>
+                <tbody id="historicList"></tbody> <!-- Aqui o ID está correto -->
             </table>
         </div>
-
     </main>
-
-    <footer>
-        <div class="footer-fundo">
-            <div class="sobre">
-                <h3 id="sobre-titulo">Sobre</h3>
-                <p id="sobre-subtitulo">Há mais de 65 anos. A tradição <br> que não parou no tempo.</p>
-            
-                <div class="contatos">
-                    <a href="https://www.facebook.com/lourdinascg/" class="footer-link" id="facebook" target=”_blank” rel="externos"><i class="fa-brands fa-facebook"></i></a>
-                    <a href="https://www.instagram.com/lourdinascg?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" class="footer-link" id="instagram" target=”_blank” rel="externos"><i class="fa-brands fa-instagram"></i></a>
-                    <a href="https://www.youtube.com/user/evlcg" class="footer-link" id="youtube" target=”_blank” rel="externos"><i class="fa-brands fa-youtube"></i></a>
-                    <a href="https://maps.app.goo.gl/A12xVRmpZMXRmC6Y8" class="footer-link" id="google" target=”_blank” rel="externos"><i class="fa-brands fa-google"></i></a>
-                </div>
-            </div>
-
-            <div class="mapa">
-                <h3 id="mapa-titulo">Mapa do Site</h3>
-                <a class="footer-list" href="https://www.lourdinascg.com.br/" target=”_blank” rel="externos">Início</a>
-                <a class="footer-list" href="https://www.lourdinascg.com.br/sobre" target=”_blank” rel="externos">Sobre</a>
-                <a class="footer-list" href="https://www.lourdinascg.com.br/projetos" target=”_blank” rel="externos">Projetos</a>
-                <a class="footer-list" href="https://www.lourdinascg.com.br/informativos" target=”_blank” rel="externos">Informativos</a>
-                <a class="footer-list" href="https://lourdinascg.com.br/fale-conosco" target=”_blank” rel="externos">Fale Conosco</a>
-            </div>
-
-            <div class="informativos">
-                <h3 id="informativos-titulo">Informações de Contato</h3>
-                <p id="informativos-subtitulo">R. Nossa Sra. de Lourdes, 193 - <br> Jardim Tavares, Campina <br> Grande - PB, 58402-045</p>
-                <p>83 3182-3600</p>
-            </div>
-
-            <div class="creditos">
-                <p>© Colégio Lourdinas.<p id="criador">Criado por Marcos, Iann, Marcos</p></p>
-            </div>
-            
-        </div>
-    </footer>
+    
+    <footer id="footer-geral"></footer>
+    <script src="../historico/historico.js" defer></script>
 </body>
 </html>

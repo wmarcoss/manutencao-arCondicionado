@@ -175,7 +175,7 @@ td {
     position: fixed;
     top: 150px;
     right: -300px; 
-    background-color: rgba(0, 255, 13, 0.7); 
+    background-color: rgba(0, 161, 8, 0.7); 
     color: white;
     padding: 10px 20px;
     border-radius: 5px;
@@ -195,4 +195,3 @@ td {
     right: -300px;
     opacity: 0; 
 }
-

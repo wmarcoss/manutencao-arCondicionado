@@ -76,81 +76,89 @@ const deleteManutencao = async (id) => {
 
 
 
-    document.addEventListener('DOMContentLoaded', () => {
-        const historicList = document.getElementById('historicList');
-        const confirmarExcluirDiv = document.querySelector('.confirmar_excluir');
-        const mensagemTempora = document.getElementById('mensagemTempora');
-        let currentDeleteId = null;
+document.addEventListener('DOMContentLoaded', () => {
+    const historicList = document.getElementById('historicList');
+    const confirmarExcluirDiv = document.querySelector('.confirmar_excluir');
+    const mensagemTempora = document.getElementById('mensagemTempora');
+    let currentDeleteId = null;
     
-        // (Outras funções e lógicas...)
+    // (Outras funções e lógicas...)
     
-        // Adiciona event listener para clicar fora do modal
+    // Adiciona event listener para clicar fora do modal
         document.addEventListener('click', (event) => {
-            if (!confirmarExcluirDiv.contains(event.target) && event.target.closest('.linkExcluir')) {
-                confirmarExcluirDiv.style.display = 'none'; // Fecha o modal de confirmação
-            }
-        });
-    
-        // (Resto do código...)
-    });
-    
-    // Event listener para confirmar exclusão
-    document.getElementById('check').addEventListener('click', () => {
-        if (currentDeleteId) {
-            deleteManutencao(currentDeleteId);
+        if (!confirmarExcluirDiv.contains(event.target) && event.target.closest('.linkExcluir')) {
+            confirmarExcluirDiv.style.display = 'none'; // Fecha o modal de confirmação
         }
     });
+    
+});
 
-    // Event listener para cancelar exclusão
-    document.getElementById('close').addEventListener('click', () => {
+// Adiciona event listener para clicar fora do modal
+document.addEventListener('click', (event) => {
+    // Verifica se o clique foi fora do modal e se não foi em um botão de exclusão
+    if (!confirmarExcluirDiv.contains(event.target) && event.target.closest('.linkExcluir') === null) {
         confirmarExcluirDiv.style.display = 'none'; // Fecha o modal de confirmação
+    }
+});
+
+    
+// Event listener para confirmar exclusão
+document.getElementById('check').addEventListener('click', () => {
+    if (currentDeleteId) {
+        deleteManutencao(currentDeleteId);
+    }
+});
+
+// Event listener para cancelar exclusão
+document.getElementById('close').addEventListener('click', () => {
+    confirmarExcluirDiv.style.display = 'none'; // Fecha o modal de confirmação
+});
+
+// Chama a função para carregar as manutenções
+fetchManuntencao();
+
+// Mostrar os selects com base na opção selecionada
+document.getElementById('filtrar').addEventListener('change', function() {
+    let local = document.getElementById('local');
+    let modelo = document.getElementById('modelo');
+    let data = document.getElementById('data');
+    let profissional = document.getElementById('profissional');
+
+    local.style.display = this.value === 'mostrarLocal' ? 'inline' : 'none';
+    modelo.style.display = this.value === 'mostrarModelo' ? 'inline' : 'none';
+    data.style.display = this.value === 'mostrarData' ? 'inline' : 'none';
+    profissional.style.display = this.value === 'mostrarProfissional' ? 'inline' : 'none';
+});
+
+// Carregar o Header
+const headerElement = document.getElementById('header-geral');
+fetch('../header/header.html')
+    .then(response => {
+        if (!response.ok) {
+            throw new Error('Erro ao carregar o header.');
+        }
+        return response.text();
+    })
+    .then(data => {
+        headerElement.innerHTML = data;
+    })
+    .catch(error => {
+        console.error('Erro ao carregar o header:', error);
     });
 
-    // Chama a função para carregar as manutenções
-    fetchManuntencao();
-
-    // Mostrar os selects com base na opção selecionada
-    document.getElementById('filtrar').addEventListener('change', function() {
-        let local = document.getElementById('local');
-        let modelo = document.getElementById('modelo');
-        let data = document.getElementById('data');
-        let profissional = document.getElementById('profissional');
-
-        local.style.display = this.value === 'mostrarLocal' ? 'inline' : 'none';
-        modelo.style.display = this.value === 'mostrarModelo' ? 'inline' : 'none';
-        data.style.display = this.value === 'mostrarData' ? 'inline' : 'none';
-        profissional.style.display = this.value === 'mostrarProfissional' ? 'inline' : 'none';
+// Carregar o Footer
+const footerElement = document.getElementById('footer-geral');
+fetch('../footer/footer.html')
+    .then(response => {
+        if (!response.ok) {
+            throw new Error('Erro ao carregar o footer.');
+        }
+        return response.text();
+    })
+    .then(data => {
+        footerElement.innerHTML = data;
+    })
+    .catch(error => {
+        console.error('Erro ao carregar o footer:', error);
     });
-
-    // Carregar o Header
-    const headerElement = document.getElementById('header-geral');
-    fetch('../header/header.html')
-        .then(response => {
-            if (!response.ok) {
-                throw new Error('Erro ao carregar o header.');
-            }
-            return response.text();
-        })
-        .then(data => {
-            headerElement.innerHTML = data;
-        })
-        .catch(error => {
-            console.error('Erro ao carregar o header:', error);
-        });
-
-    // Carregar o Footer
-    const footerElement = document.getElementById('footer-geral');
-    fetch('../footer/footer.html')
-        .then(response => {
-            if (!response.ok) {
-                throw new Error('Erro ao carregar o footer.');
-            }
-            return response.text();
-        })
-        .then(data => {
-            footerElement.innerHTML = data;
-        })
-        .catch(error => {
-            console.error('Erro ao carregar o footer:', error);
-        });
 });

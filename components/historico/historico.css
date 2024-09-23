@@ -31,7 +31,7 @@ body {
     text-align: center;
     position: fixed;
     background-color: white;
-    width: 420px;
+    width: 320px;
     height: auto; /* Ajusta a altura automaticamente com base no conteúdo */
     border-radius: 8px;
     top: 50%;
@@ -39,6 +39,7 @@ body {
     transform: translate(-50%, -50%); /* Centraliza o modal */
     padding: 16px; /* Adiciona espaço interno */
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2); /* Adiciona sombra */
+    opacity: 0.9;
 }
 
 .confirmar_excluir h4 {
@@ -172,13 +173,25 @@ td {
 .mensagem_tempora {
     display: none;
     position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background-color: #0054A6; /* Cor de fundo para sucesso */
+    top: 150px;
+    right: -300px; 
+    background-color: rgba(0, 161, 8, 0.7); 
     color: white;
     padding: 10px 20px;
     border-radius: 5px;
-    z-index: 1000; /* Garante que a mensagem fique sobre outros elementos */
+    z-index: 1000; 
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    opacity: 0; 
+    transition: right 0.5s ease, opacity 0.5s ease; 
+}
+
+.show {
+    display: block; 
+    right: 20px; 
+    opacity: 1; 
+}
+
+.hide {
+    right: -300px;
+    opacity: 0; 
 }

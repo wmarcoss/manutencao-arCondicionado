@@ -12,36 +12,57 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     // Função para buscar as manutenções
-    const fetchManuntencao = async () => {
-        try {
-            const response = await fetch('http://localhost:3000/manutencao');
-            const data = await response.json();
-            historicList.innerHTML = data.map(manutencao => `
-                <tr>
-                    <td>${manutencao.lugar}</td>
-                    <td>${manutencao.modelo_marca}</td>
-                    <td>${formatDate(manutencao.data_manutencao)}</td>
-                    <td>${manutencao.nome}</td>
-                    <td class="lupaElixeira">
-                        <a href="../detalhes/detalhes.html"><button><img src="../../assets/icons/lupa.png" alt="lupa" style="width: 25px;"></button></a>
-                        <button class="linkExcluir" data-id="${manutencao.id}"><img src="../../assets/icons/lixeira.png" alt="lixeira" style="width: 25px;"></button>
-                    </td>
-                </tr>
-            `).join('');
+    // Função para buscar as manutenções
+const fetchManuntencao = async () => {
+    try {
+        const response = await fetch('http://localhost:3000/manutencao');
+        const data = await response.json();
+        historicList.innerHTML = data.map(manutencao => `
+            <tr>
+                <td>${manutencao.lugar}</td>
+                <td>${manutencao.modelo_marca}</td>
+                <td>${formatDate(manutencao.data_manutencao)}</td>
+                <td>${manutencao.nome}</td>
+                <td class="lupaElixeira">
+                    <button class="verMais" data-id="${manutencao.id}" data-lugar="${manutencao.lugar}" data-modelo="${manutencao.modelo_marca}" data-data="${manutencao.data_manutencao}" data-profissional="${manutencao.nome}">
+                        <img src="../../assets/icons/lupa.png" alt="lupa" style="width: 25px;">
+                    </button>
+                    <button class="linkExcluir" data-id="${manutencao.id}">
+                        <img src="../../assets/icons/lixeira.png" alt="lixeira" style="width: 25px;">
+                    </button>
+                </td>
+            </tr>
+        `).join('');
 
-            // Adiciona event listeners aos botões de exclusão
-            const deleteButtons = document.querySelectorAll('.linkExcluir');
-            deleteButtons.forEach(button => {
-                button.addEventListener('click', (event) => {
-                    currentDeleteId = event.target.closest('.linkExcluir').getAttribute('data-id');
-                    confirmarExcluirDiv.style.display = 'flex'; // Exibe o modal de confirmação
-                });
+        // Adiciona event listeners para o botão "Ver Mais"
+        const verMaisButtons = document.querySelectorAll('.verMais');
+        verMaisButtons.forEach(button => {
+            button.addEventListener('click', (event) => {
+                const lugar = event.target.closest('.verMais').getAttribute('data-lugar');
+                const modelo = event.target.closest('.verMais').getAttribute('data-modelo');
+                const data = event.target.closest('.verMais').getAttribute('data-data');
+                const profissional = event.target.closest('.verMais').getAttribute('data-profissional');
+
+                // Armazena os dados no localStorage
+                localStorage.setItem('detalhesManutencao', JSON.stringify({ lugar, modelo, data, profissional }));
+
+                // Redireciona para a página de detalhes
+                window.location.href = '../detalhes/detalhes.html';
             });
-        } catch (error) {
-            console.error('Erro ao buscar manutenção:', error);
-        }
-    };
+        });
 
+        // Adiciona event listeners aos botões de exclusão
+        const deleteButtons = document.querySelectorAll('.linkExcluir');
+        deleteButtons.forEach(button => {
+            button.addEventListener('click', (event) => {
+                currentDeleteId = event.target.closest('.linkExcluir').getAttribute('data-id');
+                confirmarExcluirDiv.style.display = 'flex'; // Exibe o modal de confirmação
+            });
+        });
+    } catch (error) {
+        console.error('Erro ao buscar manutenção:', error);
+    }
+};
 // Função para deletar manutenção
 const deleteManutencao = async (id) => {
     try {

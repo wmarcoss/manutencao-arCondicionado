@@ -69,12 +69,6 @@ body {
     border: none; /* Remove borda padrão do botão */
 }
 
-.lupaElixeira {
-    display: flex;
-    justify-content: center;
-    gap: 40px;
-}
-
 .lupaElixeira button {
     cursor: pointer;
     border-style: none;
@@ -166,7 +160,13 @@ th {
 td {
     background-color: rgba(0, 0, 255, 0.082);
     padding: 8px;
-    border: 1.5px solid black;
+    border: 1px solid black;
+}
+
+.lupaElixeira {
+    display: flex;
+    gap: 35px;
+    justify-content: center;
 }
 
 /* Mensagem Temporária de Exclusão Bem-Sucedida */

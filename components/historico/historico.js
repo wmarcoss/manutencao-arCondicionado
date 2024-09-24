@@ -31,19 +31,35 @@ document.addEventListener('DOMContentLoaded', () => {
                 </tr>
             `).join('');
 
-            // Adiciona event listeners aos botões de exclusão
-            const deleteButtons = document.querySelectorAll('.linkExcluir');
-            deleteButtons.forEach(button => {
-                button.addEventListener('click', (event) => {
-                    currentDeleteId = event.target.closest('.linkExcluir').getAttribute('data-id');
-                    confirmarExcluirDiv.style.display = 'flex'; // Exibe o modal de confirmação
-                });
-            });
-        } catch (error) {
-            console.error('Erro ao buscar manutenção:', error);
-        }
-    };
+        // Adiciona event listeners para o botão "Ver Mais"
+        const verMaisButtons = document.querySelectorAll('.verMais');
+        verMaisButtons.forEach(button => {
+            button.addEventListener('click', (event) => {
+                const lugar = event.target.closest('.verMais').getAttribute('data-lugar');
+                const modelo = event.target.closest('.verMais').getAttribute('data-modelo');
+                const data = event.target.closest('.verMais').getAttribute('data-data');
+                const profissional = event.target.closest('.verMais').getAttribute('data-profissional');
 
+                // Armazena os dados no localStorage
+                localStorage.setItem('detalhesManutencao', JSON.stringify({ lugar, modelo, data, profissional }));
+
+                // Redireciona para a página de detalhes
+                window.location.href = '../detalhes/detalhes.html';
+            });
+        });
+
+        // Adiciona event listeners aos botões de exclusão
+        const deleteButtons = document.querySelectorAll('.linkExcluir');
+        deleteButtons.forEach(button => {
+            button.addEventListener('click', (event) => {
+                currentDeleteId = event.target.closest('.linkExcluir').getAttribute('data-id');
+                confirmarExcluirDiv.style.display = 'flex'; // Exibe o modal de confirmação
+            });
+        });
+    } catch (error) {
+        console.error('Erro ao buscar manutenção:', error);
+    }
+};
 // Função para deletar manutenção
 const deleteManutencao = async (id) => {
     try {

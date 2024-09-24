@@ -77,7 +77,6 @@ td {
     flex-direction: column;
     position: absolute;
     margin-top: 120px;
-    gap: 32px;
 }
 
 ::placeholder {
@@ -137,4 +136,6 @@ label {
 textarea {
     resize: none;
     padding: 4px;
+    margin-bottom: 30px;
+    border-radius: 5px;
 }

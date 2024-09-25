@@ -66,8 +66,10 @@ document.addEventListener("DOMContentLoaded", function() {
         })
         .then(data => {
             console.log('Resposta do servidor:', data);
-            alert('Manutenção salva com sucesso!');
-            
+
+            // Exibir a mensagem temporária de sucesso
+            exibirMensagemTempora();
+
             // Limpa o formulário após salvar
             document.getElementById('manutencao-form').reset();
         })
@@ -77,3 +79,22 @@ document.addEventListener("DOMContentLoaded", function() {
         });
     });
 });
+
+// Função para exibir a mensagem temporária
+function exibirMensagemTempora() {
+    const mensagemTempora = document.getElementById('mensagemTempora');
+    mensagemTempora.style.display = 'block'; // Torna o elemento visível
+    mensagemTempora.style.right = '20px'; // Move para a tela
+    mensagemTempora.style.opacity = '1'; // Torna visível
+
+    // Ocultar a mensagem após 3 segundos
+    setTimeout(() => {
+        mensagemTempora.style.right = '-300px'; // Move para fora da tela
+        mensagemTempora.style.opacity = '0'; // Torna invisível
+
+        // Após a transição, esconde completamente
+        setTimeout(() => {
+            mensagemTempora.style.display = 'none';
+        }, 500); // Tempo correspondente à duração da transição de saída
+    }, 3000); // Exibe a mensagem por 3 segundos
+}

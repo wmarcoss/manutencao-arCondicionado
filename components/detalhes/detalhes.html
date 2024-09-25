@@ -4,12 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ver Mais</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
     <link rel="stylesheet" href="detalhes.css">
 </head>
 <body>
-        <!-- O header será carregado aqui dinamicamente -->
-        <header id="header-geral"></header>
+    <!-- O header será carregado aqui dinamicamente -->
+    <header id="header-geral"></header>
 
     <div class="seta-voltar">
         <a href="../historico/historico.html"><img src="../../assets/icons/setavoltar2.png" alt="seta" style="width: 45px;"></a>
@@ -34,28 +34,51 @@
 
                 <tbody>
                     <tr>
-                        <tr>
-                            <td>sala 01</td>
-                            <td>modelo 02</td>
-                            <td>08/10/2024</td>
-                            <td>marquin</td>
-                        </tr>
+                        <td id="local"></td>
+                        <td id="modelo"></td>
+                        <td id="data"></td>
+                        <td id="profissional"></td>
                     </tr>
                 </tbody>
 
                 <div class="especificacoes">
-                    <div class="tipo-manutencao">
-                        <textarea name="tipo" id="tipo" rows="4" placeholder="Tipo da manutenção"></textarea>
+                    <div id="box-tipo">
+                        <label for="tipo">Tipo de manutenção
+                            <textarea name="tipo-manutencao" id="tipo-manutencao" rows="6" placeholder="Digite aqui"></textarea>
+                        </label>
                     </div>
-                    <div class="detalhes">
-                        <textarea name="detalhes" id="detalhes" rows="6" placeholder="Detalhes"></textarea>
+
+                    <div id="box-tipo">
+                        <label for="tipo">Tipo de conserto
+                            <textarea name="tipo-conserto" id="tipo-conserto" rows="1" placeholder="Digite aqui  "></textarea>
+                        </label>
                     </div>
-                    <div class="custo">
-                        <textarea name="custo" id="custo" rows="1" placeholder="Custo"></textarea>
+
+                    <div id="box-tipo">
+                        <label for="data">Previsão da próxima manutenção
+                            <textarea name="previsao" id="previsao" rows="1" placeholder="Digite aqui"></textarea>
+                        </label>
+                    </div>
+
+                    <div id="box-tipo">
+                        <label for="data">Custo
+                            <textarea name="custo" id="custo" rows="1" placeholder="Digite aqui"></textarea>
+                        </label>
+                    </div>
+
+                    <div class="text-box">
+                        <label for="detalhes">Detalhes
+                            <textarea name="detalhes" id="detalhes" rows="4" placeholder="Digite aqui"></textarea>
+                        </label>
+                    </div>
+
+                    <div class="text-box">
+                        <label for="observacoes">Observações
+                            <textarea name="observacoes" id="observacoes" rows="4" placeholder="Digite aqui"></textarea>
+                        </label>
                     </div>
                 </div>
             </table>
-
         </div>
     </main>
 

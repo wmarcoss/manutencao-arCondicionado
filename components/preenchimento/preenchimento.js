@@ -31,13 +31,14 @@ document.addEventListener("DOMContentLoaded", function() {
             console.error('Erro ao carregar o footer:', error);
         });
   
+    // Função para manipular o envio do formulário
     document.getElementById('manutencao-form').addEventListener('submit', function(event) {
         event.preventDefault(); // Impede o envio padrão do formulário
 
         const formData = {
             nome: document.getElementById('profissional').value,
-            data_manutencao: formatDateToDB(document.getElementById('data').value), // Converte a data para o formato do banco
-            data_previsao: formatDateToDB(document.getElementById('data2').value), // Converte a data, se houver
+            data_manutencao: document.getElementById('data').value, // A data já está no formato correto (YYYY-MM-DD)
+            data_previsao: document.getElementById('data2').value || null, // Se não houver data, envia null
             custo: document.getElementById('custo').value || null,
             detalhes: document.getElementById('detalhes').value || null,
             observacoes: document.getElementById('observacoes').value || null,
@@ -49,6 +50,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
         console.log('Dados a serem enviados:', formData);
 
+        // Envio para o servidor via fetch
         fetch('http://localhost:3000/manutencao', {
             method: 'POST',
             headers: {
@@ -75,36 +77,3 @@ document.addEventListener("DOMContentLoaded", function() {
         });
     });
 });
-
-// Função para converter a data do formato "dia-mês-ano" para "ano-mês-dia"
-function formatDateToDB(dateString) {
-    if (!dateString) return null; // Retorna nulo se não houver data
-
-    const parts = dateString.split('-'); // Divide a data em partes usando o hífen como separador
-    if (parts.length !== 3) return null; // Verifica se a data está no formato correto
-
-    const day = parts[0];   // Dia
-    const month = parts[1]; // Mês
-    const year = parts[2];  // Ano
-
-    return `${year}-${month}-${day}`; // Retorna a data no formato "ano-mês-dia"
-}
-
-// Função para formatar a data para exibição no formato "dia - mês - ano"
-function formatDateToDisplay(dateString) {
-    if (!dateString) return null;
-
-    const parts = dateString.split('-');
-    if (parts.length !== 3) return null;
-
-    const day = parts[2];   // Ano
-    const month = parseInt(parts[1], 10) - 1; // Mês (0-11)
-    const year = parts[0];  // Dia
-
-    const months = [
-        "Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho",
-        "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro"
-    ];
-
-    return `${day} - ${months[month]} - ${year}`; // Retorna a data formatada
-}

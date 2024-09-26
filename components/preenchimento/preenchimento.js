@@ -98,3 +98,7 @@ function exibirMensagemTempora() {
         }, 500); // Tempo correspondente à duração da transição de saída
     }, 3000); // Exibe a mensagem por 3 segundos
 }
+
+document.getElementById('cancelar').addEventListener('click', function() {
+    document.getElementById('manutencao-form').reset(); // Reseta o formulário
+});

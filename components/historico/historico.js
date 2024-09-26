@@ -11,9 +11,6 @@ document.addEventListener('DOMContentLoaded', () => {
         return date.toLocaleDateString('pt-BR', options);
     };
 
-    // Função para buscar as manutenções
-    // Função para buscar as manutenções
-// Função para buscar as manutenções
 // Função para buscar as manutenções
 const fetchManuntencao = async () => {
     try {

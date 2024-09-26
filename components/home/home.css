@@ -18,69 +18,75 @@ body {
     background-color: var(--cor2);
 }
 
-main h2, h3, h4{
+.titulos {
     display: flex;
-    justify-content: center;
+    flex-direction: column;
     align-items: center;
 }
 
 #titulo {
     margin-top: 38px;
-    margin-bottom: 28px;
+    margin-bottom: 16px;
 }
 
 #subtitulo {
-    padding-bottom: 16px;
+    margin-bottom: 16px;
     font-weight: normal;
 }
 
 #subtitulo2 {
-    margin-bottom: 38px;
     margin-left: -22px;
-    font-weight: normal;
+    margin-bottom: 32px;
 }
 
 .botoes-principais {
     display: flex;
-    gap: 38px;
+    gap: 32px;
     justify-content: center;
+}
+
+.image-adicionar {
+    padding: 80px 120px 150px 120px;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.548);
+}
+
+.image-historico {
+    padding: 55px 102px 140px;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.548);
 }
 
 .botao-adicionar {
     display: flex;
-    align-items: center;
     justify-content: center;
-}
-
-.adicionar {
-    padding: 80px 120px 150px 120px;
-    background-color: white;
-    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.548);
-    border-radius: 4px;
 }
 
 .botao-historico {
     display: flex;
-    align-items: center;
     justify-content: center;
 }
 
-.historico {
-    padding: 70px 110px 140px 110px;
-    background-color: white;
-    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.548);
-    border-radius: 4px;
+#titulo-manutencao {
+    position: absolute;
+    margin-top: 290px;
 }
 
-#titulo-botoes {
-    display: flex;
+#titulo-historico {
     position: absolute;
-    margin-top: 200px;
+    margin-top: 290px;
 }
 
-#subtitulo-botoes {
-    display: flex;
+#subtitulo-manutencao {
     position: absolute;
-    margin-top: 250px;
-    color: rgb(58, 57, 57);
+    margin-top: 320px;
+    color: black;
+}
+
+#subtitulo-historico {
+    position: absolute;
+    margin-top: 320px;
+    color: black;
 }

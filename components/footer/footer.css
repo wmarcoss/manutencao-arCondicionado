@@ -1,17 +1,17 @@
 .footer-fundo {
     background-color: var(--cor3);
     display: flex;
-    height: 360px;
+    height: 330px;
     width: 100%;
-    margin-top: 38px;
+    margin-top: 68px;
     border-top-left-radius: 24px;
     border-top-right-radius: 24px;
 }
 
 .sobre {
     color: white;
-    padding-top: 80px;
-    padding-left: 90px;
+    margin-top: 80px;
+    margin-left: 90px;
 }
 
 #sobre-titulo {
@@ -70,7 +70,7 @@ p {
 .creditos {
     display: flex;
     position: absolute;
-    margin-top: 315px;
+    margin-top: 290px;
     margin-left: 525px;
     justify-content: center;
     align-content: center;

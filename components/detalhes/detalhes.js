@@ -31,27 +31,43 @@ document.addEventListener("DOMContentLoaded", function() {
             console.error('Erro ao carregar o footer:', error);
         });
 
-    // Recupera os dados da manutenção do localStorage
-    const detalhesManutencao = JSON.parse(localStorage.getItem('detalhesManutencao'));
-
-    // Verifica se os dados foram recuperados corretamente
-    console.log('Dados recuperados do localStorage:', detalhesManutencao);
-    
-    if (detalhesManutencao) {
-        // Preenche a página com os dados da manutenção
-        document.getElementById('local').textContent = detalhesManutencao.lugar || 'Local não informado';
-        document.getElementById('modelo').textContent = detalhesManutencao.modelo || 'Modelo não informado';
-        document.getElementById('data_manutencao').textContent = formatDate(detalhesManutencao.data_manutencao) || 'Data não informada';
-        document.getElementById('nome').textContent = detalhesManutencao.nome || 'Profissional não informado';
-    } else {
-        console.error('Nenhuma manutenção encontrada no localStorage.');
-    }
-
     // Função para formatar a data no padrão brasileiro (dd/mm/aaaa)
     const formatDate = (dateString) => {
-        if (!dateString) return ''; // Verifica se a string de data é válida
         const options = { day: '2-digit', month: '2-digit', year: 'numeric' };
         const date = new Date(dateString);
         return date.toLocaleDateString('pt-BR', options);
     };
+
+    // Função para carregar os detalhes da manutenção
+    const loadManutencaoDetails = async () => {
+        const id = new URLSearchParams(window.location.search).get('id'); // Obtém o ID da manutenção da URL
+        if (!id) return;
+
+        try {
+            const response = await fetch(`http://localhost:3000/manutencao/${id}`);
+            if (!response.ok) {
+                throw new Error('Erro ao carregar os detalhes da manutenção.');
+            }
+            const manutencao = await response.json();
+
+            // Preencher os campos com os dados da manutenção
+            document.getElementById('local').innerText = manutencao.lugar;
+            document.getElementById('modelo').innerText = manutencao.modelo_marca;
+            document.getElementById('data').innerText = formatDate(manutencao.data_manutencao);
+            document.getElementById('profissional').innerText = manutencao.nome;
+
+            // Preencher outros campos
+            document.getElementById('tipo-manutencao').innerText = manutencao.tipo_manutencao || '';
+            document.getElementById('tipo-conserto').innerText = manutencao.tipo_conserto || '';
+            document.getElementById('previsao').innerText = manutencao.data_previsao ? formatDate(manutencao.data_previsao) : '';
+            document.getElementById('custo').innerText = manutencao.custo || '';
+            document.getElementById('detalhes').innerText = manutencao.detalhes || '';
+            document.getElementById('observacoes').innerText = manutencao.observacoes || '';
+        } catch (error) {
+            console.error('Erro:', error);
+        }
+    };
+
+    // Chama a função para carregar os detalhes
+    loadManutencaoDetails();
 });

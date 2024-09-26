@@ -28,16 +28,22 @@
                 <label for="local">Local *
                     <select name="local" id="local" required>
                         <option disabled selected value="">Selecione o local</option>
-                        <option value="Sala 1">Sala 1</option>
-                        <option value="Sala 2">Sala 2</option>
+                        <option value="sala a">Sala a</option>
+                        <option value="sala b">Sala b</option>
+                        <option value="sala c">Sala c</option>
+                        <option value="sala d">Sala d</option>
+                        <option value="sala e">Sala e</option>
                     </select>
                 </label>
     
                 <label for="modelo">Modelo *
                     <select name="modelo" id="modelo" required>
                         <option disabled selected value="">Selecione o fabricante e modelo</option>
-                        <option value="Daikin-FTXS25J">Daikin-FTXS25J</option>
-                        <option value="LG-Dual Inverter">LG-Dual Inverter</option>
+                        <option value="modelo 01 e marca 01">Daikin FTXS25J</option>
+                        <option value="modelo 02 e marca 02">LG-Dual Inverter</option>
+                        <option value="modelo 03 e marca 03">Inversor Fujitsu</option>
+                        <option value="modelo 04 e marca 04">Midea Liva Wi-Fi</option>
+                        <option value="modelo 05 e marca 05">Gree Eco Garden</option>
                     </select>
                 </label>
             </div>
@@ -46,18 +52,20 @@
                 <label for="tipo-manutencao">Tipo da manutenção *
                     <select name="tipo-manutencao" id="tipo-manutencao" required>
                         <option disabled selected value="">Selecione o tipo</option>
-                        <option value="preventiva">Preventiva</option>
-                        <option value="corretiva">Corretiva</option>
+                        <option value="Preventiva">Preventiva</option>
+                        <option value="Corretiva">Corretiva</option>
                     </select>
                 </label>
     
                 <label for="tipo-conserto">Tipo de conserto *
                     <select name="tipo-conserto" id="tipo-conserto" required>
                         <option disabled selected value="">Selecione o tipo</option>
-                        <option value="Limpeza">Limpeza</option>
-                        <option value="Troca de gás">Troca de gás</option>
-                        <option value="Reparos">Reparos</option>
-                        <option value="Passou fita isolante">Passou fita isolante</option>
+                        <option value="Limpeza dos filtros de ar">Limpeza dos filtros de ar</option>
+                        <option value="Substituição dos filtros">Substituição dos filtros</option>
+                        <option value="Limpeza de dreno">Limpeza de dreno</option>
+                        <option value="Medição de tensão elétrica">Medição de tensão elétrica</option>
+                        <option value="Medição de temperatura do ar">Medição de temperatura do ar</option>
+                        <option value="Verificação do estado dos filtros">Verificação do estado dos filtros</option>
                     </select>
                 </label>
             </div>
@@ -99,6 +107,10 @@
                 <div class="botoes">
                     <button type="submit" id="salvar">SALVAR</button>
                 </div>
+            </div>
+            <!-- Mensagem Temporária de adição Bem-Sucedida -->
+            <div class="mensagem_tempora" id="mensagemTempora" style="display: none;">
+                <p>Manutenção adicionada com sucesso!</p>
             </div>
         </form>
     </main>

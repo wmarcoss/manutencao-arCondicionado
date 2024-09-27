@@ -13,16 +13,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Função para buscar as manutenções
     const fetchManuntencao = async (filters = {}) => {
-        let sql = 'SELECT * FROM manutencao WHERE 1=1'; // Exemplo de consulta SQL inicial
-        let values = []; // Valores para parâmetros da consulta
-
-        // Se um filtro de período estiver presente, adicione a condição de data
-        if (filters.periodo) {
-            const result = addRelativeDateCondition(sql, values, 'data_manutencao', filters.periodo);
-            sql = result.sql;
-            values = result.values;
-        }
-
         try {
             const response = await fetch('http://localhost:3000/filtro', {
                 method: 'POST',
@@ -31,6 +21,15 @@ document.addEventListener('DOMContentLoaded', () => {
                 },
                 body: JSON.stringify(filters),
             });
+
+            if (!response.ok) {
+                if (response.status === 404) {
+                    historicList.innerHTML = '<tr><td colspan="5">Nenhuma manutenção encontrada.</td></tr>';
+                    return;
+                }
+                throw new Error('Erro ao buscar manutenção');
+            }
+
             const data = await response.json();
             historicList.innerHTML = data.map(manutencao => `
                 <tr>
@@ -54,7 +53,7 @@ document.addEventListener('DOMContentLoaded', () => {
             // Adiciona event listeners aos botões de exclusão
             const deleteButtons = document.querySelectorAll('.linkExcluir');
             deleteButtons.forEach(button => {
-                button.addEventListener('click', (event) => {
+                button.addEventListener('click', () => {
                     currentDeleteId = button.getAttribute('data-id'); // Armazena o ID para exclusão
                     confirmarExcluirDiv.style.display = 'flex'; // Exibe o modal de confirmação
                 });
@@ -129,10 +128,10 @@ document.addEventListener('DOMContentLoaded', () => {
         const nome = document.getElementById('profissional').value;
 
         return {
-            lugar: lugar !== 'lugar' ? lugar : null,
-            modelo_marca: modelo_marca !== 'modelo_marca' ? modelo_marca : null,
-            periodo: data_manutencao !== 'data_manutencao' ? data_manutencao : null,
-            nome: nome !== 'nome' ? nome : null,
+            lugar: lugar !== '' ? lugar : null,
+            modelo_marca: modelo_marca !== '' ? modelo_marca : null,
+            periodo: data_manutencao !== '' ? data_manutencao : null,
+            nome: nome !== '' ? nome : null,
         };
     };
 

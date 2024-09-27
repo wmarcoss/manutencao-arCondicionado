@@ -177,7 +177,7 @@ textarea {
 .mensagem_tempora {
     display: none;
     position: fixed;
-    top: 150px;
+    top: 50px;
     right: -300px; 
     background-color: rgba(0, 161, 8, 0.7); 
     color: white;

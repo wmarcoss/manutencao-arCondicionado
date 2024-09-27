@@ -55,7 +55,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const deleteButtons = document.querySelectorAll('.linkExcluir');
             deleteButtons.forEach(button => {
                 button.addEventListener('click', (event) => {
-                    currentDeleteId = event.target.closest('.linkExcluir').getAttribute('data-id');
+                    currentDeleteId = button.getAttribute('data-id'); // Armazena o ID para exclusão
                     confirmarExcluirDiv.style.display = 'flex'; // Exibe o modal de confirmação
                 });
             });
@@ -95,13 +95,6 @@ document.addEventListener('DOMContentLoaded', () => {
             console.error('Erro ao deletar manutenção:', error);
         }
     };
-
-    // Adiciona event listener para clicar fora do modal
-    document.addEventListener('click', (event) => {
-        if (!confirmarExcluirDiv.contains(event.target) && event.target.closest('.linkExcluir')) {
-            confirmarExcluirDiv.style.display = 'none'; // Fecha o modal de confirmação
-        }
-    });
 
     // Event listener para confirmar exclusão
     document.getElementById('check').addEventListener('click', () => {

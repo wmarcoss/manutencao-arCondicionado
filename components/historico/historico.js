@@ -12,7 +12,7 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     // Função para buscar as manutenções
-    const fetchManuntencao = async (filters = {}) => {
+    const fetchManutencao = async (filters = {}) => {
         try {
             const response = await fetch('http://localhost:3000/filtro', {
                 method: 'POST',
@@ -86,7 +86,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         mensagemTempora.classList.remove('hide'); // Remove a classe de ocultação para próxima exibição
                     }, 500); // Tempo da animação
                 }, 3000);
-                fetchManuntencao(); // Atualiza a lista de manutenções após a exclusão
+                fetchManutencao(); // Atualiza a lista de manutenções após a exclusão
             } else {
                 alert('Erro ao deletar manutenção');
             }
@@ -118,7 +118,30 @@ document.addEventListener('DOMContentLoaded', () => {
         modelo.style.display = this.value === 'modelo_marca' ? 'inline' : 'none';
         data.style.display = this.value === 'data_manutencao' ? 'inline' : 'none';
         profissional.style.display = this.value === 'nome' ? 'inline' : 'none';
+
+        if (this.value === 'nome') {
+            fetchProfissionais(); // Carrega os profissionais quando o filtro 'nome' é selecionado
+        }
     });
+
+    // Função para buscar os profissionais e preencher o select
+    const fetchProfissionais = async () => {
+        try {
+            const response = await fetch('http://localhost:3000/profissional');
+            if (!response.ok) {
+                throw new Error('Erro ao buscar profissionais');
+            }
+            const profissionais = await response.json();
+            const profissionalSelect = document.getElementById('profissional');
+            // Limpar as opções existentes, exceto a primeira
+            profissionalSelect.innerHTML = '<option value="">Selecione o Profissional</option>';
+            profissionais.forEach(prof => {
+                profissionalSelect.innerHTML += `<option value="${prof.nome}">${prof.nome}</option>`;
+            });
+        } catch (error) {
+            console.error('Erro ao buscar profissionais:', error);
+        }
+    };
 
     // Função para coletar os filtros selecionados
     const getFilters = () => {
@@ -138,11 +161,11 @@ document.addEventListener('DOMContentLoaded', () => {
     // Event listener para o botão de buscar
     document.getElementById('buscar').addEventListener('click', () => {
         const filters = getFilters();
-        fetchManuntencao(filters); // Chama a função com os filtros selecionados
+        fetchManutencao(filters); // Chama a função com os filtros selecionados
     });
 
     // Carregar as manutenções ao carregar a página
-    fetchManuntencao();
+    fetchManutencao();
 
     // Carregar o Header
     const headerElement = document.getElementById('header-geral');

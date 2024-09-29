@@ -125,6 +125,10 @@ body {
     margin-bottom: 32px;
 }
 
+.alinhar-botoes {
+    display: block;
+}
+
 textarea {
     border: 1px solid black;
     padding-bottom: 32px;
@@ -147,33 +151,33 @@ textarea {
 
 .botoao-salvar {
     display: flex;
-    margin-left: 12.4%;
-    gap: 12px;
+    gap: 16px;
+    margin-top: 32px;
+    margin-left: 0%;
+}
+
+#salvar, #cancelar {
+    padding: 8px 16px;
+    border-radius: 12px;
+    font-weight: bold;
+    cursor: pointer;
 }
 
 #salvar {
-    padding: 8px 16px 8px 16px;
-    border-radius: 12px;
     background-color: var(--cor3);
-    font-weight: bold;
     color: white;
-    cursor: pointer;
 }
 
 #cancelar {
-    padding: 8px 16px 8px 16px;
-    border-radius: 12px;
     background-color: white;
-    font-weight: bold;
     color: black;
-    cursor: pointer;
 }
 
 /* Mensagem Temporária de adição Bem-Sucedida */
 .mensagem_tempora {
     display: none;
     position: fixed;
-    top: 150px;
+    top: 50px;
     right: -300px; 
     background-color: rgba(0, 161, 8, 0.7); 
     color: white;

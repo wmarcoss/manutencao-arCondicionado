@@ -36,7 +36,7 @@
                     </select>
                 </label>
     
-                <label for="modelo">Modelo *
+                <label for="modelo">Modelo e Marca * 
                     <select name="modelo" id="modelo" required>
                         <option disabled selected value="">Selecione o fabricante e modelo</option>
                         <option value="modelo 01 e marca 01">Daikin FTXS25J</option>
@@ -44,6 +44,7 @@
                         <option value="modelo 03 e marca 03">Inversor Fujitsu</option>
                         <option value="modelo 04 e marca 04">Midea Liva Wi-Fi</option>
                         <option value="modelo 05 e marca 05">Gree Eco Garden</option>
+                        <option value="Outros">Outros</option>
                     </select>
                 </label>
             </div>
@@ -66,6 +67,7 @@
                         <option value="Medição de tensão elétrica">Medição de tensão elétrica</option>
                         <option value="Medição de temperatura do ar">Medição de temperatura do ar</option>
                         <option value="Verificação do estado dos filtros">Verificação do estado dos filtros</option>
+                        <option value="Outros">Outros</option>
                     </select>
                 </label>
             </div>
@@ -97,17 +99,17 @@
             </div>
     
             <div class="text-box">
-                <label for="observacoes">Observações (opcional, para anotar informações adicionais relevantes que o técnico tenha observado)
-                    <textarea name="observacoes" id="observacoes" rows="6" placeholder="Digite aqui"></textarea>
-                </label>
-            </div>
-        
-            <div class="botoao-salvar">
-                <button id="cancelar" type="button">CANCELAR</button>
-                <div class="botoes">
-                    <button type="submit" id="salvar">SALVAR</button>
+                <div class="alinhar-botoes">
+                    <label for="observacoes">Observações (opcional, para anotar informações adicionais relevantes que o técnico tenha observado)
+                        <textarea name="observacoes" id="observacoes" rows="6" placeholder="Digite aqui"></textarea>
+                    </label>
+                    <div class="botoao-salvar">
+                        <button id="cancelar" type="button">CANCELAR</button>
+                        <button type="submit" id="salvar">SALVAR</button>
+                    </div>
                 </div>
             </div>
+        
             <!-- Mensagem Temporária de adição Bem-Sucedida -->
             <div class="mensagem_tempora" id="mensagemTempora" style="display: none;">
                 <p>Manutenção adicionada com sucesso!</p>

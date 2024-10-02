@@ -2,6 +2,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const historicList = document.getElementById('historicList');
     const confirmarExcluirDiv = document.querySelector('.confirmar_excluir');
     const mensagemTempora = document.getElementById('mensagemTempora');
+    const overlay = document.getElementById('overlay'); // Seleciona o overlay
     let currentDeleteId = null;
 
     // Função para formatar a data no padrão brasileiro (dd/mm/aaaa)
@@ -56,6 +57,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 button.addEventListener('click', () => {
                     currentDeleteId = button.getAttribute('data-id'); // Armazena o ID para exclusão
                     confirmarExcluirDiv.style.display = 'flex'; // Exibe o modal de confirmação
+                    overlay.style.display = 'block'; // Mostra o overlay
                 });
             });
         } catch (error) {
@@ -72,6 +74,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             if (response.ok) {
                 confirmarExcluirDiv.style.display = 'none'; // Fecha o modal de confirmação
+                overlay.style.display = 'none'; // Esconde o overlay
                 mensagemTempora.classList.add('show'); // Adiciona a classe para mostrar a mensagem
                 mensagemTempora.style.display = 'block'; // Torna a mensagem visível
                 
@@ -95,6 +98,23 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     };
 
+// Função para adicionar o efeito de "piscar"
+const addBlinkEffect = () => {
+    confirmarExcluirDiv.classList.add('blink');
+    setTimeout(() => {
+        confirmarExcluirDiv.classList.remove('blink');
+    }, 1500); // Duração total do efeito (3 piscares a 500ms cada)
+};
+
+
+// Detectar cliques fora da div de confirmação
+document.addEventListener('click', (event) => {
+    if (confirmarExcluirDiv.style.display === 'flex' && !confirmarExcluirDiv.contains(event.target) && !event.target.matches('#check, #close')) {
+        addBlinkEffect();
+    }
+});
+
+
     // Event listener para confirmar exclusão
     document.getElementById('check').addEventListener('click', () => {
         if (currentDeleteId) {
@@ -105,6 +125,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Event listener para cancelar exclusão
     document.getElementById('close').addEventListener('click', () => {
         confirmarExcluirDiv.style.display = 'none'; // Fecha o modal de confirmação
+        overlay.style.display = 'none'; // Esconde o overlay
     });
 
     // Mostrar os selects com base na opção selecionada

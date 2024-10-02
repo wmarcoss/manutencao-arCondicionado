@@ -70,13 +70,17 @@
         </div>
 
         <div class="container">
-            <div class="confirmar_excluir">
-                <h4>Deseja realmente excluir a manutenção?</h4>
-                <div id="botoesConfirmacao">
-                    <button id="check"><img src="../../assets/icons/check-icon.png" alt="check" style="width: 25px;"></button>
-                    <button id="close"><img id="close" src="../../assets/icons/close-icon.png" alt="close" style="width: 25px;"></button>
+
+            <div id="overlay" style="display: none;">
+                <div class="confirmar_excluir">
+                    <h4>Deseja realmente excluir a manutenção?</h4>
+                    <div id="botoesConfirmacao">
+                        <button id="check"><img src="../../assets/icons/check-icon.png" alt="check" style="width: 25px;"></button>
+                        <button id="close"><img id="close" src="../../assets/icons/close-icon.png" alt="close" style="width: 25px;"></button>
+                    </div>
                 </div>
             </div>
+            
             <!-- Mensagem Temporária de Exclusão Bem-Sucedida -->
             <div class="mensagem_tempora" id="mensagemTempora" style="display: none;">
                 <p>Manutenção excluída com sucesso!</p>

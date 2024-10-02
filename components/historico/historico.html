@@ -34,20 +34,28 @@
 
             <select id="local">
                 <option value="">Selecione o Local</option>
-                <option value="sala a">Sala A</option>
-                <option value="sala b">Sala B</option>
-                <option value="sala c">Sala C</option>
-                <option value="sala d">Sala D</option>
-                <option value="sala e">Sala E</option>
+                <option value="1° A">1° A</option>
+                <option value="1° B">1° B</option>
+                <option value="1° C">1° C</option>
+                <option value="2° A">2° A</option>
+                <option value="2° B">2° B</option>
+                <option value="2° C">2° C</option>
+                <option value="3° A">3° A</option>
+                <option value="3° B">3° B</option>
+                <option value="3° C">3° C</option>
+                <option value="Laboratorio de informática">Laboratorio de informática</option>
+                <option value="Sala de estudos">Sala de estudos</option>
             </select>
 
             <select id="modelo">
                 <option value="">Selecione o Modelo</option>
+                <option value="Carrier Eco Saver Puron">Carrier Eco Saver Puron</option>
                 <option value="Daikin FTXS25J">Daikin FTXS25J</option>
                 <option value="LG-Dual Inverter">LG-Dual Inverter</option>
                 <option value="Inversor Fujitsu">Inversor Fujitsu</option>
                 <option value="Midea Liva Wi-Fi">Midea Liva Wi-Fi</option>
                 <option value="Gree Eco Garden">Gree Eco Garden</option>
+                <option value="Outros">Outros</option>
             </select>
 
             <select id="data">
@@ -70,13 +78,17 @@
         </div>
 
         <div class="container">
-            <div class="confirmar_excluir">
-                <h4>Deseja realmente excluir a manutenção?</h4>
-                <div id="botoesConfirmacao">
-                    <button id="check"><img src="../../assets/icons/check-icon.png" alt="check" style="width: 25px;"></button>
-                    <button id="close"><img id="close" src="../../assets/icons/close-icon.png" alt="close" style="width: 25px;"></button>
+
+            <div id="overlay" style="display: none;">
+                <div class="confirmar_excluir">
+                    <h4>Deseja realmente excluir a manutenção?</h4>
+                    <div id="botoesConfirmacao">
+                        <button id="check"><img src="../../assets/icons/check-icon.png" alt="check" style="width: 25px;"></button>
+                        <button id="close"><img id="close" src="../../assets/icons/close-icon.png" alt="close" style="width: 25px;"></button>
+                    </div>
                 </div>
             </div>
+            
             <!-- Mensagem Temporária de Exclusão Bem-Sucedida -->
             <div class="mensagem_tempora" id="mensagemTempora" style="display: none;">
                 <p>Manutenção excluída com sucesso!</p>

@@ -220,3 +220,7 @@ document.addEventListener('click', (event) => {
             console.error('Erro ao carregar o footer:', error);
         });
 });
+
+document.getElementById('refresh').addEventListener('click', function() {
+    location.reload();
+});

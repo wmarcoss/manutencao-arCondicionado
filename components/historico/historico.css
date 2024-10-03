@@ -130,12 +130,12 @@ body {
 .botao-refresh {
     position: absolute;
     display: flex;
-    margin-left: 115%;
+    margin-left: 116%;
 }
 
 #refresh {
     border-radius: 50px;
-    padding: 2px;
+    padding: 2px 4px;
     cursor: pointer;
 }
 

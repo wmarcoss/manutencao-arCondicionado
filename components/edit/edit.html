@@ -11,7 +11,79 @@
 <body>
 
     <header id="header-geral"></header>
+    <div class="seta-voltar">
+        <a href="../historico/historico.html"><img src="../../assets/icons/setavoltar2.png" alt="seta" style="width: 45px;"></a>
+    </div>
 
+    <div class="titulo">
+        <h2>INFORMAÇÕES ESPECIFICADAS</h2>
+        <h4>Visualização detalhada da Manutenção</h4>
+    </div>
+
+    <main>
+        <div class="container">
+            <table>
+                <thead>
+                    <tr>
+                        <th>LOCAL</th>
+                        <th>MODELO</th>
+                        <th>DATA</th>
+                        <th>PROFISSIONAL</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <tr>
+                        <td id="local"></td>
+                        <td id="modelo"></td>
+                        <td id="data"></td>
+                        <td id="profissional"></td>
+                    </tr>
+                </tbody>
+
+                <div class="especificacoes">
+                    <div class="flex-box-father">
+                        <div class="flex-box">
+                            <div id="box-tipo">
+                                <label for="tipo">Tipo de manutenção
+                                    <textarea name="tipo-manutencao" id="tipo-manutencao" rows="6" placeholder="Não informado" readonly></textarea>
+                                </label>
+                            </div>
+                            <div id="box-tipo">
+                                <label for="tipo">Tipo de conserto
+                                    <textarea name="tipo-conserto" id="tipo-conserto" rows="1" placeholder="Não informado" readonly></textarea>
+                                </label>
+                            </div>
+                        </div>
+                        <div class="flex-box">
+                            <div id="box-tipo">
+                                <label for="data">Previsão da próxima manutenção
+                                    <textarea name="previsao" id="previsao" rows="1" placeholder="Não informado" readonly></textarea>
+                                </label>
+                            </div>
+                            <div id="box-tipo">
+                                <label for="data">Custo
+                                    <textarea name="custo" id="custo" rows="1" placeholder="Não informado" readonly></textarea>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="text-box">
+                        <label for="detalhes">Detalhes
+                            <textarea name="detalhes" id="detalhes" rows="4" placeholder="Não informado" readonly></textarea>
+                        </label>
+                    </div>
+
+                    <div class="text-box">
+                        <label for="observacoes">Observações
+                            <textarea name="observacoes" id="observacoes" rows="4" placeholder="Não informado" readonly></textarea>
+                        </label>
+                    </div>
+                </div>
+            </table>
+        </div>
+    </main>
     <footer id="footer-geral"></footer>
     <script src="../edit/edit.js" defer></script>
 </body>

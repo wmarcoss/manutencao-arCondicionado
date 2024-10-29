@@ -64,17 +64,31 @@ p {
 #informativos-subtitulo {
     padding-bottom: 20px;
 }
+/* Linha divisória acima dos créditos */
+.linha-divisoria {
+    align-items: center;
+    display: flex;
+    width: 1200px;           /* Largura total da página */
+    height: 1px;           /* Espessura da linha */
+    background-color: #fff; /* Cor branca */
+    margin: 20px 0;        /* Espaçamento acima e abaixo */
+    opacity: 0.2;          /* Transparência para suavizar */
+    position: absolute ;
+    margin-bottom: 20%;
+    
+}
+
 
 .creditos {
     display: flex;
     position: absolute;
     margin-top: 290px;
-    margin-left: 525px;
+    margin-left: 36%;
     justify-content: center;
     align-content: center;
     align-items: center;
-}
 
+}
 #criador {
     color: #6985ff;
 }

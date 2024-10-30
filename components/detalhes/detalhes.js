@@ -68,6 +68,5 @@ document.addEventListener("DOMContentLoaded", function() {
         }
     };
 
-    // Chama a função para carregar os detalhes
     loadManutencaoDetails();
 });

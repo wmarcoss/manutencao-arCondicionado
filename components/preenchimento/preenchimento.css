@@ -157,9 +157,9 @@ textarea {
 }
 
 #salvar, #cancelar {
+    border: none;
     padding: 8px 16px;
     border-radius: 12px;
-    font-weight: bold;
     cursor: pointer;
 }
 
@@ -173,7 +173,6 @@ textarea {
     color: black;
 }
 
-/* Mensagem Temporária de adição Bem-Sucedida */
 .mensagem_tempora {
     display: none;
     position: fixed;

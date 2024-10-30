@@ -38,119 +38,119 @@ body {
     position: absolute;
 }
 
-.container {
+.select {
+    display: flex;
+    justify-content: center;
+    gap: 32px;
+    margin-bottom: 32px;
+    font-weight: bold;
+}
+
+#local, #modelo, #tipo-manutencao, #tipo-conserto {
+    display: block;
+    width: 491.5px;
+    height: 40px;
+    border: 1px solid black;
+    border-radius: 8px;
+    box-shadow: 2px 4px 5px rgba(0, 0, 0, 0.548);
+    cursor: pointer;
+}
+
+.preenchiveis {
     display: flex;
     justify-content: center;
     align-items: center;
-}
-
-table {
-    display: block;
-    border-collapse: collapse;
-    text-align: center;
-    border-top: 40px;
-    border-right: 40px;
-    border-left: 40px;
-    border-bottom: 520px;
-    border-style: solid;
-    border-radius: 24px;
-    border-color: var(--cor3);
-    font-size: 17px;
-
-}
-
-th {
-    background-color: var(--cor2);
-    color: var(--cor3);
+    gap: 32px;
     font-weight: bold;
-    padding: 16px 64px 16px 64px;
-    border: 2px solid black;
 }
 
-td {
-    background-color: rgba(0, 0, 255, 0.082);
-    padding: 8px;
-    border: 1px solid black;
-}
-
-.especificacoes {
+.preenchiveis2 {
     display: flex;
-    flex-direction: column;
-    position: absolute;
-    margin-top: 120px;
+    justify-content: center;
+    align-items: center;
+    gap: 32px;
+    font-weight: bold;
+}
+
+#data, #data2, #profissional, #custo {
+    display: block;
+    width: 485px;
+    height: 40px;
+    border: 1px solid black;
+    border-radius: 8px;
+    box-shadow: 2px 4px 5px rgba(0, 0, 0, 0.548);
+    padding-left:5px ;
+    margin-bottom: 32px;
+}
+
+.text-box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    margin-bottom: 32px;
+}
+
+.alinhar-botoes {
+    display: block;
+}
+
+textarea {
+    border: 1px solid black;
+    padding-bottom: 32px;
+    resize: none;
+}
+
+#detalhes, #observacoes {
+    display: block;
+    width: 1009px;
+    height: 80px;
+    padding-left: 4px;
+    border-radius: 8px;
+    box-shadow: 2px 4px 5px rgba(0, 0, 0, 0.548);
 }
 
 ::placeholder {
     padding-left: 4px;
-    padding-top: 4px
+    padding-top: 4px;
 }
 
-label {
+.botoao-salvar {
+    display: flex;
+    gap: 16px;
+    margin-top: 32px;
+    margin-left: 0%;
+}
+
+#salvar, #cancelar {
+    padding: 8px 16px;
+    border-radius: 12px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+#salvar {
+    background-color: var(--cor3);
     color: white;
 }
 
-#tipo-manutencao {
-    width: 380.3px;
-    height: 30px;
-    display: block;
-    border-radius: 4px;
-    border: 1px black solid;
-    box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.548);
-    font-size: 17px;
+#cancelar {
+    background-color: white;
+    color: black;
 }
 
-#tipo-conserto {
-    width: 381px;
-    height: 30px;
-    display: block;
-    border-radius: 4px;
-    border: 1px black solid;
-    box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.548);
-    font-size: 17px;
-}
-
-.flex-box {
-    display: flex;
-    gap: 28px;
-}
-
-.flex-box-father {
-    margin-top: 32px;
-}
-
-#previsao {
-    width: 380.3px;
-    height: 30px;
-    display: block;
-    border-radius: 4px;
-    border: 1px black solid;
-    box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.548);
-    font-size: 17px;
-}
-
-#custo {
-    width: 381px;
-    height: 30px;
-    display: block;
-    border-radius: 4px;
-    border: 1px black solid;
-    box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.548);
-    font-size: 17px;
-}
-
-#detalhes, #observacoes {
-    width: 800px;
-    height: 80px;
-    display: block;
-    border-radius: 4px;
-    border: 1px black solid;
-    box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.548);
-    font-size: 17px;
-}
-
-textarea {
-    resize: none;
-    padding: 4px;
-    margin-bottom: 30px;
+/* Mensagem Temporária de adição Bem-Sucedida */
+.mensagem_tempora {
+    display: none;
+    position: fixed;
+    top: 50px;
+    right: -300px; 
+    background-color: rgba(0, 161, 8, 0.7); 
+    color: white;
+    padding: 10px 20px;
     border-radius: 5px;
+    z-index: 1000; 
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    opacity: 0; 
+    transition: right 0.5s ease, opacity 0.5s ease; 
 }

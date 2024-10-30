@@ -121,22 +121,24 @@ body {
     padding: 8px 16px 8px 16px;
     border-radius: 12px;
     background-color: var(--cor3);
-    font-weight: bold;
     background-color: white;
     color: black;
     cursor: pointer;
+    border: none;
 }
 
 .botao-refresh {
     position: absolute;
     display: flex;
-    margin-left: 116%;
+    margin-left: 80%;
+    margin-top: 32px;
 }
 
 #refresh {
-    border-radius: 50px;
-    padding: 2px 4px;
+    border-radius: 12px;
+    padding: 8px 4px;
     cursor: pointer;
+    border: none;
 }
 
 #local, #modelo, #data, #profissional {

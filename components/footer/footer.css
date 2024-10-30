@@ -24,6 +24,12 @@
     padding-top: 20px;
     margin-left: -5px;
 }
+.contatos a:hover {
+    color: rgb(22, 17, 17); 
+    transform: scale(1.2); 
+    transition: color 0.3s ease, transform 0.3s ease; 
+}
+
 
 .footer-link {
     margin: 0 8px;

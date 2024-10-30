@@ -1,5 +1,4 @@
 document.addEventListener("DOMContentLoaded", function() {
-    // Carregar o Header
     const headerElement = document.getElementById('header-geral');
     fetch('../header/header.html')
         .then(response => {
@@ -15,7 +14,6 @@ document.addEventListener("DOMContentLoaded", function() {
             console.error('Erro ao carregar o header:', error);
         });
   
-    // Carregar o Footer
     const footerElement = document.getElementById('footer-geral');
     fetch('../footer/footer.html')
         .then(response => {

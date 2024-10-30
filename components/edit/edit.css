@@ -143,7 +143,6 @@ textarea {
     color: black;
 }
 
-/* Mensagem Temporária de adição Bem-Sucedida */
 .mensagem_tempora {
     display: none;
     position: fixed;

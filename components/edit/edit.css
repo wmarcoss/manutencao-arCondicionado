@@ -1,7 +1,6 @@
 @charset "UTF-8";
 @import url("../header/header.css");
 @import url("../footer/footer.css");
-
 * {
     margin: 0px;
     padding: 0px;
@@ -18,40 +17,11 @@ body {
     background-color: var(--cor2);
 }
 
-.fundo {
-    background-color: var(--cor3);
-    display: flex;
-    width: 100%;
-    height: 130px;
-    align-items: center;
-    justify-content: center;
-}
-
-.logo {
-    display: flex;
-    position: absolute;
-    margin-left: -1220px;
-}
-
-.nav-style {
-    display: flex;
-    gap: 200px;
-    list-style: none;
-}
-
-.nav-link a{
-    text-decoration: none;
-    color: white;
-    font-weight: bold;
-}
-
 .titulo {
-    margin-top: 32px;
-    margin-bottom: 32px;
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
+    margin: 32px;
 }
 
 .titulo h2 {
@@ -66,10 +36,6 @@ body {
     display: flex;
     margin: 32px 28px;
     position: absolute;
-    justify-content: center;
-    align-items: center;
-    padding-bottom: 10px;
-    margin-bottom: 35px;
 }
 
 .select {
@@ -155,17 +121,16 @@ textarea {
     margin-top: 32px;
     margin-left: 0%;
 }
-
+#salvar:hover, #cancelar:hover {
+    transform: scale(1.08); /* Aumenta o tamanho em 5% */
+    filter: brightness(1.5); /* Escurece levemente o botão */
+    transition: transform 0.3s ease, filter 0.3s ease; /* Transição suave */
+}
 #salvar, #cancelar {
     border: none;
     padding: 8px 16px;
     border-radius: 12px;
     cursor: pointer;
-}
-#salvar:hover, #cancelar:hover {
-    transform: scale(1.08); /* Aumenta o tamanho em 5% */
-    filter: brightness(1.5); /* Escurece levemente o botão */
-    transition: transform 0.3s ease, filter 0.3s ease; /* Transição suave */
 }
 
 #salvar {

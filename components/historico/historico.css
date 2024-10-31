@@ -121,10 +121,24 @@ body {
     padding: 8px 16px 8px 16px;
     border-radius: 12px;
     background-color: var(--cor3);
-    font-weight: bold;
     background-color: white;
-    color: var(--cor3);
+    color: black;
     cursor: pointer;
+    border: none;
+}
+
+.botao-refresh {
+    position: absolute;
+    display: flex;
+    margin-left: 80%;
+    margin-top: 32px;
+}
+
+#refresh {
+    border-radius: 12px;
+    padding: 8px 4px;
+    cursor: pointer;
+    border: none;
 }
 
 #local, #modelo, #data, #profissional {
@@ -154,7 +168,7 @@ th {
     color: var(--cor3);
     font-weight: bold;
     padding: 16px 64px 16px 64px;
-    border: 2px solid black;
+    border: 1px solid black;
 }
 
 td {
@@ -167,9 +181,11 @@ td {
     display: flex;
     gap: 35px;
     justify-content: center;
+    border-top-style: none;
+    border-left-style: none;
+    border-right-width: 0px;
 }
 
-/* Mensagem Temporária de Exclusão Bem-Sucedida */
 .mensagem_tempora {
     display: none;
     position: fixed;

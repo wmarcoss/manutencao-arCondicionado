@@ -44,8 +44,10 @@ document.addEventListener('DOMContentLoaded', () => {
                                 <img src="../../assets/icons/lupa.png" alt="lupa" style="width: 25px;">
                             </button>
                         </a>
+
                         <button class="linkExcluir" data-id="${manutencao.id}">
-                            <img src="../../assets/icons/lixeira.png" alt="lixeira" style="width: 25px;">
+                            <img src="../../assets/icons/lixeira.png" alt="lixeira" style="width: 25px;
+">
                         </button>
                     </td>
                 </tr>
@@ -219,4 +221,8 @@ document.addEventListener('click', (event) => {
         .catch(error => {
             console.error('Erro ao carregar o footer:', error);
         });
+});
+
+document.getElementById('refresh').addEventListener('click', function() {
+    location.reload();
 });

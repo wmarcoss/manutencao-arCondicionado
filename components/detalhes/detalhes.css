@@ -45,6 +45,27 @@ body {
     align-items: center;
 }
 
+#botao-editar {
+    position: absolute;
+    margin-top: -1.7%;
+    display: flex;
+}
+#botao-editar a:hover {
+    background-color: #cccccc; /* Escurece o fundo */
+    transform: scale(1.05); /* Aumenta o botão em 10% */
+    transition: background-color 0.3s ease, transform 0.3s ease; /* Transição suave para cor e tamanho */
+}
+
+#editar-text {
+    padding: 8px 16px 8px 16px;
+    border-radius: 12px;
+    background-color: white;
+    color: black;
+    cursor: pointer;
+    border: none;
+    text-decoration: none;
+}
+
 table {
     display: block;
     border-collapse: collapse;
@@ -52,7 +73,7 @@ table {
     border-top: 40px;
     border-right: 40px;
     border-left: 40px;
-    border-bottom: 520px;
+    border-bottom: 550px;
     border-style: solid;
     border-radius: 24px;
     border-color: var(--cor3);
@@ -65,7 +86,7 @@ th {
     color: var(--cor3);
     font-weight: bold;
     padding: 16px 64px 16px 64px;
-    border: 2px solid black;
+    border: 1px solid black;
 }
 
 td {

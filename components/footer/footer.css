@@ -24,6 +24,12 @@
     padding-top: 20px;
     margin-left: -5px;
 }
+.contatos a:hover {
+    color: rgb(22, 17, 17); 
+    transform: scale(1.2); 
+    transition: color 0.3s ease, transform 0.3s ease; 
+}
+
 
 .footer-link {
     margin: 0 8px;
@@ -65,16 +71,30 @@ p {
     padding-bottom: 20px;
 }
 
+.linha-divisoria {
+    align-items: center;
+    display: flex;
+    width: 1200px;           
+    height: 1px;           
+    background-color: #fff; 
+    margin: 20px 0;        
+    opacity: 0.2;          
+    position: absolute ;
+    margin-bottom: 20%;
+    
+}
+
+
 .creditos {
     display: flex;
     position: absolute;
     margin-top: 290px;
-    margin-left: 525px;
+    margin-left: 36%;
     justify-content: center;
     align-content: center;
     align-items: center;
-}
 
+}
 #criador {
     color: #6985ff;
 }

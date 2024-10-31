@@ -51,6 +51,11 @@ body {
     border-radius: 8px;
     box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.548);
 }
+.botao-adicionar:hover, .botao-historico:hover {
+    transform: scale(1.05);
+    filter: brightness(0.8); 
+    transition: transform 0.3s ease, filter 0.3s ease; 
+}
 
 .image-historico {
     padding: 55px 102px 140px;

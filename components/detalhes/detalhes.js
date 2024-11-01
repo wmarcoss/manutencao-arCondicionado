@@ -63,6 +63,9 @@ document.addEventListener("DOMContentLoaded", function() {
             document.getElementById('custo').innerText = manutencao.custo || '';
             document.getElementById('detalhes').innerText = manutencao.detalhes || '';
             document.getElementById('observacoes').innerText = manutencao.observacoes || '';
+
+            // Adicionar o ID ao link do botão de edição
+            document.getElementById('botao-editar').querySelector('a').href = `../edit/edit.html?id=${id}`;
         } catch (error) {
             console.error('Erro:', error);
         }

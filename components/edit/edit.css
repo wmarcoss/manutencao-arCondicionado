@@ -72,7 +72,7 @@ body {
     font-weight: bold;
 }
 
-#data, #data2, #profissional, #custo {
+#data, #data2, #nome, #custo {
     display: block;
     width: 485px;
     height: 40px;

@@ -50,10 +50,11 @@ body {
     margin-top: -1.7%;
     display: flex;
 }
-#botao-editar a:hover {
-    background-color: #cccccc; /* Escurece o fundo */
-    transform: scale(1.05); /* Aumenta o botão em 10% */
-    transition: background-color 0.3s ease, transform 0.3s ease; /* Transição suave para cor e tamanho */
+
+#botao-editar:hover{
+    transform: scale(1.08); 
+    filter: brightness(1.5); 
+    transition: transform 0.3s ease, filter 0.3s ease;
 }
 
 #editar-text {

@@ -21,7 +21,7 @@ body {
 .seta-voltar {
     display: flex;
     margin: 32px 28px;
-    position: fixed;
+    position: absolute;
 }
 
 .confirmar_excluir {
@@ -132,6 +132,12 @@ body {
     display: flex;
     margin-left: 80%;
     margin-top: 32px;
+}
+
+#refresh:hover, #buscar:hover {
+    transform: scale(1.08); /* Aumenta o tamanho em 5% */
+    filter: brightness(1.5); /* Escurece levemente o botão */
+    transition: transform 0.3s ease, filter 0.3s ease; /* Transição suave */
 }
 
 #refresh {

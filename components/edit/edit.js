@@ -108,9 +108,10 @@ document.addEventListener("DOMContentLoaded", function () {
             }
 
             // Mostrar mensagem de sucesso
-            document.getElementById('mensagemTempora').style.display = 'block';
+            const mensagemTempora = document.getElementById('mensagem_tempora');
+            mensagemTempora.style.display = 'block';
             setTimeout(() => {
-                document.getElementById('mensagemTempora').style.display = 'none';
+                mensagemTempora.style.display = 'none';
             }, 3000); // Ocultar a mensagem após 3 segundos
         } catch (error) {
             console.error('Erro:', error);

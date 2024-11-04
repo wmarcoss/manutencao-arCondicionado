@@ -21,7 +21,7 @@ body {
 .seta-voltar {
     display: flex;
     margin: 32px 28px;
-    position: fixed;
+    position: absolute;
 }
 
 .confirmar_excluir {

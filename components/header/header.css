@@ -24,3 +24,9 @@
     color: white;
     font-weight: bold;
 }
+
+.nav-style a:hover {
+    color: rgb(22, 17, 17); 
+    transform: scale(1.2); 
+    transition: color 0.3s ease, transform 0.3s ease; 
+}

@@ -11,10 +11,6 @@
 
     <header id="header-geral"></header>
 
-    <div class="seta-voltar">
-        <a href="../historico/historico.html"><img src="../../assets/icons/setavoltar2.png" alt="seta" style="width: 45px;"></a>
-    </div>
-
     <div class="titulo">
         <h2>INFORMAÇÕES ESPECIFICADAS</h2>
         <h4>Visualização detalhada da Manutenção</h4>
@@ -81,8 +77,10 @@
                             <textarea name="observacoes" id="observacoes" rows="4" placeholder="Não informado" readonly></textarea>
                         </label>
 
-                        <div id="botao-editar"><a href="../edit/edit.html" id="editar-text">Editar manutenção</a></div>
-                    
+                        <div id="botao-editar">
+                            <a href="../edit/edit.html?id=ID_DA_MANUTENCAO" id="editar-text">Editar manutenção</a>
+                        </div>                        
+                                            
                     </div>
                 </div>
             </table>

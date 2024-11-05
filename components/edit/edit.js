@@ -61,19 +61,6 @@ document.addEventListener("DOMContentLoaded", function () {
             setValueIfExists('custo', manutencao.custo);
             setValueIfExists('detalhes', manutencao.detalhes);
             setValueIfExists('observacoes', manutencao.observacoes);
-
-            // Selecionar o tipo de manutenção na lista suspensa
-            const tipoManutencaoSelect = document.getElementById('tipo-manutencao');
-            const tipoConsertoSelect = document.getElementById('tipo-conserto');
-
-            // Se o valor for válido, selecione o tipo
-            if (tipoManutencaoSelect.options.namedItem(manutencao.tipo_manutencao)) {
-                tipoManutencaoSelect.value = manutencao.tipo_manutencao;
-            }
-
-            if (tipoConsertoSelect.options.namedItem(manutencao.tipo_conserto)) {
-                tipoConsertoSelect.value = manutencao.tipo_conserto;
-            }
         } catch (error) {
             console.error('Erro:', error);
         }
@@ -107,20 +94,32 @@ document.addEventListener("DOMContentLoaded", function () {
                 throw new Error('Erro ao editar a manutenção.');
             }
 
-            // Mostrar mensagem de sucesso
+            // Exibir a mensagem temporária de sucesso
             const mensagemTempora = document.getElementById('mensagem_tempora');
             mensagemTempora.style.display = 'block';
+
+            // Aguarda 3 segundos antes de redirecionar para a página de detalhes com o ID
             setTimeout(() => {
                 mensagemTempora.style.display = 'none';
-            }, 3000); // Ocultar a mensagem após 3 segundos
+                window.location.href = `../detalhes/detalhes.html?id=${id}`;
+            }, 3000); // Ocultar a mensagem e redirecionar após 3 segundos
         } catch (error) {
             console.error('Erro:', error);
         }
     };
 
+    // Redirecionar para a página de detalhes com o ID ao cancelar
+    const handleCancel = () => {
+        const id = new URLSearchParams(window.location.search).get('id');
+        if (id) {
+            window.location.href = `../detalhes/detalhes.html?id=${id}`;
+        }
+    };
+
     // Adicionar eventos
     document.getElementById('manutencao-form').addEventListener('submit', handleEditSubmit);
-    
+    document.getElementById('cancelar').addEventListener('click', handleCancel);
+
     // Chama a função para carregar os dados para edição
     loadManutencaoForEdit();
 });

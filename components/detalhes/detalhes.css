@@ -33,12 +33,6 @@ body {
     font-weight: lighter;
 }
 
-.seta-voltar {
-    display: flex;
-    margin: 32px 28px;
-    position: absolute;
-}
-
 .container {
     display: flex;
     justify-content: center;

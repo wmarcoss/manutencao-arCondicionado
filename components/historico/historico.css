@@ -18,12 +18,6 @@ body {
     background-color: var(--cor2);
 }
 
-.seta-voltar {
-    display: flex;
-    margin: 32px 28px;
-    position: absolute;
-}
-
 .confirmar_excluir {
     display: none;
     align-items: center;

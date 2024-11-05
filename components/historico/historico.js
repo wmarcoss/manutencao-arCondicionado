@@ -2,7 +2,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const historicList = document.getElementById('historicList');
     const confirmarExcluirDiv = document.querySelector('.confirmar_excluir');
     const mensagemTempora = document.getElementById('mensagemTempora');
-    const overlay = document.getElementById('overlay'); // Seleciona o overlay
+    const overlay = document.getElementById('overlay');
+    const buscarButton = document.getElementById('buscar');
+    const refreshButton = document.getElementById('refresh');
     let currentDeleteId = null;
 
     // Função para formatar a data no padrão brasileiro (dd/mm/aaaa)
@@ -44,10 +46,8 @@ document.addEventListener('DOMContentLoaded', () => {
                                 <img src="../../assets/icons/lupa.png" alt="lupa" style="width: 25px;">
                             </button>
                         </a>
-
                         <button class="linkExcluir" data-id="${manutencao.id}">
-                            <img src="../../assets/icons/lixeira.png" alt="lixeira" style="width: 25px;
-">
+                            <img src="../../assets/icons/lixeira.png" alt="lixeira" style="width: 25px;">
                         </button>
                     </td>
                 </tr>
@@ -57,9 +57,9 @@ document.addEventListener('DOMContentLoaded', () => {
             const deleteButtons = document.querySelectorAll('.linkExcluir');
             deleteButtons.forEach(button => {
                 button.addEventListener('click', () => {
-                    currentDeleteId = button.getAttribute('data-id'); // Armazena o ID para exclusão
-                    confirmarExcluirDiv.style.display = 'flex'; // Exibe o modal de confirmação
-                    overlay.style.display = 'block'; // Mostra o overlay
+                    currentDeleteId = button.getAttribute('data-id');
+                    confirmarExcluirDiv.style.display = 'flex';
+                    overlay.style.display = 'block';
                 });
             });
         } catch (error) {
@@ -75,23 +75,15 @@ document.addEventListener('DOMContentLoaded', () => {
             });
 
             if (response.ok) {
-                confirmarExcluirDiv.style.display = 'none'; // Fecha o modal de confirmação
-                overlay.style.display = 'none'; // Esconde o overlay
-                mensagemTempora.classList.add('show'); // Adiciona a classe para mostrar a mensagem
-                mensagemTempora.style.display = 'block'; // Torna a mensagem visível
-                
-                // Oculta a mensagem temporária após 3 segundos
+                confirmarExcluirDiv.style.display = 'none';
+                overlay.style.display = 'none';
+                mensagemTempora.style.display = 'block';
+
                 setTimeout(() => {
-                    mensagemTempora.classList.remove('show'); // Remove a classe de exibição
-                    mensagemTempora.classList.add('hide'); // Adiciona a classe de ocultação
-                    
-                    // Espera a animação de saída e então oculta completamente
-                    setTimeout(() => {
-                        mensagemTempora.style.display = 'none'; // Oculta a mensagem
-                        mensagemTempora.classList.remove('hide'); // Remove a classe de ocultação para próxima exibição
-                    }, 500); // Tempo da animação
+                    mensagemTempora.style.display = 'none';
                 }, 3000);
-                fetchManutencao(); // Atualiza a lista de manutenções após a exclusão
+
+                fetchManutencao();
             } else {
                 alert('Erro ao deletar manutenção');
             }
@@ -99,23 +91,6 @@ document.addEventListener('DOMContentLoaded', () => {
             console.error('Erro ao deletar manutenção:', error);
         }
     };
-
-// Função para adicionar o efeito de "piscar"
-const addBlinkEffect = () => {
-    confirmarExcluirDiv.classList.add('blink');
-    setTimeout(() => {
-        confirmarExcluirDiv.classList.remove('blink');
-    }, 1500); // Duração total do efeito (3 piscares a 500ms cada)
-};
-
-
-// Detectar cliques fora da div de confirmação
-document.addEventListener('click', (event) => {
-    if (confirmarExcluirDiv.style.display === 'flex' && !confirmarExcluirDiv.contains(event.target) && !event.target.matches('#check, #close')) {
-        addBlinkEffect();
-    }
-});
-
 
     // Event listener para confirmar exclusão
     document.getElementById('check').addEventListener('click', () => {
@@ -126,8 +101,8 @@ document.addEventListener('click', (event) => {
 
     // Event listener para cancelar exclusão
     document.getElementById('close').addEventListener('click', () => {
-        confirmarExcluirDiv.style.display = 'none'; // Fecha o modal de confirmação
-        overlay.style.display = 'none'; // Esconde o overlay
+        confirmarExcluirDiv.style.display = 'none';
+        overlay.style.display = 'none';
     });
 
     // Mostrar os selects com base na opção selecionada
@@ -143,7 +118,7 @@ document.addEventListener('click', (event) => {
         profissional.style.display = this.value === 'nome' ? 'inline' : 'none';
 
         if (this.value === 'nome') {
-            fetchProfissionais(); // Carrega os profissionais quando o filtro 'nome' é selecionado
+            fetchProfissionais();
         }
     });
 
@@ -156,7 +131,6 @@ document.addEventListener('click', (event) => {
             }
             const profissionais = await response.json();
             const profissionalSelect = document.getElementById('profissional');
-            // Limpar as opções existentes, exceto a primeira
             profissionalSelect.innerHTML = '<option value="">Selecione o Profissional</option>';
             profissionais.forEach(prof => {
                 profissionalSelect.innerHTML += `<option value="${prof.nome}">${prof.nome}</option>`;
@@ -181,10 +155,42 @@ document.addEventListener('click', (event) => {
         };
     };
 
+    // Desabilita os selects e botão de busca após o filtro ser aplicado
+    const disableFilterOptions = () => {
+        document.getElementById('filtrar').disabled = true;
+        document.getElementById('local').disabled = true;
+        document.getElementById('modelo').disabled = true;
+        document.getElementById('data').disabled = true;
+        document.getElementById('profissional').disabled = true;
+        buscarButton.disabled = true;
+    };
+
+    // Habilita os selects e botão de busca ao limpar o filtro
+    const enableFilterOptions = () => {
+        document.getElementById('filtrar').disabled = false;
+        document.getElementById('local').disabled = false;
+        document.getElementById('modelo').disabled = false;
+        document.getElementById('data').disabled = false;
+        document.getElementById('profissional').disabled = false;
+        buscarButton.disabled = false;
+    };
+
     // Event listener para o botão de buscar
-    document.getElementById('buscar').addEventListener('click', () => {
+    buscarButton.addEventListener('click', () => {
         const filters = getFilters();
-        fetchManutencao(filters); // Chama a função com os filtros selecionados
+
+        if (Object.values(filters).some(value => value !== null)) {
+            fetchManutencao(filters);
+            disableFilterOptions();
+        } else {
+            alert("Por favor, selecione um filtro antes de buscar.");
+        }
+    });
+
+    // Event listener para o botão de limpar filtro
+    refreshButton.addEventListener('click', () => {
+        enableFilterOptions();
+        location.reload();
     });
 
     // Carregar as manutenções ao carregar a página
@@ -221,8 +227,4 @@ document.addEventListener('click', (event) => {
         .catch(error => {
             console.error('Erro ao carregar o footer:', error);
         });
-});
-
-document.getElementById('refresh').addEventListener('click', function() {
-    location.reload();
 });

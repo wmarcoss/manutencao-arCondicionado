@@ -117,7 +117,6 @@ textarea {
 }
 
 #salvar:hover, #cancelar:hover {
-    transform: scale(1.08); 
     filter: brightness(1.5); 
     transition: transform 0.3s ease, filter 0.3s ease; 
 }

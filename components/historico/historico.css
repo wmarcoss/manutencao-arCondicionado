@@ -33,7 +33,6 @@ body {
     transform: translate(-50%, -50%);
     padding: 16px;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
-    opacity: 0.9;
 }
 
 .confirmar_excluir h3 {
@@ -149,7 +148,7 @@ body {
 }
 
 #refresh:hover, #buscar:hover {
-    transform: scale(1.08); /* Aumenta o tamanho em 5% */
+    
     filter: brightness(1.5); /* Escurece levemente o botão */
     transition: transform 0.3s ease, filter 0.3s ease; /* Transição suave */
 }

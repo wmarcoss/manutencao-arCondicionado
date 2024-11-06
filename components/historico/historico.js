@@ -42,15 +42,15 @@ document.addEventListener('DOMContentLoaded', () => {
                     <td>${manutencao.nome}</td>
                     <td>${formatDate(manutencao.data_manutencao)}</td>
                     <td class="lupaElixeira">
-                        <button class="linkExcluir" data-id="${manutencao.id}" title="Excluir manutenção">
-                            <img src="../../assets/icons/lixeira.png" alt="lixeira" style="width: 25px;">
-                        </button>
-
                         <a href="../detalhes/detalhes.html?id=${manutencao.id}" title="Detalhes da manutenção">
                             <button>
                                 <img src="../../assets/icons/lupa.png" alt="lupa" style="width: 25px;">
                             </button>
                         </a>
+                        
+                        <button class="linkExcluir" data-id="${manutencao.id}" title="Excluir manutenção">
+                            <img src="../../assets/icons/lixeira.png" alt="lixeira" style="width: 25px;">
+                        </button>
                     </td>
                 </tr>
             `).join('');

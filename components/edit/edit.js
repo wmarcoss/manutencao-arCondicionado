@@ -66,6 +66,22 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     };
 
+    // Função para exibir a mensagem temporária de sucesso
+    const exibirMensagemTemporaria = () => {
+        const mensagemTempora = document.getElementById('mensagem_tempora');
+        mensagemTempora.style.display = 'block'; // Torna o elemento visível
+        mensagemTempora.style.opacity = 1; // Altera a opacidade para 1, tornando a mensagem visível
+
+        // Transição para mover a mensagem para a posição esperada
+        mensagemTempora.style.right = '20px';
+
+        // Aguarda 3 segundos antes de esconder e redirecionar
+        setTimeout(() => {
+            mensagemTempora.style.opacity = 0; // Faz a mensagem desaparecer
+            mensagemTempora.style.right = '-300px'; // Desloca a mensagem para fora da tela
+        }, 3000); // Ocultar após 3 segundos
+    };
+
     // Função para enviar o formulário de edição
     const handleEditSubmit = async (event) => {
         event.preventDefault(); // Prevenir o envio do formulário padrão
@@ -95,14 +111,12 @@ document.addEventListener("DOMContentLoaded", function () {
             }
 
             // Exibir a mensagem temporária de sucesso
-            const mensagemTempora = document.getElementById('mensagem_tempora');
-            mensagemTempora.style.display = 'block';
+            exibirMensagemTemporaria();
 
             // Aguarda 3 segundos antes de redirecionar para a página de detalhes com o ID
             setTimeout(() => {
-                mensagemTempora.style.display = 'none';
                 window.location.href = `../detalhes/detalhes.html?id=${id}`;
-            }, 3000); // Ocultar a mensagem e redirecionar após 3 segundos
+            }, 3000); // Redireciona após 3 segundos
         } catch (error) {
             console.error('Erro:', error);
         }

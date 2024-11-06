@@ -27,7 +27,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             if (!response.ok) {
                 if (response.status === 404) {
-                    historicList.innerHTML = '<tr><td colspan="5">Nenhuma manutenção encontrada.</td></tr>';
+                    historicList.innerHTML = '<tr><td colspan="7">Nenhuma manutenção encontrada.</td></tr>';
                     return;
                 }
                 throw new Error('Erro ao buscar manutenção');
@@ -38,7 +38,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 <tr>
                     <td>${manutencao.lugar}</td>
                     <td>${manutencao.modelo_marca}</td>
-                    <td>${manutencao.tipo}</td>
+                    <td>${manutencao.tipo_manutencao}</td> <!-- Corrigido aqui para exibir o tipo de manutenção -->
                     <td>${manutencao.nome}</td>
                     <td>${formatDate(manutencao.data_manutencao)}</td>
                     <td class="lupaElixeira">
@@ -113,11 +113,13 @@ document.addEventListener('DOMContentLoaded', () => {
         let modelo = document.getElementById('modelo');
         let data = document.getElementById('data');
         let profissional = document.getElementById('profissional');
+        let tipo_manutencao = document.getElementById('tipo_manutencao');
 
         local.style.display = this.value === 'lugar' ? 'inline' : 'none';
         modelo.style.display = this.value === 'modelo_marca' ? 'inline' : 'none';
         data.style.display = this.value === 'data_manutencao' ? 'inline' : 'none';
         profissional.style.display = this.value === 'nome' ? 'inline' : 'none';
+        tipo_manutencao.style.display = this.value === 'tipo_manutencao' ? 'inline' : 'none';
 
         if (this.value === 'nome') {
             fetchProfissionais();
@@ -148,12 +150,14 @@ document.addEventListener('DOMContentLoaded', () => {
         const modelo_marca = document.getElementById('modelo').value;
         const data_manutencao = document.getElementById('data').value;
         const nome = document.getElementById('profissional').value;
+        const tipo_manutencao = document.getElementById('tipo_manutencao').value;
 
         return {
             lugar: lugar !== '' ? lugar : null,
             modelo_marca: modelo_marca !== '' ? modelo_marca : null,
             periodo: data_manutencao !== '' ? data_manutencao : null,
             nome: nome !== '' ? nome : null,
+            tipo_manutencao: tipo_manutencao !== '' ? tipo_manutencao : null,
         };
     };
 
@@ -164,6 +168,7 @@ document.addEventListener('DOMContentLoaded', () => {
         document.getElementById('modelo').disabled = true;
         document.getElementById('data').disabled = true;
         document.getElementById('profissional').disabled = true;
+        document.getElementById('tipo_manutencao').disabled = true;
         buscarButton.disabled = true;
     };
 
@@ -174,6 +179,7 @@ document.addEventListener('DOMContentLoaded', () => {
         document.getElementById('modelo').disabled = false;
         document.getElementById('data').disabled = false;
         document.getElementById('profissional').disabled = false;
+        document.getElementById('tipo_manutencao').disabled = false;
         buscarButton.disabled = false;
     };
 

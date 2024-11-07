@@ -7,6 +7,24 @@ document.addEventListener('DOMContentLoaded', () => {
     const refreshButton = document.getElementById('refresh');
     let currentDeleteId = null;
 
+    // Função para exibir a mensagem temporária
+    function exibirMensagemTempora() {
+        mensagemTempora.style.display = 'block'; // Torna o elemento visível
+        mensagemTempora.style.right = '20px'; // Move para a tela
+        mensagemTempora.style.opacity = '1'; // Torna visível
+
+        // Ocultar a mensagem após 3 segundos
+        setTimeout(() => {
+            mensagemTempora.style.right = '-300px'; // Move para fora da tela
+            mensagemTempora.style.opacity = '0'; // Torna invisível
+
+            // Após a transição, esconde completamente
+            setTimeout(() => {
+                mensagemTempora.style.display = 'none';
+            }, 500); // Tempo correspondente à duração da transição de saída
+        }, 3000); // Exibe a mensagem por 3 segundos
+    }
+
     // Função para formatar a data no padrão brasileiro (dd/mm/aaaa)
     const formatDate = (dateString) => {
         const options = { day: '2-digit', month: '2-digit', year: 'numeric' };
@@ -38,7 +56,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 <tr>
                     <td>${manutencao.lugar}</td>
                     <td>${manutencao.modelo_marca}</td>
-                    <td>${manutencao.tipo_manutencao}</td> <!-- Corrigido aqui para exibir o tipo de manutenção -->
+                    <td>${manutencao.tipo_manutencao}</td>
                     <td>${manutencao.nome}</td>
                     <td>${formatDate(manutencao.data_manutencao)}</td>
                     <td class="lupaElixeira">
@@ -79,11 +97,7 @@ document.addEventListener('DOMContentLoaded', () => {
             if (response.ok) {
                 confirmarExcluirDiv.style.display = 'none';
                 overlay.style.display = 'none';
-                mensagemTempora.style.display = 'block';
-
-                setTimeout(() => {
-                    mensagemTempora.style.display = 'none';
-                }, 3000);
+                exibirMensagemTempora(); // Exibe a mensagem temporária após exclusão
 
                 fetchManutencao();
             } else {

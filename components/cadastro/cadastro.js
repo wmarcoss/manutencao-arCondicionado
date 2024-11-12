@@ -14,7 +14,7 @@ document.getElementById('cadastroForm').addEventListener('submit', async functio
 
     // Enviar dados para o backend
     try {
-        const response = await fetch('/cadastro', {
+        const response = await fetch('http://localhost:3000/cadastro', {  // Altere para a URL completa do backend
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -25,11 +25,16 @@ document.getElementById('cadastroForm').addEventListener('submit', async functio
         const result = await response.json();
         if (response.ok) {
             alert(result.message);
-            window.location.href = '../login/login.html'; // Redireciona para a página de login
+            window.location.replace('../login/login.html'); // Redireciona para a mesma aba da página de login
         } else {
             alert(result.error);
         }
     } catch (error) {
         console.error('Erro ao registrar:', error);
     }
+});
+
+// Evento para redirecionar ao clicar em "Cancelar"
+document.getElementById('cancelar').addEventListener('click', function() {
+    window.location.replace('../login/login.html'); // Redireciona para a mesma aba da página de login
 });

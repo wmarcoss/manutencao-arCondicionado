@@ -13,26 +13,25 @@
                 <img id="logo" src="../../assets/images/logo.png" alt="logo">
             </div>
 
-            <form>
+            <form id="cadastroForm">
                 <div id="cad-box"><h2 id="cadastro">CADASTRO</h2></div>
 
                 <div class="preenchiveis">
                     <div class="inputs">
-                        <input type="text" placeholder="Nome" required>
-                        <input type="text" placeholder="E-mail" required>
-                        <input type="text" placeholder="Senha" required>
-                        <input type="text" placeholder="Confirmar senha" required>
+                        <input type="text" id="nomeUser" placeholder="Nome" required>
+                        <input type="email" id="email" placeholder="E-mail" required>
+                        <input type="password" id="senha" placeholder="Senha" required>
+                        <input type="password" id="confirmarSenha" placeholder="Confirmar senha" required>
                     </div>
                 </div>
 
                 <div class="botoes">
-                    <a href="../login/login.html"><button id="cancelar">Cancelar</button></a>
+                    <button type="button" id="cancelar">Cancelar</button>
                     <button id="botao-confirmar" type="submit">Confirmar</button>
                 </div>
-
             </form>
         </div>
     </main>
-    <script src="../cadastro/cadastro.js"></script>
+    <script src="../cadastro/cadastro.js"></script> <!-- Caminho correto para o script -->
 </body>
 </html>

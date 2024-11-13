@@ -7,6 +7,24 @@ document.addEventListener('DOMContentLoaded', () => {
     const refreshButton = document.getElementById('refresh');
     let currentDeleteId = null;
 
+    // Função para exibir a mensagem temporária
+    function exibirMensagemTempora() {
+        mensagemTempora.style.display = 'block'; // Torna o elemento visível
+        mensagemTempora.style.right = '20px'; // Move para a tela
+        mensagemTempora.style.opacity = '1'; // Torna visível
+
+        // Ocultar a mensagem após 3 segundos
+        setTimeout(() => {
+            mensagemTempora.style.right = '-300px'; // Move para fora da tela
+            mensagemTempora.style.opacity = '0'; // Torna invisível
+
+            // Após a transição, esconde completamente
+            setTimeout(() => {
+                mensagemTempora.style.display = 'none';
+            }, 500); // Tempo correspondente à duração da transição de saída
+        }, 3000); // Exibe a mensagem por 3 segundos
+    }
+
     // Função para formatar a data no padrão brasileiro (dd/mm/aaaa)
     const formatDate = (dateString) => {
         const options = { day: '2-digit', month: '2-digit', year: 'numeric' };
@@ -27,7 +45,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             if (!response.ok) {
                 if (response.status === 404) {
-                    historicList.innerHTML = '<tr><td colspan="5">Nenhuma manutenção encontrada.</td></tr>';
+                    historicList.innerHTML = '<tr><td colspan="7">Nenhuma manutenção encontrada.</td></tr>';
                     return;
                 }
                 throw new Error('Erro ao buscar manutenção');
@@ -38,15 +56,17 @@ document.addEventListener('DOMContentLoaded', () => {
                 <tr>
                     <td>${manutencao.lugar}</td>
                     <td>${manutencao.modelo_marca}</td>
-                    <td>${formatDate(manutencao.data_manutencao)}</td>
+                    <td>${manutencao.tipo_manutencao}</td>
                     <td>${manutencao.nome}</td>
+                    <td>${formatDate(manutencao.data_manutencao)}</td>
                     <td class="lupaElixeira">
-                        <a href="../detalhes/detalhes.html?id=${manutencao.id}">
+                        <a href="../detalhes/detalhes.html?id=${manutencao.id}" title="Detalhes da manutenção">
                             <button>
                                 <img src="../../assets/icons/lupa.png" alt="lupa" style="width: 25px;">
                             </button>
                         </a>
-                        <button class="linkExcluir" data-id="${manutencao.id}">
+                        
+                        <button class="linkExcluir" data-id="${manutencao.id}" title="Excluir manutenção">
                             <img src="../../assets/icons/lixeira.png" alt="lixeira" style="width: 25px;">
                         </button>
                     </td>
@@ -77,11 +97,7 @@ document.addEventListener('DOMContentLoaded', () => {
             if (response.ok) {
                 confirmarExcluirDiv.style.display = 'none';
                 overlay.style.display = 'none';
-                mensagemTempora.style.display = 'block';
-
-                setTimeout(() => {
-                    mensagemTempora.style.display = 'none';
-                }, 3000);
+                exibirMensagemTempora(); // Exibe a mensagem temporária após exclusão
 
                 fetchManutencao();
             } else {
@@ -111,11 +127,13 @@ document.addEventListener('DOMContentLoaded', () => {
         let modelo = document.getElementById('modelo');
         let data = document.getElementById('data');
         let profissional = document.getElementById('profissional');
+        let tipo_manutencao = document.getElementById('tipo_manutencao');
 
         local.style.display = this.value === 'lugar' ? 'inline' : 'none';
         modelo.style.display = this.value === 'modelo_marca' ? 'inline' : 'none';
         data.style.display = this.value === 'data_manutencao' ? 'inline' : 'none';
         profissional.style.display = this.value === 'nome' ? 'inline' : 'none';
+        tipo_manutencao.style.display = this.value === 'tipo_manutencao' ? 'inline' : 'none';
 
         if (this.value === 'nome') {
             fetchProfissionais();
@@ -146,12 +164,14 @@ document.addEventListener('DOMContentLoaded', () => {
         const modelo_marca = document.getElementById('modelo').value;
         const data_manutencao = document.getElementById('data').value;
         const nome = document.getElementById('profissional').value;
+        const tipo_manutencao = document.getElementById('tipo_manutencao').value;
 
         return {
             lugar: lugar !== '' ? lugar : null,
             modelo_marca: modelo_marca !== '' ? modelo_marca : null,
             periodo: data_manutencao !== '' ? data_manutencao : null,
             nome: nome !== '' ? nome : null,
+            tipo_manutencao: tipo_manutencao !== '' ? tipo_manutencao : null,
         };
     };
 
@@ -162,6 +182,7 @@ document.addEventListener('DOMContentLoaded', () => {
         document.getElementById('modelo').disabled = true;
         document.getElementById('data').disabled = true;
         document.getElementById('profissional').disabled = true;
+        document.getElementById('tipo_manutencao').disabled = true;
         buscarButton.disabled = true;
     };
 
@@ -172,6 +193,7 @@ document.addEventListener('DOMContentLoaded', () => {
         document.getElementById('modelo').disabled = false;
         document.getElementById('data').disabled = false;
         document.getElementById('profissional').disabled = false;
+        document.getElementById('tipo_manutencao').disabled = false;
         buscarButton.disabled = false;
     };
 

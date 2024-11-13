@@ -26,6 +26,7 @@
                 <option value="modelo_marca">Modelo</option>
                 <option value="data_manutencao">Data</option>
                 <option value="nome">Profissional</option>
+                <option value="tipo_manutencao">Tipo manutenção</option>
             </select>
 
             <select id="local">
@@ -67,6 +68,12 @@
             <select id="profissional">
                 <option value="">Selecione o Profissional</option>
             </select>
+
+            <select id="tipo_manutencao">
+                <option value="">Selecione o tipo</option>
+                <option value="Corretiva">Corretiva</option>
+                <option value="Preventiva">Preventiva</option>
+            </select>
             
                 <div class="botao-buscar">
                     <button id="buscar">Buscar</button>
@@ -82,15 +89,16 @@
 
             <div id="overlay" style="display: none;">
                 <div class="confirmar_excluir">
-                    <h4>Deseja realmente excluir a manutenção?</h4>
+                    <h3>Deseja realmente excluir a manutenção?</h3>
+                    <p>A exclusão da manutenção será irreversível!</p>
                     <div id="botoesConfirmacao">
-                        <button id="check"><img src="../../assets/icons/check-icon.png" alt="check" style="width: 25px;"></button>
-                        <button id="close"><img id="close" src="../../assets/icons/close-icon.png" alt="close" style="width: 25px;"></button>
+                        <button id="close">Cancelar</button>
+                        <button id="check">Confirmar</button>
                     </div>
                 </div>
             </div>
             
-            <!-- Mensagem Temporária de Exclusão Bem-Sucedida -->
+
             <div class="mensagem_tempora" id="mensagemTempora" style="display: none;">
                 <p>Manutenção excluída com sucesso!</p>
             </div>
@@ -100,14 +108,15 @@
                     <tr>
                         <th>LOCAL</th>
                         <th>MODELO</th>
-                        <th>DATA</th>
-                        <th>PROFISSIONAL</th>
-                        <th>OPÇÕES</th>
+                        <th id="thTipo">TIPO DE MANUTENÇÃO</th>
+                        <th id="thProfissional">PROFISSIONAL</th>
+                        <th id="thData">DATA</th>
+                        <th id="thOpcoes">OPÇÕES</th>
                     </tr>
                 </thead>
-
-                <tbody id="historicList"></tbody> <!-- Aqui o ID está correto -->
+                <tbody id="historicList"></tbody>
             </table>
+                        
         </div>
     </main>
     

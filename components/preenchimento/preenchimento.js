@@ -70,8 +70,11 @@ document.addEventListener("DOMContentLoaded", function() {
             // Exibir a mensagem temporária de sucesso
             exibirMensagemTempora();
 
-            // Limpa o formulário após salvar
-            document.getElementById('manutencao-form').reset();
+            // Redireciona
+            setTimeout(() => {
+                window.location.href = `../historico/historico.html`;
+            }, 3500); // Redireciona após 3.5 segundos (ajustando para o tempo de transição da mensagem)
+
         })
         .catch(error => {
             console.error('Erro:', error);

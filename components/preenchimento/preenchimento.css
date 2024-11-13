@@ -154,8 +154,7 @@ textarea {
 }
 
 #salvar:hover, #cancelar:hover {
-    transform: scale(1.08); 
-    filter: brightness(1.5); 
+    filter: brightness(1.3); 
     transition: transform 0.3s ease, filter 0.3s ease; 
 }
 
@@ -168,6 +167,36 @@ textarea {
     background-color: white;
     color: black;
 }
+
+#textCancelar {
+    text-decoration: none;
+    font-weight: bold;
+}
+
+
+#detalhes, #observacoes {
+    display: block;
+    width: 1009px;
+    height: 80px;
+    padding: 8px;
+    border-radius: 8px;
+    box-shadow: 2px 4px 5px rgba(0, 0, 0, 0.548);
+}
+
+::placeholder {
+    padding-left: 1px;
+    padding-top: 2px;
+}
+
+#detalhes, #observacoes {
+    display: block;
+    width: 996px; 
+    height: 96px;
+    padding: 8px;
+    border-radius: 8px;
+    box-shadow: 2px 4px 5px rgba(0, 0, 0, 0.548);
+}
+
 
 .mensagem_tempora {
     display: none;

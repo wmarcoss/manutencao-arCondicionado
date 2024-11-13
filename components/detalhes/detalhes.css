@@ -39,16 +39,26 @@ body {
     align-items: center;
 }
 
-#botao-editar {
+.botao-editar {
     position: absolute;
-    margin-top: -1.7%;
+    margin-top: -1%;
     display: flex;
+    gap: 16px;
 }
 
-#botao-editar:hover{
-    transform: scale(1.08); 
+#editar-text:hover, #cancelar-text:hover{
     filter: brightness(1.5); 
     transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+#cancelar-text {
+    padding: 8px 16px 8px 16px;
+    border-radius: 12px;
+    background-color: white;
+    color: black;
+    cursor: pointer;
+    border: none;
+    text-decoration: none;
 }
 
 #editar-text {
@@ -94,7 +104,7 @@ td {
     display: flex;
     flex-direction: column;
     position: absolute;
-    margin-top: 120px;
+    margin-top: 60px;
 }
 
 ::placeholder {

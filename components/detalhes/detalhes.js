@@ -65,7 +65,8 @@ document.addEventListener("DOMContentLoaded", function() {
             document.getElementById('observacoes').innerText = manutencao.observacoes || '';
 
             // Adicionar o ID ao link do botão de edição
-            document.getElementById('botao-editar').querySelector('a').href = `../edit/edit.html?id=${id}`;
+            const editarLink = document.getElementById('editar-text');
+            editarLink.href = `../edit/edit.html?id=${id}`; // Atualiza o link de edição com o ID
         } catch (error) {
             console.error('Erro:', error);
         }

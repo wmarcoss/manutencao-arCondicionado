@@ -1,0 +1,128 @@
+@charset "UTF-8";
+@import url("../header/header.css");
+@import url("../footer/footer.css");
+
+* {
+    margin: 0px;
+    padding: 0px;
+    font-family: sans-serif;
+}
+
+:root {
+    --cor0: #FFFF;
+    --cor2: #D7D7D7;
+    --cor3: #0054A6;
+}
+
+body {
+    background-color: var(--cor3);
+}
+
+main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container {
+    display: flex;
+    width: 450px;
+    height: 480px;
+    justify-content: center;
+    border: 4px solid white;
+    border-radius: 32px;
+    margin-top: 100px;
+    box-shadow: 6px 6px 18px rgba(0, 0, 0, 0.726);
+}
+
+#box-logo {
+    display: flex;
+    position: absolute;
+    margin-top: -5%;
+    background-color: var(--cor3);
+}
+
+#cad-box {
+    display: flex;
+    justify-content: center;
+    margin-top: 80px;
+    margin-bottom: 24px;
+    color: white;
+}
+
+input {
+    height: 30px;
+    width: 360px;
+    border-radius: 8px;
+    border-style: none;
+    padding: 6px;
+    padding-left: 50px;
+}
+
+.inputs {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    margin-bottom: 24px;
+}
+
+.input-email {
+    position: relative;
+}
+
+#user-icon, #email-icon, #password-icon, #confirmar-icon {
+    width: 20px; 
+    padding: 11px; 
+    margin-left: 0px; 
+    border-top-left-radius: 8px; 
+    border-bottom-left-radius: 8px; 
+    position: absolute; 
+    background-color: var(--cor2);
+}
+
+#eye-icon, #eye-icon-confirm {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    width: 20px;
+    height: 20px;
+}
+
+input[type="password"] {
+    padding-right: 6px; /* Espaço para o ícone do olho */
+}
+
+.botoes {
+    display: flex;
+    gap: 16px;
+}
+
+#botao-confirmar, #cancelar {
+    border: none;
+    padding: 8px 16px;
+    border-radius: 12px;
+    cursor: pointer;
+}
+
+#botao-confirmar:hover, #cancelar:hover {
+    filter: brightness(1.3); 
+    transition: transform 0.3s ease, filter 0.3s ease; 
+}
+
+#botao-confirmar {
+    background-color: white;
+    color: black;
+}
+
+#cancelar {
+    background-color: var(--cor3);
+    color: white;
+    border: 1px solid white;
+}
+
+#textCancelar {
+    text-decoration: none;
+    font-weight: bold;
+}

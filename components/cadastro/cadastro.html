@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./cadastro.css">
+    <title>Cadastro</title>
+</head>
+<body>
+    <main>
+        <div class="container">
+            <div id="box-logo">
+                <img id="logo" src="../../assets/images/logo.png" alt="logo">
+            </div>
+
+            <form id="cadastroForm">
+                <div id="cad-box"><h2 id="cadastro">CADASTRO</h2></div>
+
+                <div class="preenchiveis">
+                    <div class="inputs">
+                        <div class="input-email">
+                            <img id="user-icon" src="../../assets/icons/user.png" alt="user">
+                            <input id="nomeUser" type="text" placeholder="Nome e sobrenome" required>
+                        </div>                        
+                        <div class="input-email">
+                            <img id="email-icon" src="../../assets/icons/email.png" alt="email">
+                            <input id="email" type="email" placeholder="E-mail" required>
+                        </div>                         
+                        <div class="input-email">
+                            <img id="password-icon" src="../../assets/icons/password.png" alt="password">
+                            <input id="senha" type="password" placeholder="Senha" required>
+                            <img id="eye-icon" src="../../assets/icons/olhin fechado.png" alt="eye" onclick="togglePasswordVisibility()">
+                        </div>
+                        <div class="input-email">
+                            <img id="confirmar-icon" src="../../assets/icons/password.png" alt="password">
+                            <input id="confirmarSenha" type="password" placeholder="Confirmar senha" required>
+                            <img id="eye-icon-confirm" src="../../assets/icons/olhin fechado.png" alt="eye" onclick="toggleConfirmPasswordVisibility()">
+                        </div>  
+                                           
+                    </div>
+                </div>
+
+                <div class="botoes">
+                    <button type="button" id="cancelar">Cancelar</button>
+                    <button id="botao-confirmar" type="submit">Confirmar</button>
+                </div>
+            </form>
+        </div>
+    </main>
+    <script src="../cadastro/cadastro.js"></script> <!-- Caminho correto para o script -->
+</body>
+</html>

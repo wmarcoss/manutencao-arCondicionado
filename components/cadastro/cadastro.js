@@ -14,7 +14,7 @@ document.getElementById('cadastroForm').addEventListener('submit', async functio
 
     // Enviar dados para o backend
     try {
-        const response = await fetch('http://localhost:3000/cadastro', {  
+        const response = await fetch('http://localhost:3000/cadastro', {  // Altere para a URL completa do backend
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -25,7 +25,7 @@ document.getElementById('cadastroForm').addEventListener('submit', async functio
         const result = await response.json();
         if (response.ok) {
             alert(result.message);
-            window.location.replace('../login/login.html'); 
+            window.location.replace('../login/login.html'); // Redireciona para a mesma aba da página de login
         } else {
             alert(result.error);
         }
@@ -36,7 +36,6 @@ document.getElementById('cadastroForm').addEventListener('submit', async functio
 
 // Evento para redirecionar ao clicar em "Cancelar"
 document.getElementById('cancelar').addEventListener('click', function() {
-<<<<<<< HEAD
     window.location.replace('../login/login.html'); // Redireciona para a mesma aba da página de login
 });
 
@@ -69,7 +68,3 @@ function toggleConfirmPasswordVisibility() {
         eyeIconConfirm.src = "../../assets/icons/olhin fechado.png"; // ícone para senha oculta
     }
 }
-=======
-    window.location.replace('../login/login.html'); 
-});
->>>>>>> 74d955f0759eea65d795a4d4a8ce81b976dd96a0

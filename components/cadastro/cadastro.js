@@ -6,6 +6,27 @@ document.getElementById('cadastroForm').addEventListener('submit', async functio
     const senha = document.getElementById('senha').value;
     const confirmarSenha = document.getElementById('confirmarSenha').value;
 
+    // Validação de nome e sobrenome (apenas letras e ao menos dois nomes)
+    const nomeRegex = /^[A-Za-zÀ-ÖØ-öø-ÿ]+(?: [A-Za-zÀ-ÖØ-öø-ÿ]+)+$/;
+    if (!nomeRegex.test(nomeUser)) {
+        alert('Por favor, insira seu nome completo (nome e sobrenome), sem números.');
+        return;
+    }
+
+    // Validação de e-mail com regex
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) {
+        alert('Por favor, insira um e-mail válido.');
+        return;
+    }
+
+    // Validação de senha (mínimo 8 caracteres, ao menos 1 número, 1 caractere especial, e 1 letra maiúscula)
+    const senhaRegex = /^(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]).{8,}$/;
+    if (!senhaRegex.test(senha)) {
+        alert('A senha deve ter no mínimo 8 caracteres, incluindo ao menos 1 número, 1 caractere especial e 1 letra maiúscula.');
+        return;
+    }
+
     // Verifica se as senhas coincidem
     if (senha !== confirmarSenha) {
         alert('As senhas não coincidem!');
@@ -41,7 +62,7 @@ document.getElementById('cancelar').addEventListener('click', function() {
 
 // Função para alternar a visibilidade da senha
 function togglePasswordVisibility() {
-    const passwordField = document.getElementById('password');
+    const passwordField = document.getElementById('senha');
     const eyeIcon = document.getElementById('eye-icon');
     
     // Verifica o tipo do campo de senha e alterna
@@ -56,7 +77,7 @@ function togglePasswordVisibility() {
 
 // Função para alternar a visibilidade da confirmação de senha
 function toggleConfirmPasswordVisibility() {
-    const confirmPasswordField = document.getElementById('confirmPassword');
+    const confirmPasswordField = document.getElementById('confirmarSenha');
     const eyeIconConfirm = document.getElementById('eye-icon-confirm');
     
     // Verifica o tipo do campo de confirmação de senha e alterna

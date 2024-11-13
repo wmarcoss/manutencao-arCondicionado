@@ -18,10 +18,19 @@
 
                 <div class="preenchiveis">
                     <div class="inputs">
-                        <input type="text" id="nomeUser" placeholder="Nome" required>
-                        <input type="email" id="email" placeholder="E-mail" required>
-                        <input type="password" id="senha" placeholder="Senha" required>
-                        <input type="password" id="confirmarSenha" placeholder="Confirmar senha" required>
+                        <div class="input-email">
+                            <img id="user-icon" src="../../assets/icons/user.png" alt="user">
+                            <input type="text" placeholder="Nome e sobrenome" required>
+                        </div>
+                        <div class="input-email">
+                            <img id="email-icon" src="../../assets/icons/email.png" alt="email">
+                            <input type="text" placeholder="E-mail" required>
+                        </div> 
+                        <div class="input-email">
+                            <img id="password-icon" src="../../assets/icons/password.png" alt="password">
+                            <input id="password" type="password" placeholder="Senha" required>
+                            <img id="eye-icon" src="../../assets/icons/olhin fechado.png" alt="eye" onclick="togglePasswordVisibility()">
+                        </div>                    
                     </div>
                 </div>
 

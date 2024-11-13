@@ -22,27 +22,22 @@
                                 <img id="email-icon" src="../../assets/icons/email.png" alt="email">
                                 <input type="text" placeholder="E-mail" required>
                             </div>
-                            <div class="input-password">
+                            <div class="input-email">
                                 <img id="password-icon" src="../../assets/icons/password.png" alt="password">
-                                <input type="text" placeholder="Senha" required>
-                            </div>
-
-                            <div id="box-checkbox">
-                                <label>
-                                    <input id="box" type="checkbox" style="width: 17px;">Mostrar senha
-                                </label>
-                            </div>
-                            
+                                <input id="password" type="password" placeholder="Senha" required>
+                                <img id="eye-icon" src="../../assets/icons/olhin fechado.png" alt="eye" onclick="togglePasswordVisibility()">
+                            </div>           
                         </div>  
                 </div>
                 
                 <div class="botoes">
-                    <button id="botao-login">Login</button>
+                    <button id="botao-login">LOGIN</button>
                     <p>Não possui uma conta? <a id="cadastre-se" href="../cadastro/cadastro.html">Cadastre-se</a></p>
                 </div>
 
             </form>
         </div>
     </main>
+    <script src="../login/login.js"></script> <!-- Caminho correto para o script -->
 </body>
 </html>

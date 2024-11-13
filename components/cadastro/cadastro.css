@@ -52,10 +52,11 @@ main {
 
 input {
     height: 30px;
-    width: 380px;
+    width: 360px;
     border-radius: 8px;
     border-style: none;
     padding: 6px;
+    padding-left: 50px;
 }
 
 .inputs {
@@ -65,15 +66,37 @@ input {
     margin-bottom: 24px;
 }
 
+.input-email {
+    position: relative;
+}
+
+#user-icon, #email-icon, #password-icon, #confirmar-icon {
+    width: 20px; 
+    padding: 11px; 
+    margin-left: 0px; 
+    border-top-left-radius: 8px; 
+    border-bottom-left-radius: 8px; 
+    position: absolute; 
+    background-color: var(--cor2);
+}
+
+#eye-icon, #eye-icon-confirm {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    width: 20px;
+    height: 20px;
+}
+
+input[type="password"] {
+    padding-right: 6px; /* Espaço para o ícone do olho */
+}
+
 .botoes {
     display: flex;
     gap: 16px;
-}
-
-.botoao-confirmar {
-    display: flex;
-    margin-top: 32px;
-    margin-left: 0%;
 }
 
 #botao-confirmar, #cancelar {
@@ -89,15 +112,14 @@ input {
 }
 
 #botao-confirmar {
-    background-color: var(--cor3);
-    color: white;
-    border: 1px solid white;
-
+    background-color: white;
+    color: black;
 }
 
 #cancelar {
-    background-color: white;
-    color: black;
+    background-color: var(--cor3);
+    color: white;
+    border: 1px solid white;
 }
 
 #textCancelar {

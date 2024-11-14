@@ -22,76 +22,102 @@
     
             <div class="select">
                 <label for="local">Local *
-                    <select name="local" id="local" required>
-                        <option disabled selected value="">Selecione o local</option>
-                        <option value="1° A">1° A</option>
-                        <option value="1° B">1° B</option>
-                        <option value="1° C">1° C</option>
-                        <option value="2° A">2° A</option>
-                        <option value="2° B">2° B</option>
-                        <option value="2° C">2° C</option>
-                        <option value="3° A">3° A</option>
-                        <option value="3° B">3° B</option>
-                        <option value="3° C">3° C</option>
-                        <option value="Laboratorio de informática">Laboratorio de informática</option>
-                        <option value="Sala de estudos">Sala de estudos</option>
-                    </select>
+                    <div>
+                        <img id="local-icon" src="../../assets/icons/local.png" alt="local">
+                        <select name="local" id="local" required>
+                            <option disabled selected >Selecione o local</option>
+                            <option value="1° A">1° A</option>
+                            <option value="1° B">1° B</option>
+                            <option value="1° C">1° C</option>
+                            <option value="2° A">2° A</option>
+                            <option value="2° B">2° B</option>
+                            <option value="2° C">2° C</option>
+                            <option value="3° A">3° A</option>
+                            <option value="3° B">3° B</option>
+                            <option value="3° C">3° C</option>
+                            <option value="Laboratorio de informática">Laboratorio de informática</option>
+                            <option value="Sala de estudos">Sala de estudos</option>
+                        </select>
+                    </div>
                 </label>
     
-                <label for="modelo">Modelo e Marca * 
-                    <select name="modelo" id="modelo" required>
-                        <option disabled selected value="">Selecione o fabricante e modelo</option>
-                        <option value="Carrier Eco Saver Puron">Carrier Eco Saver Puron</option>
-                        <option value="Daikin FTXS25J">Daikin FTXS25J</option>
-                        <option value="LG-Dual Inverter">LG-Dual Inverter</option>
-                        <option value="Inversor Fujitsu">Inversor Fujitsu</option>
-                        <option value="Midea Liva Wi-Fi">Midea Liva Wi-Fi</option>
-                        <option value="Gree Eco Garden">Gree Eco Garden</option>
-                        <option value="Outros">Outros</option>
-                    </select>
-                </label>
+                <div>
+                    <label for="modelo">Modelo e Marca *
+                        <div>
+                            <img id="tipoManu-icon" src="../../assets/icons/modeloEmarca.png" alt="manutenção">
+                            <select name="modelo" id="modelo" required>
+                                <option disabled selected value="">Selecione o fabricante e modelo</option>
+                                <option value="Carrier Eco Saver Puron">Carrier Eco Saver Puron</option>
+                                <option value="Daikin FTXS25J">Daikin FTXS25J</option>
+                                <option value="LG-Dual Inverter">LG-Dual Inverter</option>
+                                <option value="Inversor Fujitsu">Inversor Fujitsu</option>
+                                <option value="Midea Liva Wi-Fi">Midea Liva Wi-Fi</option>
+                                <option value="Gree Eco Garden">Gree Eco Garden</option>
+                                <option value="Outros">Outros</option>
+                            </select>
+                        </div>
+                    </label>
+                </div>
             </div>
     
             <div class="select">
-                <label for="tipo-manutencao">Tipo da manutenção *
-                    <select name="tipo-manutencao" id="tipo-manutencao" required>
-                        <option disabled selected value="">Selecione o tipo</option>
-                        <option value="Preventiva">Preventiva</option>
-                        <option value="Corretiva">Corretiva</option>
-                    </select>
-                </label>
+                    <label for="tipo-manutencao">Tipo da manutenção *
+                        <div>
+                            <img id="tipoManu-icon" src="../../assets/icons/tipoManu.png" alt="manutenção">
+                            <select name="tipo-manutencao" id="tipo-manutencao" required>
+                                <option disabled selected value="">Selecione o tipo</option>
+                                <option value="Preventiva">Preventiva</option>
+                                <option value="Corretiva">Corretiva</option>
+                            </select>
+                        </div>
+                    </label>
     
                 <label for="tipo-conserto">Tipo de conserto *
-                    <select name="tipo-conserto" id="tipo-conserto" required>
-                        <option disabled selected value="">Selecione o tipo</option>
-                        <option value="Limpeza dos filtros de ar">Limpeza dos filtros de ar</option>
-                        <option value="Substituição dos filtros">Substituição dos filtros</option>
-                        <option value="Limpeza de dreno">Limpeza de dreno</option>
-                        <option value="Medição de tensão elétrica">Medição de tensão elétrica</option>
-                        <option value="Medição de temperatura do ar">Medição de temperatura do ar</option>
-                        <option value="Verificação do estado dos filtros">Verificação do estado dos filtros</option>
-                        <option value="Outros">Outros</option>
-                    </select>
+                    <div>
+                        <img id="tipoManu-icon" src="../../assets/icons/tipoConsert.png" alt="manutenção">
+                        <select name="tipo-conserto" id="tipo-conserto" required>
+                            <option disabled selected value="">Selecione o tipo</option>
+                            <option value="Limpeza dos filtros de ar">Limpeza dos filtros de ar</option>
+                            <option value="Substituição dos filtros">Substituição dos filtros</option>
+                            <option value="Limpeza de dreno">Limpeza de dreno</option>
+                            <option value="Medição de tensão elétrica">Medição de tensão elétrica</option>
+                            <option value="Medição de temperatura do ar">Medição de temperatura do ar</option>
+                            <option value="Verificação do estado dos filtros">Verificação do estado dos filtros</option>
+                            <option value="Outros">Outros</option>
+                        </select>
+                    </div>
                 </label>
             </div>
     
             <div class="preenchiveis">
                 <label for="data">Data *
-                    <input id="data" type="date" required>
+                    <div>
+                        <img id="calendario-icon" src="../../assets/icons/calendario.png" alt="data">
+                        <input id="data" type="date" required>
+                    </div>
                 </label>
                 
                 <label for="data2">Previsão da próxima manutenção
-                    <input id="data2" type="date">
+                    <div>
+                        <img id="calendario-icon" src="../../assets/icons/calendario.png" alt="data">
+                        <input id="data2" type="date">
+                    </div>
                 </label>
             </div>
     
             <div class="preenchiveis2">
                 <label for="profissional">Profissional *
-                    <input id="profissional" type="text" placeholder="Digite seu nome" required>
+                    <div>
+                        <img id="profissional-icon" src="../../assets/icons/user.png" alt="profissional">
+                        <input id="profissional" type="text" placeholder="Digite seu nome" required>
+                    </div>
                 </label>
     
                 <label for="custo">Custo (opcional, caso o profissional seja terceirizado)
-                    <input id="custo" type="number" placeholder="R$">
+                    <div>
+                        <img id="custo-icon" src="../../assets/icons/custo.png" alt="custo">
+                        <input id="custo" type="number" placeholder="R$">
+                    </div>
                 </label>
             </div>
     

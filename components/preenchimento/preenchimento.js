@@ -105,3 +105,8 @@ function exibirMensagemTempora() {
 document.getElementById('cancelar').addEventListener('click', function() {
     document.getElementById('manutencao-form').reset(); // Reseta o formulário
 });
+
+function mostrarCalendario() {
+    const inputDate = document.getElementById('calendario-icon');
+    inputDate.focus(); // Isso simula o clique e abre o seletor de data
+}

@@ -13,28 +13,27 @@
                 <img id="logo" src="../../assets/images/logo.png" alt="logo">
             </div>
 
-            <form>
+            <form id="login-form">
                 <div id="cad-box"><h2 id="cadastro">LOGIN</h2></div>
 
-                    <div class="preenchiveis">
-                        <div class="inputs">
-                            <div class="input-email">
-                                <img id="email-icon" src="../../assets/icons/email.png" alt="email">
-                                <input type="text" placeholder="E-mail" required>
-                            </div>
-                            <div class="input-email">
-                                <img id="password-icon" src="../../assets/icons/password.png" alt="password">
-                                <input id="password" type="password" placeholder="Senha" required>
-                                <img id="eye-icon" src="../../assets/icons/olhin fechado.png" alt="eye" onclick="togglePasswordVisibility()">
-                            </div>           
-                        </div>  
+                <div class="preenchiveis">
+                    <div class="inputs">
+                        <div class="input-email">
+                            <img id="email-icon" src="../../assets/icons/email.png" alt="email">
+                            <input type="text" id="email" placeholder="E-mail" required>
+                        </div>
+                        <div class="input-email">
+                            <img id="password-icon" src="../../assets/icons/password.png" alt="password">
+                            <input id="password" type="password" placeholder="Senha" required>
+                            <img id="eye-icon" src="../../assets/icons/olhin fechado.png" alt="eye" onclick="togglePasswordVisibility()">
+                        </div>           
+                    </div>  
                 </div>
                 
                 <div class="botoes">
-                    <button id="botao-login">LOGIN</button>
+                    <button type="submit" id="botao-login">LOGIN</button>
                     <p>Não possui uma conta? <a id="cadastre-se" href="../cadastro/cadastro.html">Cadastre-se</a></p>
                 </div>
-
             </form>
         </div>
     </main>

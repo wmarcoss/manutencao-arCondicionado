@@ -7,6 +7,41 @@ document.addEventListener('DOMContentLoaded', () => {
     const refreshButton = document.getElementById('refresh');
     let currentDeleteId = null;
 
+    // Função para validar o token
+    const validateToken = async () => {
+        const token = localStorage.getItem('token');
+
+        if (!token) {
+            // Se não houver token, redireciona para a página de login
+            window.location.href = './login.html';
+            return;
+        }
+
+        try {
+            const response = await fetch('http://localhost:3000/verifica-token', {
+                method: 'POST',
+                headers: {
+                    'Authorization': `Bearer ${token}`,
+                    'Content-Type': 'application/json'
+                }
+            });
+
+            const data = await response.json();
+            if (!data.auth) {
+                // Se o token não for válido, redireciona para o login
+                localStorage.removeItem('token');  // Remove o token inválido
+                window.location.href = './login.html';
+            }
+        } catch (error) {
+            console.error('Erro na verificação do token:', error);
+            localStorage.removeItem('token');
+            window.location.href = './login.html';
+        }
+    };
+
+    // Chama a função de validação de token ao carregar a página
+    validateToken();
+
     // Função para exibir a mensagem temporária
     function exibirMensagemTempora() {
         mensagemTempora.style.display = 'block'; // Torna o elemento visível
@@ -52,7 +87,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }
 
             const data = await response.json();
-            historicList.innerHTML = data.map(manutencao => `
+            historicList.innerHTML = data.map(manutencao => ` 
                 <tr>
                     <td>${manutencao.lugar}</td>
                     <td>${manutencao.modelo_marca}</td>
@@ -65,7 +100,6 @@ document.addEventListener('DOMContentLoaded', () => {
                                 <img src="../../assets/icons/lupa.png" alt="lupa" style="width: 25px;">
                             </button>
                         </a>
-                        
                         <button class="linkExcluir" data-id="${manutencao.id}" title="Excluir manutenção">
                             <img src="../../assets/icons/lixeira.png" alt="lixeira" style="width: 25px;">
                         </button>
@@ -98,7 +132,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 confirmarExcluirDiv.style.display = 'none';
                 overlay.style.display = 'none';
                 exibirMensagemTempora(); // Exibe a mensagem temporária após exclusão
-
                 fetchManutencao();
             } else {
                 alert('Erro ao deletar manutenção');
@@ -122,7 +155,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // Mostrar os selects com base na opção selecionada
-    document.getElementById('filtrar').addEventListener('change', function() {
+    document.getElementById('filtrar').addEventListener('change', function () {
         let local = document.getElementById('local');
         let modelo = document.getElementById('modelo');
         let data = document.getElementById('data');

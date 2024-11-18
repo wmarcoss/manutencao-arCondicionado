@@ -6,31 +6,48 @@ document.getElementById('cadastroForm').addEventListener('submit', async functio
     const senha = document.getElementById('senha').value;
     const confirmarSenha = document.getElementById('confirmarSenha').value;
 
+    const nomeError = document.getElementById('nomeError'); // Referência ao span de erro do nome
+    const emailError = document.getElementById('emailError'); // Referência ao span de erro do email
+    const senhaError = document.getElementById('senhaError'); // Referência ao span de erro da senha
+    const confirmarSenhaError = document.getElementById('confirmarSenhaError'); // Referência ao span de erro da confirmarSenha
+
     // Validação de nome e sobrenome (apenas letras e ao menos dois nomes)
     const nomeRegex = /^[A-Za-zÀ-ÖØ-öø-ÿ]+(?: [A-Za-zÀ-ÖØ-öø-ÿ]+)+$/;
     if (!nomeRegex.test(nomeUser)) {
-        alert('Por favor, insira seu nome completo (nome e sobrenome), sem números.');
+        nomeError.textContent = 'Por favor, insira seu nome completo (nome e sobrenome), sem números.';
+        nomeError.style.display = 'block'; // Exibe a mensagem de erro
         return;
+    } else {
+        nomeError.style.display = 'none'; // Esconde a mensagem de erro se o nome for válido
     }
 
     // Validação de e-mail com regex
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!emailRegex.test(email)) {
-        alert('Por favor, insira um e-mail válido.');
+        emailError.textContent = 'Por favor, insira um e-mail válido.';
+        emailError.style.display = 'block'; // Exibe a mensagem de erro
         return;
+    } else {
+        emailError.style.display = 'none'; // Esconde a mensagem de erro se o email for válido
     }
 
     // Validação de senha (mínimo 8 caracteres, ao menos 1 número, 1 caractere especial, e 1 letra maiúscula)
     const senhaRegex = /^(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]).{8,}$/;
     if (!senhaRegex.test(senha)) {
-        alert('A senha deve ter no mínimo 8 caracteres, incluindo ao menos 1 número, 1 caractere especial e 1 letra maiúscula.');
+        senhaError.textContent = 'Ao menos 8 caracteres, 1 número, 1 caractere especial e 1 letra maiúscula.';
+        senhaError.style.display = 'flex'; // Exibe a mensagem de erro
         return;
+    } else {
+        senhaError.style.display = 'flex'; // Esconde a mensagem de erro se a senha for válida
     }
 
     // Verifica se as senhas coincidem
     if (senha !== confirmarSenha) {
-        alert('As senhas não coincidem!');
+        confirmarSenhaError.textContent = 'As senhas não coincidem!';
+        confirmarSenhaError.style.display = 'block'; // Exibe a mensagem de erro
         return;
+    } else {
+        confirmarSenhaError.style.display = 'none'; // Esconde a mensagem de erro se as senhas coincidirem
     }
 
     // Enviar dados para o backend
@@ -65,7 +82,6 @@ function togglePasswordVisibility() {
     const passwordField = document.getElementById('senha');
     const eyeIcon = document.getElementById('eye-icon');
     
-    // Verifica o tipo do campo de senha e alterna
     if (passwordField.type === "password") {
         passwordField.type = "text";
         eyeIcon.src = "../../assets/icons/olhin.png"; // ícone para senha visível
@@ -80,7 +96,6 @@ function toggleConfirmPasswordVisibility() {
     const confirmPasswordField = document.getElementById('confirmarSenha');
     const eyeIconConfirm = document.getElementById('eye-icon-confirm');
     
-    // Verifica o tipo do campo de confirmação de senha e alterna
     if (confirmPasswordField.type === "password") {
         confirmPasswordField.type = "text";
         eyeIconConfirm.src = "../../assets/icons/olhin.png"; // ícone para senha visível

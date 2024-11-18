@@ -126,3 +126,14 @@ input[type="password"] {
     text-decoration: none;
     font-weight: bold;
 }
+
+/* Estilo para a mensagem de erro */
+.error-message {
+    color: red;
+    font-size: 12px;
+    position: absolute;
+    top: 100%; /* Coloca a mensagem abaixo do campo */
+    left: 0;
+    margin-top: 4px;
+    display: none; /* Inicialmente escondido */
+}

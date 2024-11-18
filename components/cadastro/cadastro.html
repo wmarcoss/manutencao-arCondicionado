@@ -21,22 +21,25 @@
                         <div class="input-email">
                             <img id="user-icon" src="../../assets/icons/user.png" alt="user">
                             <input id="nomeUser" type="text" placeholder="Nome e sobrenome" required>
+                            <span id="nomeError" class="error-message"></span> <!-- Mensagem de erro para nome -->
                         </div>                        
                         <div class="input-email">
                             <img id="email-icon" src="../../assets/icons/email.png" alt="email">
                             <input id="email" type="email" placeholder="E-mail" required>
+                            <span id="emailError" class="error-message"></span> <!-- Mensagem de erro para email -->
                         </div>                         
                         <div class="input-email">
                             <img id="password-icon" src="../../assets/icons/password.png" alt="password">
                             <input id="senha" type="password" placeholder="Senha" required>
                             <img id="eye-icon" src="../../assets/icons/olhin fechado.png" alt="eye" onclick="togglePasswordVisibility()">
+                            <span id="senhaError" class="error-message"></span> <!-- Mensagem de erro para senha -->
                         </div>
                         <div class="input-email">
                             <img id="confirmar-icon" src="../../assets/icons/password.png" alt="password">
                             <input id="confirmarSenha" type="password" placeholder="Confirmar senha" required>
                             <img id="eye-icon-confirm" src="../../assets/icons/olhin fechado.png" alt="eye" onclick="toggleConfirmPasswordVisibility()">
+                            <span id="confirmarSenhaError" class="error-message"></span> <!-- Mensagem de erro para confirmar senha -->
                         </div>  
-                                           
                     </div>
                 </div>
 

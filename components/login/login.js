@@ -6,10 +6,10 @@ function togglePasswordVisibility() {
     // Verifica o tipo do campo de senha e alterna
     if (passwordField.type === "password") {
         passwordField.type = "text";
-        eyeIcon.src = "../../assets/icons/olhin.png"; // ícone para senha visível
+        eyeIcon.src = "../../assets/icons/olhin.png"; // Ícone para senha visível
     } else {
         passwordField.type = "password";
-        eyeIcon.src = "../../assets/icons/olhin fechado.png"; // ícone para senha oculta
+        eyeIcon.src = "../../assets/icons/olhin fechado.png"; // Ícone para senha oculta
     }
 }
 
@@ -38,10 +38,10 @@ document.getElementById('login-form').addEventListener('submit', function (event
     .then(response => response.json())
     .then(data => {
         if (data.token) {
-            // Armazenando o token no localStorage
+            // Armazenar o token no localStorage
             localStorage.setItem('token', data.token);
 
-            // Redirecionar para a página de home
+            // Redirecionar o usuário para a página inicial
             window.location.href = '../home/home.html';
         } else {
             alert('Credenciais inválidas. Tente novamente.');
@@ -52,35 +52,3 @@ document.getElementById('login-form').addEventListener('submit', function (event
         alert('Erro ao tentar fazer login. Tente novamente mais tarde.');
     });
 });
-
-// Verificar se o usuário já está autenticado
-window.onload = () => {
-    const token = localStorage.getItem('token');
-    if (token) {
-        fetch('http://localhost:3000/verifica-token', {
-            method: 'POST',
-            headers: {
-                'Authorization': `Bearer ${token}`,
-                'Content-Type': 'application/json'
-            }
-        })
-        .then(response => response.json())
-        .then(data => {
-            if (data.auth) {
-                window.location.href = '../home/home.html'; // Redireciona para home se token for válido
-            } else {
-                alert('Token expirado ou inválido. Por favor, faça login novamente.');
-                localStorage.removeItem('token');
-                window.location.href = './login.html';
-            }
-        })
-        .catch(error => {
-            console.error('Erro na verificação do token:', error);
-            alert('Erro na verificação do token. Faça login novamente.');
-            localStorage.removeItem('token');
-            window.location.href = './login.html';
-        });
-    } else {
-        window.location.href = './login.html'; // Redireciona para login se não houver token
-    }
-};

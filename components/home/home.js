@@ -1,33 +1,35 @@
-document.addEventListener("DOMContentLoaded", function() {
-    // Verificar se o usuário está autenticado
+document.addEventListener("DOMContentLoaded", function () {
     const token = localStorage.getItem('token');
+
+    // Verifica se há um token
     if (!token) {
-        // Se não houver token, redireciona para a página de login
+        alert('Você precisa estar autenticado para acessar esta página.');
         window.location.href = '../login/login.html';
-    } else {
-        // Verificar a validade do token
-        fetch('http://localhost:3000/verifica-token', {
-            method: 'POST',
-            headers: {
-                'Authorization': `Bearer ${token}`,
-                'Content-Type': 'application/json'
-            }
-        })
-        .then(response => response.json())
-        .then(data => {
-            if (!data.auth) {
-                // Se o token não for válido, redireciona para o login
-                localStorage.removeItem('token');
-                window.location.href = '../login/login.html';
-            }
-        })
-        .catch(error => {
-            console.error('Erro na verificação do token:', error);
-            // Se houver um erro na verificação do token, redireciona para o login
+        return; // Impede execução do código restante
+    }
+
+    // Verifica a validade do token no backend
+    fetch('http://localhost:3000/verifica-token', {
+        method: 'POST',
+        headers: {
+            'Authorization': `Bearer ${token}`,
+            'Content-Type': 'application/json'
+        }
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (!data.auth) {
+            alert('Sessão expirada ou inválida. Por favor, faça login novamente.');
             localStorage.removeItem('token');
             window.location.href = '../login/login.html';
-        });
-    }
+        }
+    })
+    .catch(error => {
+        console.error('Erro na verificação do token:', error);
+        alert('Erro ao verificar sessão. Redirecionando para o login.');
+        localStorage.removeItem('token');
+        window.location.href = '../login/login.html';
+    });
 
     // Carregar o Header
     const headerElement = document.getElementById('header-geral');
@@ -44,7 +46,7 @@ document.addEventListener("DOMContentLoaded", function() {
         .catch(error => {
             console.error('Erro ao carregar o header:', error);
         });
-  
+
     // Carregar o Footer
     const footerElement = document.getElementById('footer-geral');
     fetch('../footer/footer.html')

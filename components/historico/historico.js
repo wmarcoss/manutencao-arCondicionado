@@ -69,10 +69,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Função para buscar as manutenções
     const fetchManutencao = async (filters = {}) => {
+        const token = localStorage.getItem('token');
+        if (!token) return;
+
         try {
             const response = await fetch('http://localhost:3000/filtro', {
                 method: 'POST',
                 headers: {
+                    'Authorization': `Bearer ${token}`,
                     'Content-Type': 'application/json',
                 },
                 body: JSON.stringify(filters),
@@ -123,9 +127,16 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Função para deletar manutenção
     const deleteManutencao = async (id) => {
+        const token = localStorage.getItem('token');
+        if (!token) return;
+
         try {
             const response = await fetch(`http://localhost:3000/manutencao/${id}`, {
                 method: 'DELETE',
+                headers: {
+                    'Authorization': `Bearer ${token}`,
+                    'Content-Type': 'application/json',
+                },
             });
 
             if (response.ok) {
@@ -175,8 +186,16 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Função para buscar os profissionais e preencher o select
     const fetchProfissionais = async () => {
+        const token = localStorage.getItem('token');
+        if (!token) return;
+
         try {
-            const response = await fetch('http://localhost:3000/profissional');
+            const response = await fetch('http://localhost:3000/profissional', {
+                headers: {
+                    'Authorization': `Bearer ${token}`,
+                    'Content-Type': 'application/json',
+                },
+            });
             if (!response.ok) {
                 throw new Error('Erro ao buscar profissionais');
             }

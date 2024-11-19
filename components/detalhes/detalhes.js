@@ -1,4 +1,34 @@
 document.addEventListener("DOMContentLoaded", function() {
+    // Função para verificar o token de autenticação
+    const validateToken = async () => {
+        const token = localStorage.getItem('token');
+
+        if (!token) {
+            // Se não houver token, redireciona para a página de login
+            window.location.href = '../login/login.html';
+        } else {
+            try {
+                const response = await fetch('http://localhost:3000/verifica-token', {
+                    method: 'POST',
+                    headers: {
+                        'Authorization': `Bearer ${token}`,
+                        'Content-Type': 'application/json'
+                    }
+                });
+                const data = await response.json();
+                if (!data.auth) {
+                    // Se o token não for válido, redireciona para o login
+                    localStorage.removeItem('token');
+                    window.location.href = '../login/login.html';
+                }
+            } catch (error) {
+                console.error('Erro na verificação do token:', error);
+                localStorage.removeItem('token');
+                window.location.href = '../login/login.html';
+            }
+        }
+    };
+
     // Carregar o Header
     const headerElement = document.getElementById('header-geral');
     fetch('../header/header.html')
@@ -72,5 +102,8 @@ document.addEventListener("DOMContentLoaded", function() {
         }
     };
 
-    loadManutencaoDetails();
+    // Chama a validação de token e carrega os detalhes da manutenção
+    validateToken().then(() => {
+        loadManutencaoDetails(); // Carregar detalhes após validação do token
+    });
 });

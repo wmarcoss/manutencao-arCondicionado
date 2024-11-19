@@ -6,6 +6,7 @@ document.addEventListener("DOMContentLoaded", function() {
         if (!token) {
             // Se não houver token, redireciona para a página de login
             window.location.href = '../login/login.html';
+            return false; // Retorna falso, indicando que o token não é válido
         } else {
             try {
                 const response = await fetch('http://localhost:3000/verifica-token', {
@@ -20,46 +21,53 @@ document.addEventListener("DOMContentLoaded", function() {
                     // Se o token não for válido, redireciona para o login
                     localStorage.removeItem('token');
                     window.location.href = '../login/login.html';
+                    return false; // Retorna falso, indicando que o token não é válido
                 }
+                return true; // Retorna verdadeiro se o token for válido
             } catch (error) {
                 console.error('Erro na verificação do token:', error);
                 localStorage.removeItem('token');
                 window.location.href = '../login/login.html';
+                return false; // Retorna falso em caso de erro
             }
         }
     };
 
     // Carregar o Header
-    const headerElement = document.getElementById('header-geral');
-    fetch('../header/header.html')
-        .then(response => {
-            if (!response.ok) {
-                throw new Error('Erro ao carregar o header.');
-            }
-            return response.text();
-        })
-        .then(data => {
-            headerElement.innerHTML = data;
-        })
-        .catch(error => {
-            console.error('Erro ao carregar o header:', error);
-        });
+    const loadHeader = () => {
+        const headerElement = document.getElementById('header-geral');
+        fetch('../header/header.html')
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Erro ao carregar o header.');
+                }
+                return response.text();
+            })
+            .then(data => {
+                headerElement.innerHTML = data;
+            })
+            .catch(error => {
+                console.error('Erro ao carregar o header:', error);
+            });
+    };
 
     // Carregar o Footer
-    const footerElement = document.getElementById('footer-geral');
-    fetch('../footer/footer.html')
-        .then(response => {
-            if (!response.ok) {
-                throw new Error('Erro ao carregar o footer.');
-            }
-            return response.text();
-        })
-        .then(data => {
-            footerElement.innerHTML = data;
-        })
-        .catch(error => {
-            console.error('Erro ao carregar o footer:', error);
-        });
+    const loadFooter = () => {
+        const footerElement = document.getElementById('footer-geral');
+        fetch('../footer/footer.html')
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Erro ao carregar o footer.');
+                }
+                return response.text();
+            })
+            .then(data => {
+                footerElement.innerHTML = data;
+            })
+            .catch(error => {
+                console.error('Erro ao carregar o footer:', error);
+            });
+    };
 
     // Função para formatar a data no padrão brasileiro (dd/mm/aaaa)
     const formatDate = (dateString) => {
@@ -102,8 +110,13 @@ document.addEventListener("DOMContentLoaded", function() {
         }
     };
 
-    // Chama a validação de token e carrega os detalhes da manutenção
-    validateToken().then(() => {
-        loadManutencaoDetails(); // Carregar detalhes após validação do token
+    // Chama a validação de token
+    validateToken().then(isValid => {
+        if (isValid) {
+            // Carregar o conteúdo da página (header, footer, detalhes da manutenção)
+            loadHeader();
+            loadFooter();
+            loadManutencaoDetails(); // Carregar detalhes após validação do token
+        }
     });
 });

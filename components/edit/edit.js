@@ -1,4 +1,41 @@
 document.addEventListener("DOMContentLoaded", function () {
+    // Função para validar o token
+    const validateToken = async () => {
+        const token = localStorage.getItem('token');
+
+        if (!token) {
+            // Se não houver token, redireciona para a página de login
+            console.error("Token ausente. Redirecionando para o login...");
+            window.location.href = './login.html';
+            return;
+        }
+
+        try {
+            const response = await fetch('http://localhost:3000/verifica-token', {
+                method: 'POST',
+                headers: {
+                    'Authorization': `Bearer ${token}`,
+                    'Content-Type': 'application/json'
+                }
+            });
+
+            const data = await response.json();
+            if (!data.auth) {
+                // Se o token não for válido, redireciona para o login
+                console.error("Token inválido. Redirecionando para o login...");
+                localStorage.removeItem('token');  // Remove o token inválido
+                window.location.href = './login.html';
+            }
+        } catch (error) {
+            console.error('Erro na verificação do token:', error);
+            localStorage.removeItem('token');
+            window.location.href = './login.html';
+        }
+    };
+
+    // Chama a função de validação de token ao carregar a página
+    validateToken();
+
     // Carregar o Header
     const headerElement = document.getElementById('header-geral');
     fetch('../header/header.html')

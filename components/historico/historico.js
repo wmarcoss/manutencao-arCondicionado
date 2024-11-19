@@ -13,6 +13,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         if (!token) {
             // Se não houver token, redireciona para a página de login
+            console.error("Token ausente. Redirecionando para o login...");
             window.location.href = './login.html';
             return;
         }
@@ -29,6 +30,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const data = await response.json();
             if (!data.auth) {
                 // Se o token não for válido, redireciona para o login
+                console.error("Token inválido. Redirecionando para o login...");
                 localStorage.removeItem('token');  // Remove o token inválido
                 window.location.href = './login.html';
             }
@@ -109,7 +111,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         </button>
                     </td>
                 </tr>
-            `).join('');
+            `).join('');            
 
             // Adiciona event listeners aos botões de exclusão
             const deleteButtons = document.querySelectorAll('.linkExcluir');

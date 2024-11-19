@@ -30,3 +30,32 @@
     transform: scale(1.2); 
     transition: color 0.3s ease, transform 0.3s ease; 
 }
+
+.profile-container {
+    position: absolute; /* Necessário para posicionar o select em relação à imagem */
+    margin-left: 70%;
+}
+
+#profile {
+    cursor: pointer;
+}
+
+.select-hidden {
+    display: none; /* Inicialmente, o select é escondido */
+    left: 40px; /* Distância à direita da imagem */
+    top: 0;
+    z-index: 10;
+    background-color: white;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    width: 150px; /* Largura do select */
+    padding: 5px;
+    box-sizing: border-box;
+}
+
+select {
+    width: 100px;
+    padding: 8px;
+    font-size: 16px;
+    border-radius: 4px;
+}

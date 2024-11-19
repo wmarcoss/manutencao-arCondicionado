@@ -146,3 +146,27 @@ p {
     color: white;
     transition: transform 0.3s ease, filter 0.3s ease; 
 }
+
+/* Estilo das mensagens de erro */
+.error-message {
+    color: red;
+    font-size: 12px;
+    margin-top: 4px;
+    font-weight: bold;
+    animation: fadeIn 0.3s ease-in-out;
+}
+
+.mensagem_tempora {
+    display: none;
+    position: fixed;
+    top: 50px;
+    right: -300px;
+    background-color: rgba(232, 0, 0, 0.7);
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    opacity: 0;
+    transition: right 0.5s ease, opacity 0.5s ease;
+}

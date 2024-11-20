@@ -41,14 +41,14 @@
 }
 
 .select-hidden {
-    display: none; /* Inicialmente, o select é escondido */
-    left: 40px; /* Distância à direita da imagem */
+    display: none;
+    left: 40px;
     top: 0;
     z-index: 10;
     background-color: white;
     border: 1px solid #ccc;
     border-radius: 4px;
-    width: 150px; /* Largura do select */
+    width: 150px;
     padding: 5px;
     box-sizing: border-box;
 }

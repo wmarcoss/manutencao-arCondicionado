@@ -142,3 +142,32 @@ document.addEventListener("DOMContentLoaded", function () {
         inputDate.focus(); // Isso simula o clique e abre o seletor de data
     }
 });
+
+document.addEventListener('DOMContentLoaded', function () {
+    const trigger = document.getElementById('local-trigger', 'modelo-trigger');
+    const optionsList = document.getElementById('local-options', 'modelo-options');
+    const options = document.querySelectorAll('.custom-option');
+    const triggerText = trigger.querySelector('span');
+
+    // Ao clicar no select (trigger), alterna a visibilidade das opções
+    trigger.addEventListener('click', function () {
+        optionsList.classList.toggle('opened'); // Alterna a classe 'opened' para mostrar ou esconder as opções
+        trigger.closest('.custom-select').classList.toggle('opened'); // Adiciona ou remove a classe 'opened' do select
+    });
+
+    // Quando uma opção é selecionada
+    options.forEach(option => {
+        option.addEventListener('click', function () {
+            triggerText.textContent = option.textContent; // Atualiza o texto do trigger
+            optionsList.classList.remove('opened'); // Fecha o select
+        });
+    });
+
+    // Fecha as opções quando clicar fora do select
+    document.addEventListener('click', function (event) {
+        if (!trigger.contains(event.target)) {
+            optionsList.classList.remove('opened');
+            trigger.closest('.custom-select').classList.remove('opened');
+        }
+    });
+});

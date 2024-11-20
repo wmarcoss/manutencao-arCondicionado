@@ -1,23 +1,33 @@
-<div class="fundo">
-    <div class="logo">
-        <a><img src="../../assets/images/logo.png" alt="logo" style="width: 90px;"></a>
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Header</title>
+</head>
+<body>
+    <div class="fundo">
+        <div class="logo">
+            <a><img src="../../assets/images/logo.png" alt="logo" style="width: 90px;"></a>
+        </div>
+        <div class="nav-bar">
+            <ul class="nav-style">
+                <li class="nav-link"><a href="../home/home.html">Página Inicial</a></li>
+                <li class="nav-link"><a href="../preenchimento/preenchimento.html">Adicionar Manutenção</a></li>
+                <li class="nav-link"><a href="../historico/historico.html">Ver Histórico</a></li>
+                <div class="profile-container">
+                    <img id="profile" src="../../assets/icons/profile.png" alt="profile" style="width: 35px;">
+                    <!-- Select que aparecerá ao lado da imagem do perfil -->
+                    <select id="profileOptions" class="select-hidden">
+                        <option value="perfil">Perfil</option>
+                        <option value="config">Configurações</option>
+                        <option value="sair">Sair</option>
+                    </select>
+                </div>
+            </ul>
+        </div>
     </div>
-    <div class="nav-bar">
-        <ul class="nav-style">
-            <li class="nav-link"><a href="../home/home.html">Página Inicial</a></li>
-            <li class="nav-link"><a href="../preenchimento/preenchimento.html">Adicionar Manutenção</a></li>
-            <li class="nav-link"><a href="../historico/historico.html">Ver Histórico</a></li>
-            <div class="profile-container">
-                <img id="profile" src="../../assets/icons/profile.png" alt="profile" style="width: 35px;">
-                <!-- Select que aparecerá ao lado da imagem do perfil -->
-                <select id="profileOptions" class="select-hidden">
-                    <option value="perfil">Perfil</option>
-                    <option value="config">Configurações</option>
-                    <option value="sair">Sair</option>
-                </select>
-            </div>
-        </ul>
-    </div>
-</div>
-
-<script src="header.js"></script>
+    
+    <script src="header.js" defer></script>
+</body>
+</html>

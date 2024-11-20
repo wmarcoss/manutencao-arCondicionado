@@ -70,6 +70,86 @@ body {
     font-weight: bold;
 }
 
+.asterisco {
+    color: red;
+}
+
+#local.opened, #modelo.opened {
+    max-height: 50px; /* Limita a altura para mostrar 5 opções */
+    overflow-y: auto; /* Adiciona rolagem */
+}
+
+/* Estilo básico */
+.custom-select-wrapper {
+    font-family: sans-serif;
+    width: 500px;
+    margin: 20px 0;
+}
+
+.custom-select {
+    position: relative;
+    width: 490px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    box-shadow: 2px 4px 5px rgba(0, 0, 0, 0.1);
+    background-color: white;
+    cursor: pointer;
+}
+
+.custom-select-trigger {
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.custom-select-trigger span {
+    font-size: 16px;
+}
+
+.custom-select-trigger i {
+    font-size: 12px;
+}
+
+.custom-options {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    max-height: 160px; /* Limita a altura */
+    overflow-y: auto; /* Permite rolagem */
+    background-color: white;
+    z-index: 999;
+    border: 2px solid black;
+    border-radius: 8px;
+    box-shadow: 2px 4px 5px rgba(0, 0, 0, 0.548);
+}
+
+.custom-option {
+    padding: 10px;
+    cursor: pointer;
+}
+
+.custom-option:hover {
+    background-color: #f1f1f1;
+}
+
+/* Estilo para quando o select estiver aberto */
+.custom-select.opened .custom-options {
+    display: block;
+}
+
+#local-trigger, #tipoManutencao-trigger, #modelo-trigger, #tipoConserto-trigger {
+    border: 1px solid black;
+    border-radius: 8px;
+    box-shadow: 2px 4px 5px rgba(0, 0, 0, 0.548);
+}
+
+span {
+    color: rgba(0, 0, 0, 0.432);
+}
+
 #local, #modelo, #tipo-manutencao, #tipo-conserto {
     display: block;
     width: 491.5px;
@@ -81,7 +161,7 @@ body {
     padding-left: 28px;
 }
 
-#data, #data2, #profissional, #custo {
+#profissional, #custo {
     display: block;
     width: 460px;
     height: 40px;
@@ -92,8 +172,15 @@ body {
     margin-bottom: 32px;
 }
 
-input[type="date"]::-webkit-calendar-picker-indicator {
-    display: none;
+#data, #data2 {
+    display: block;
+    width: 485px;
+    height: 40px;
+    border: 1px solid black;
+    border-radius: 8px;
+    box-shadow: 2px 4px 5px rgba(0, 0, 0, 0.548);
+    padding-left: 4px ;
+    margin-bottom: 32px;
 }
 
 .preenchiveis {
@@ -112,14 +199,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     font-weight: bold;
 }
 
-#local-icon {
-    width: 20px;
-    position: absolute;
-    margin-top: 10px;
-    margin-left: 0.5%;
-}
-
-#tipoManu-icon, #profissional-icon, #custo-icon, #calendario-icon {
+#local-icon, #tipoManu-icon, #profissional-icon, #custo-icon {
     width: 20px;
     position: absolute;
     margin-top: 10px;
@@ -215,7 +295,6 @@ textarea {
     border-radius: 8px;
     box-shadow: 2px 4px 5px rgba(0, 0, 0, 0.548);
 }
-
 
 .mensagem_tempora {
     display: none;

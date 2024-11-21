@@ -6,6 +6,7 @@
     <title>Aba Para Preenchimento</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="preenchimento.css">
+
 </head>
 <body>
 
@@ -18,110 +19,94 @@
                 <h4>Aba para inserção de todos os dados</h4>
                 <h4>referentes a manutenção</h4>
             </div>
-    
+
             <div class="select">
-                <div class="custom-select-wrapper">
-                    <label for="local">Local <span class="asterisco">*</span></label>
-                    <div class="custom-select">
-                        <div class="custom-select-trigger" id="local-trigger">
-                            <span>Selecione o local</span>
-                            <i class="fa fa-chevron-down"></i> <!-- Ícone de seta -->
-                        </div>
-                        <ul class="custom-options" id="local-options">
-                            <li class="custom-option" data-value="1° A">1° A</li>
-                            <li class="custom-option" data-value="1° B">1° B</li>
-                            <li class="custom-option" data-value="1° C">1° C</li>
-                            <li class="custom-option" data-value="2° A">2° A</li>
-                            <li class="custom-option" data-value="2° B">2° B</li>
-                            <li class="custom-option" data-value="2° C">2° C</li>
-                            <li class="custom-option" data-value="3° A">3° A</li>
-                            <li class="custom-option" data-value="3° B">3° B</li>
-                            <li class="custom-option" data-value="3° C">3° C</li>
-                            <li class="custom-option" data-value="Laboratorio de informática">Laboratório de informática</li>
-                            <li class="custom-option" data-value="Sala de estudos">Sala de estudos</li>
-                        </ul>
+                <label for="local">Local *
+                    <div>
+                        <img id="local-icon" src="../../assets/icons/local.png" alt="local">
+                        <select name="local" id="local" required>
+                            <option disabled selected >Selecione o local</option>
+                            <option value="1° A">1° A</option>
+                            <option value="1° B">1° B</option>
+                            <option value="1° C">1° C</option>
+                            <option value="2° A">2° A</option>
+                            <option value="2° B">2° B</option>
+                            <option value="2° C">2° C</option>
+                            <option value="3° A">3° A</option>
+                            <option value="3° B">3° B</option>
+                            <option value="3° C">3° C</option>
+                            <option value="Laboratorio de informática">Laboratorio de informática</option>
+                            <option value="Sala de estudos">Sala de estudos</option>
+                        </select>
                     </div>
-                </div>
-                    
+                </label>
+
                 <div>
-                    <div class="custom-select-wrapper">
-                        <label for="local">Modelo e marca<span class="asterisco">*</span></label>
-                        <div class="custom-select">
-                            <div class="custom-select-trigger" id="modelo-trigger">
-                                <span>Selecione o fabricante e modelo</span>
-                                <i class="fa fa-chevron-down"></i> <!-- Ícone de seta -->
-                            </div>
-                            <ul class="custom-options" id="modelo-options">
-                                <li class="custom-option" data-value="Carrier Eco Saver Puron">Carrier Eco Saver Puron</li>
-                                <li class="custom-option" data-value="Daikin FTXS25J">Daikin FTXS25J</li>
-                                <li class="custom-option" data-value="LG-Dual Inverter">LG-Dual Inverter</li>
-                                <li class="custom-option" data-value="Inversor Fujitsu">Inversor Fujitsu</li>
-                                <li class="custom-option" data-value="Midea Liva Wi-Fi">Midea Liva Wi-Fi</li>
-                                <li class="custom-option" data-value="Gree Eco Garden">Gree Eco Garden</li>
-                                <li class="custom-option" data-value="Outros">Outros</li>                               
-                            </ul>
+                    <label for="modelo">Modelo e Marca *
+                        <div>
+                            <img id="tipoManu-icon" src="../../assets/icons/modeloEmarca.png" alt="manutenção">
+                            <select name="modelo" id="modelo" required>
+                                <option disabled selected value="">Selecione o fabricante e modelo</option>
+                                <option value="Carrier Eco Saver Puron">Carrier Eco Saver Puron</option>
+                                <option value="Daikin FTXS25J">Daikin FTXS25J</option>
+                                <option value="LG-Dual Inverter">LG-Dual Inverter</option>
+                                <option value="Inversor Fujitsu">Inversor Fujitsu</option>
+                                <option value="Midea Liva Wi-Fi">Midea Liva Wi-Fi</option>
+                                <option value="Gree Eco Garden">Gree Eco Garden</option>
+                                <option value="Outros">Outros</option>
+                            </select>
                         </div>
-                    </div>
+                    </label>
                 </div>
             </div>
-    
+
             <div class="select">
-                <div class="custom-select-wrapper">
-                    <label for="local">Tipo da manutenção <span class="asterisco">*</span></label>
-                    <div class="custom-select">
-                        <div class="custom-select-trigger" id="tipoManutencao-trigger">
-                            <span>Selecione o tipo</span>
-                            <i class="fa fa-chevron-down"></i> <!-- Ícone de seta -->
+                    <label for="tipo-manutencao">Tipo da manutenção *
+                        <div>
+                            <img id="tipoManu-icon" src="../../assets/icons/tipoManu.png" alt="manutenção">
+                            <select name="tipo-manutencao" id="tipo-manutencao" required>
+                                <option disabled selected value="">Selecione o tipo</option>
+                                <option value="Preventiva">Preventiva</option>
+                                <option value="Corretiva">Corretiva</option>
+                            </select>
                         </div>
-                        <ul class="custom-options" id="tipoManu-options">
-                            <li class="custom-option" data-value="Preventiva">Preventiva</li>
-                            <li class="custom-option" data-value="Corretiva">Corretiva</li>
-                        </ul>
+                    </label>
+
+                <label for="tipo-conserto">Tipo de conserto *
+                    <div>
+                        <img id="tipoManu-icon" src="../../assets/icons/tipoConsert.png" alt="manutenção">
+                        <select name="tipo-conserto" id="tipo-conserto" required>
+                            <option disabled selected value="">Selecione o tipo</option>
+                            <option value="Limpeza dos filtros de ar">Limpeza dos filtros de ar</option>
+                            <option value="Substituição dos filtros">Substituição dos filtros</option>
+                            <option value="Limpeza de dreno">Limpeza de dreno</option>
+                            <option value="Medição de tensão elétrica">Medição de tensão elétrica</option>
+                            <option value="Medição de temperatura do ar">Medição de temperatura do ar</option>
+                            <option value="Verificação do estado dos filtros">Verificação do estado dos filtros</option>
+                            <option value="Outros">Outros</option>
+                        </select>
                     </div>
-                </div>
-    
-                <div class="custom-select-wrapper">
-                    <label for="local">Tipo de conserto <span class="asterisco">*</span></label>
-                    <div class="custom-select">
-                        <div class="custom-select-trigger" id="tipoConserto-trigger">
-                            <span>Selecione o tipo</span>
-                            <i class="fa fa-chevron-down"></i> <!-- Ícone de seta -->
-                        </div>
-                        <ul class="custom-options" id="tipoCons-options">
-                            <li class="custom-option" data-value="Limpeza dos filtros de ar">Limpeza dos filtros de ar</li>
-                            <li class="custom-option" data-value="Substituição dos filtros">Substituição dos filtros</li>
-                            <li class="custom-option" data-value="Limpeza de dreno">Limpeza de dreno</li>
-                            <li class="custom-option" data-value="Medição de tensão elétrica">Medição de tensão elétrica</li>
-                            <li class="custom-option" data-value="Medição de temperatura do ar">Medição de temperatura do ar</li>
-                            <li class="custom-option" data-value="Verificação do estado dos filtros">Verificação do estado dos filtros</li>
-                            <li class="custom-option" data-value="Outros">Outros</li>
-                        </ul>
-                    </div>
-                </div>
+                </label>
             </div>
-    
+
             <div class="preenchiveis">
-                <label for="data">Data <span class="asterisco">*</span>
-                    <div>
-                        <input id="data" type="date" required>
-                    </div>
+                <label for="data">Data *                  
+                    <input id="data" type="date" required>
                 </label>
-                
+
                 <label for="data2">Previsão da próxima manutenção
-                    <div>
-                        <input id="data2" type="date">
-                    </div>
+                    <input id="data2" type="date">
                 </label>
             </div>
-    
+
             <div class="preenchiveis2">
-                <label for="profissional">Profissional <span class="asterisco">*</span>
+                <label for="profissional">Profissional *
                     <div>
                         <img id="profissional-icon" src="../../assets/icons/user.png" alt="profissional">
                         <input id="profissional" type="text" placeholder="Digite seu nome" required>
                     </div>
                 </label>
-    
+
                 <label for="custo">Custo (opcional, caso o profissional seja terceirizado)
                     <div>
                         <img id="custo-icon" src="../../assets/icons/custo.png" alt="custo">
@@ -129,13 +114,13 @@
                     </div>
                 </label>
             </div>
-    
+
             <div class="text-box">
                 <label for="detalhes">Detalhes (opcional, para destacar peças trocadas, reparos, entre outros)
                     <textarea name="detalhes" id="detalhes" rows="6" placeholder="Digite aqui"></textarea>
                 </label>
             </div>
-    
+
             <div class="text-box">
                 <div class="alinhar-botoes">
                     <label for="observacoes">Observações (opcional, para anotar informações adicionais relevantes que o técnico tenha observado)
@@ -147,15 +132,13 @@
                     </div>
                 </div>
             </div>
-        
+
             <div class="mensagem_tempora" id="mensagemTempora" style="display: none;">
                 <p>Manutenção adicionada com sucesso!</p>
             </div>
-            <div id="mensagemErro" class="mensagem_erro"></div>
         </form>
     </main>
-    
+
     <footer id="footer-geral"></footer>
     <script src="../preenchimento/preenchimento.js" defer></script>
 </body>
-</html>

@@ -1,12 +1,43 @@
 document.addEventListener("DOMContentLoaded", function () {
+    // Função para exibir a mensagem temporária de erro
+    const exibirMensagemErro = (mensagem) => {
+        const mensagemErro = document.getElementById('mensagemErro');
+
+        // Cria o elemento se ele não existir
+        if (!mensagemErro) {
+            mensagemErro = document.createElement('div');
+            mensagemErro.id = 'mensagemErro';
+            mensagemErro.className = 'mensagem_erro';
+            document.body.appendChild(mensagemErro);
+        }
+
+        mensagemErro.textContent = mensagem; // Define o texto da mensagem
+        mensagemErro.style.display = 'block'; // Torna o elemento visível
+        mensagemErro.style.right = '20px'; // Move para a tela
+        mensagemErro.style.opacity = '1'; // Torna visível
+
+        // Ocultar a mensagem após 3 segundos
+        setTimeout(() => {
+            mensagemErro.style.right = '-300px'; // Move para fora da tela
+            mensagemErro.style.opacity = '0'; // Torna invisível
+
+            // Após a transição, esconde completamente
+            setTimeout(() => {
+                mensagemErro.style.display = 'none';
+            }, 500); // Tempo correspondente à duração da transição de saída
+        }, 3000); // Exibe a mensagem por 3 segundos
+    };
+
     // Função para validar o token
     const validateToken = async () => {
         const token = localStorage.getItem('token');
 
         if (!token) {
-            // Se não houver token, redireciona para a página de login
-            console.error("Token ausente. Redirecionando para o login...");
-            window.location.href = './login.html';
+            // Se não houver token, exibe a mensagem de erro e redireciona após um pequeno atraso
+            exibirMensagemErro('Você precisa estar autenticado para acessar esta página.');
+            setTimeout(() => {
+                window.location.href = '../login/login.html';
+            }, 3500); // Aguarda o tempo da animação de erro para redirecionar
             return;
         }
 
@@ -21,15 +52,20 @@ document.addEventListener("DOMContentLoaded", function () {
 
             const data = await response.json();
             if (!data.auth) {
-                // Se o token não for válido, redireciona para o login
-                console.error("Token inválido. Redirecionando para o login...");
+                // Se o token não for válido, exibe a mensagem de erro e redireciona para o login
+                exibirMensagemErro('Token inválido. Redirecionando para o login...');
                 localStorage.removeItem('token');  // Remove o token inválido
-                window.location.href = './login.html';
+                setTimeout(() => {
+                    window.location.href = '../login/login.html';
+                }, 3500); // Redireciona após o tempo de exibição da mensagem de erro
             }
         } catch (error) {
             console.error('Erro na verificação do token:', error);
             localStorage.removeItem('token');
-            window.location.href = './login.html';
+            exibirMensagemErro('Erro na verificação do token. Redirecionando para o login...');
+            setTimeout(() => {
+                window.location.href = '../login/login.html';
+            }, 3500); // Redireciona após o tempo de exibição da mensagem de erro
         }
     };
 

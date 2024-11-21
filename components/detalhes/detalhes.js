@@ -1,9 +1,42 @@
+// Função para exibir mensagens temporárias de erro
+function exibirMensagemErro(mensagem) {
+    let mensagemErro = document.getElementById('mensagemErro');
+
+    // Cria o elemento se ele não existir
+    if (!mensagemErro) {
+        mensagemErro = document.createElement('div');
+        mensagemErro.id = 'mensagemErro';
+        mensagemErro.className = 'mensagem_erro';
+        document.body.appendChild(mensagemErro);
+    }
+
+    mensagemErro.textContent = mensagem; // Define o texto da mensagem
+    mensagemErro.style.display = 'block'; // Torna o elemento visível
+    mensagemErro.style.right = '20px'; // Move para a tela
+    mensagemErro.style.opacity = '1'; // Torna visível
+
+    // Ocultar a mensagem após 3 segundos
+    setTimeout(() => {
+        mensagemErro.style.right = '-300px'; // Move para fora da tela
+        mensagemErro.style.opacity = '0'; // Torna invisível
+
+        // Após a transição, esconde completamente
+        setTimeout(() => {
+            mensagemErro.style.display = 'none';
+        }, 500); // Tempo correspondente à duração da transição de saída
+    }, 3000); // Exibe a mensagem por 3 segundos
+}
+
 // Função para validar o token
 const validateToken = () => {
     const token = localStorage.getItem('token');
     if (!token) {
-        // Se não houver token, redireciona para a página de login
-        window.location.href = '../login/login.html';
+        // Se não houver token, exibe a mensagem de erro e redireciona após um pequeno atraso
+        exibirMensagemErro('Você precisa estar autenticado para acessar esta página.');
+        setTimeout(() => {
+            window.location.href = '../login/login.html';  // Redireciona para o login após 3 segundos
+        }, 3500); // Aguarda o tempo da animação de erro para redirecionar
+        return;
     }
 };
 
@@ -29,6 +62,7 @@ const loadHeader = () => {
         })
         .catch(error => {
             console.error('Erro ao carregar o header:', error);
+            exibirMensagemErro('Erro ao carregar o header. Tente novamente mais tarde.');
         });
 };
 
@@ -47,6 +81,7 @@ const loadFooter = () => {
         })
         .catch(error => {
             console.error('Erro ao carregar o footer:', error);
+            exibirMensagemErro('Erro ao carregar o footer. Tente novamente mais tarde.');
         });
 };
 
@@ -57,7 +92,10 @@ const loadManutencaoDetails = async () => {
 
     const token = localStorage.getItem('token'); // Pegando o token armazenado no localStorage
     if (!token) {
-        window.location.href = '../login/login.html';  // Se não houver token, redireciona para o login
+        exibirMensagemErro('Você precisa estar autenticado para acessar os detalhes.');
+        setTimeout(() => {
+            window.location.href = '../login/login.html';  // Se não houver token, redireciona para o login
+        }, 3500); // Aguarda o tempo da animação de erro para redirecionar
         return;
     }
 
@@ -96,7 +134,7 @@ const loadManutencaoDetails = async () => {
 
     } catch (error) {
         console.error('Erro:', error);
-        alert('Erro ao carregar os detalhes da manutenção. Verifique o console para mais informações.');
+        exibirMensagemErro('Erro ao carregar os detalhes da manutenção. Verifique o console para mais informações.');
     }
 };
 

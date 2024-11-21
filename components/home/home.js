@@ -14,7 +14,8 @@ document.addEventListener("DOMContentLoaded", function () {
     // Função para exibir a mensagem temporária
     function exibirMensagemTempora(mensagemTipo, mensagem, callback) {
         let mensagemTempora = document.getElementById(mensagemTipo);
-
+        
+        // Cria a mensagem se não existir
         if (!mensagemTempora) {
             mensagemTempora = criarMensagemTempora(mensagemTipo, mensagem);
         }
@@ -47,9 +48,6 @@ document.addEventListener("DOMContentLoaded", function () {
                 })
                 .then(data => {
                     headerElement.innerHTML = data;
-
-                    // Inicializa os eventos do perfil após carregar o header
-                    inicializarPerfil();
                     resolve();
                 })
                 .catch(error => {
@@ -59,41 +57,26 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     }
 
-    // Função para inicializar o comportamento do menu de perfil
-    function inicializarPerfil() {
-        const profileImage = document.getElementById('profile');
-        const profileOptions = document.getElementById('profileOptions');
-
-        if (profileImage && profileOptions) {
-            // Alterna a visibilidade do menu
-            function toggleProfileOptions() {
-                profileOptions.style.display =
-                    profileOptions.style.display === 'block' ? 'none' : 'block';
-            }
-
-            // Evento de clique na imagem do perfil
-            profileImage.addEventListener('click', function (event) {
-                event.stopPropagation(); // Evita propagação do clique
-                toggleProfileOptions();
-            });
-
-            // Fecha o menu se clicar fora
-            document.addEventListener('click', function (event) {
-                if (!profileImage.contains(event.target) &&
-                    !profileOptions.contains(event.target)) {
-                    profileOptions.style.display = 'none';
-                }
-            });
-
-            // Logout (opcional)
-            const logoutButton = document.getElementById('logout');
-            if (logoutButton) {
-                logoutButton.addEventListener('click', function () {
-                    localStorage.removeItem('token');
-                    window.location.href = '../login/login.html';
+    // Função para carregar o footer
+    function carregarFooter() {
+        return new Promise((resolve, reject) => {
+            const footerElement = document.getElementById('footer-geral');
+            fetch('../footer/footer.html')
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Erro ao carregar o footer.');
+                    }
+                    return response.text();
+                })
+                .then(data => {
+                    footerElement.innerHTML = data;
+                    resolve();
+                })
+                .catch(error => {
+                    console.error('Erro ao carregar o footer:', error);
+                    reject(error);
                 });
-            }
-        }
+        });
     }
 
     // Função para verificar o token
@@ -143,7 +126,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     // Executar o fluxo de inicialização
-    carregarHeader()
+    Promise.all([carregarHeader(), carregarFooter()])
         .then(() => {
             verificarToken();
         })

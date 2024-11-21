@@ -14,7 +14,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (!token) {
             // Se não houver token, redireciona para a página de login
             console.error("Token ausente. Redirecionando para o login...");
-            window.location.href = './login.html';
+            window.location.href = '../login/login.html';
             return;
         }
 
@@ -32,12 +32,12 @@ document.addEventListener('DOMContentLoaded', () => {
                 // Se o token não for válido, redireciona para o login
                 console.error("Token inválido. Redirecionando para o login...");
                 localStorage.removeItem('token');  // Remove o token inválido
-                window.location.href = './login.html';
+                window.location.href = '../login/login.html';
             }
         } catch (error) {
             console.error('Erro na verificação do token:', error);
             localStorage.removeItem('token');
-            window.location.href = './login.html';
+            window.location.href = '../login/login.html';
         }
     };
 

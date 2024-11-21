@@ -110,7 +110,13 @@ document.addEventListener("DOMContentLoaded", function () {
         if (!id) return;
 
         try {
-            const response = await fetch(`http://localhost:3000/manutencao/${id}`);
+            const response = await fetch(`http://localhost:3000/manutencao/${id}`, {
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${localStorage.getItem('token')}`,
+                },
+            });
             if (!response.ok) {
                 throw new Error('Erro ao carregar os dados da manutenção para edição.');
             }
@@ -178,6 +184,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${localStorage.getItem('token')}`,
                 },
                 body: JSON.stringify(data),
             });

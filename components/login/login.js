@@ -69,7 +69,7 @@ document.getElementById('password').addEventListener('blur', function () {
     const senhaRegex = /^(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]).{8,}$/;
 
     if (!senhaRegex.test(senha)) {
-        exibirErro(this, 'Ao menos 8 caracteres, 1 número, 1 caractere especial e 1 letra maiúscula.');
+        exibirErro(this, '8 caracteres, 1 número, 1 caractere especial e 1 letra maiúscula.');
     } else {
         removerErro(this);
     }

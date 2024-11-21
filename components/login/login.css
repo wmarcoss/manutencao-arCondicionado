@@ -54,7 +54,7 @@ input {
     border-radius: 8px;
     border-style: none;
     padding: 6px;
-    padding-left: 50px; /* Espaço à esquerda para o ícone do email */
+    padding-left: 50px;
 }
 
 .input-password {
@@ -64,7 +64,7 @@ input {
 .inputs {
     display: flex;
     flex-direction: column;
-    gap: 24px;
+    gap: 28px;
     margin-bottom: 24px;
 }
 
@@ -152,6 +152,7 @@ p {
     color: red;
     font-size: 12px;
     margin-top: 4px;
+    position: absolute;
     font-weight: bold;
     animation: fadeIn 0.3s ease-in-out;
 }

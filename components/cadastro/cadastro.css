@@ -60,7 +60,7 @@ input {
 .inputs {
     display: flex;
     flex-direction: column;
-    gap: 24px;
+    gap: 28px;
     margin-bottom: 24px;
 }
 

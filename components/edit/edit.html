@@ -20,7 +20,7 @@
             </div>
     
             <div class="select">
-                <label for="local">Local *
+                <label for="local">Local <span class="asterisco">*</span>
                     <div>
                         <img id="local-icon" src="../../assets/icons/local.png" alt="local">
                     <select name="lugar" id="local" required>
@@ -40,7 +40,7 @@
                 </div>
                 </label>
             
-                <label for="modelo">Modelo e Marca * 
+                <label for="modelo">Modelo e Marca <span class="asterisco">*</span>
                     <div>
                         <img id="tipoManu-icon" src="../../assets/icons/modeloEmarca.png" alt="manutenção">
                     <select name="modelo_marca" id="modelo" required>
@@ -58,7 +58,7 @@
             </div>
             
             <div class="select">
-                <label for="tipo-manutencao">Tipo da manutenção *
+                <label for="tipo-manutencao">Tipo da manutenção <span class="asterisco">*</span>
                     <div>
                         <img id="tipoManu-icon" src="../../assets/icons/tipoManu.png" alt="manutenção">
                         <select name="tipo-manutencao" id="tipo-manutencao" required>
@@ -68,7 +68,7 @@
                         </select>
                     </div>
                 </label>
-                <label for="tipo-conserto">Tipo de conserto *
+                <label for="tipo-conserto">Tipo de conserto <span class="asterisco">*</span>
                   <div>
                         <img id="tipoManu-icon" src="../../assets/icons/tipoConsert.png" alt="manutenção">
                         <select name="tipo-conserto" id="tipo-conserto" required>
@@ -86,22 +86,17 @@
             </div>            
     
             <div class="preenchiveis">
-                <div>
-                    <img id="calendario-icon" src="../../assets/icons/calendario.png" alt="data">
+                <label for="data">Data <span class="asterisco">*</span>                 
                     <input id="data" type="date" required>
-                </div>
                 </label>
                 
                 <label for="data2">Previsão da próxima manutenção
-                    <div>
-                        <img id="calendario-icon" src="../../assets/icons/calendario.png" alt="data">
-                        <input id="data2" type="date">
-                    </div>
+                    <input id="data2" type="date">
                 </label>
             </div>
     
             <div class="preenchiveis2">
-                <label for="nome">Profissional *
+                <label for="nome">Profissional <span class="asterisco">*</span>
                     <div>
                         <img id="profissional-icon" src="../../assets/icons/user.png" alt="profissional">
                         <input id="profissional" type="text" placeholder="Digite seu nome" required>

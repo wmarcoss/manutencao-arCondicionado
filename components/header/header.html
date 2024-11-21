@@ -16,13 +16,12 @@
                 <li class="nav-link"><a href="../preenchimento/preenchimento.html">Adicionar Manutenção</a></li>
                 <li class="nav-link"><a href="../historico/historico.html">Ver Histórico</a></li>
                 <div class="profile-container">
-                    <img id="profile" src="../../assets/icons/profile.png" alt="profile" style="width: 35px;">
-                    <!-- Select que aparecerá ao lado da imagem do perfil -->
-                    <select id="profileOptions" class="select-hidden">
-                        <option value="perfil">Perfil</option>
-                        <option value="config">Configurações</option>
-                        <option value="sair">Sair</option>
-                    </select>
+                    <img id="profile" src="../../assets/icons/profile.png" alt="profile" style="width: 35px; cursor: pointer;">
+                    <ul id="profileOptions" class="hidden">
+                        <li data-value="perfil">Perfil</li>
+                        <li data-value="config">Configurações</li>
+                        <li data-value="sair">Sair</li>
+                    </ul>
                 </div>
             </ul>
         </div>

@@ -1,28 +1,39 @@
-document.addEventListener("DOMContentLoaded", function() {
-    // Seleciona a imagem de perfil e o select
+document.addEventListener("DOMContentLoaded", function () {
     const profileImage = document.getElementById('profile');
     const profileOptions = document.getElementById('profileOptions');
 
-    // Função para alternar a visibilidade do select
-    function toggleProfileOptions() {
-        // Verifica o estado atual do 'display'
-        if (profileOptions.style.display === 'none' || profileOptions.style.display === '') {
-            profileOptions.style.display = 'block';  // Exibe o select
-        } else {
-            profileOptions.style.display = 'none';   // Oculta o select
-        }
-    }
-
-    // Evento de clique na imagem de perfil
-    profileImage.addEventListener('click', function(event) {
-        event.stopPropagation(); // Impede que o clique se propague para o documento
-        toggleProfileOptions();
+    // Alternar visibilidade do menu ao clicar na imagem
+    profileImage.addEventListener('click', function (event) {
+        event.stopPropagation(); // Impede que o clique feche o menu
+        profileOptions.classList.toggle('hidden'); // Mostra ou esconde o menu
     });
 
-    // Fecha o select se clicar fora da área da imagem ou do select
-    document.addEventListener('click', function(event) {
-        if (!profileImage.contains(event.target) && !profileOptions.contains(event.target)) {
-            profileOptions.style.display = 'none';  // Oculta o select se clicar fora
+    // Adicionar ações ao clicar em cada opção
+    profileOptions.addEventListener('click', function (event) {
+        const selectedOption = event.target.getAttribute('data-value');
+
+        switch (selectedOption) {
+            case 'perfil':
+                alert('Abrindo página de perfil...');
+                break;
+            case 'config':
+                alert('Abrindo configurações...');
+                break;
+            case 'sair':
+                alert('Saindo...');
+                localStorage.removeItem('token'); // Exemplo: remover token
+                window.location.href = '../login/login.html'; // Redirecionar para login
+                break;
+            default:
+                break;
         }
+
+        // Esconder o menu após selecionar uma opção
+        profileOptions.classList.add('hidden');
+    });
+
+    // Fecha o menu se clicar fora
+    document.addEventListener('click', function () {
+        profileOptions.classList.add('hidden');
     });
 });

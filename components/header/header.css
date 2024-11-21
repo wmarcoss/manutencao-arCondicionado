@@ -19,7 +19,7 @@
     list-style: none;
 }
 
-.nav-link a{
+.nav-link a {
     text-decoration: none;
     color: white;
     font-weight: bold;
@@ -32,30 +32,43 @@
 }
 
 .profile-container {
-    position: absolute; /* Necessário para posicionar o select em relação à imagem */
+    position: absolute;
     margin-left: 70%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 #profile {
     cursor: pointer;
+    width: 35px; /* Ajusta o tamanho da imagem */
 }
 
-.select-hidden {
-    display: none;
-    left: 40px;
-    top: 0;
-    z-index: 10;
+#profileOptions {
+    display: none; /* Oculto por padrão */
+    list-style: none;
+    margin: 0;
+    padding: 10px;
     background-color: white;
     border: 1px solid #ccc;
     border-radius: 4px;
-    width: 150px;
-    padding: 5px;
-    box-sizing: border-box;
+    position: absolute;
+    top: 50px; /* Ajuste conforme necessário */
+    right: 0;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    z-index: 100;
+    width: 150px; /* Define a largura do menu */
 }
 
-select {
-    width: 100px;
-    padding: 8px;
+#profileOptions li {
+    padding: 8px 12px;
+    cursor: pointer;
     font-size: 16px;
-    border-radius: 4px;
+    color: rgb(0, 26, 83);
+    font-weight: bold;
+    text-align: left;
+}
+
+#profileOptions li:hover {
+    background-color: #f0f0f0;
 }

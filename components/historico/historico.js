@@ -7,60 +7,47 @@ document.addEventListener('DOMContentLoaded', () => {
     const refreshButton = document.getElementById('refresh');
     let currentDeleteId = null;
 
-    // Função para validar o token
-    const validateToken = async () => {
-        const token = localStorage.getItem('token');
+        // Função para exibir mensagens temporárias de erro
+    function exibirMensagemErro(mensagem) {
+        let mensagemErro = document.getElementById('mensagemErro');
 
-        if (!token) {
-            // Se não houver token, redireciona para a página de login
-            console.error("Token ausente. Redirecionando para o login...");
-            window.location.href = '../login/login.html';
-            return;
+        // Cria o elemento se ele não existir
+        if (!mensagemErro) {
+            mensagemErro = document.createElement('div');
+            mensagemErro.id = 'mensagemErro';
+            mensagemErro.className = 'mensagem_erro';
+            document.body.appendChild(mensagemErro);
         }
 
-        try {
-            const response = await fetch('http://localhost:3000/verifica-token', {
-                method: 'POST',
-                headers: {
-                    'Authorization': `Bearer ${token}`,
-                    'Content-Type': 'application/json'
-                }
-            });
-
-            const data = await response.json();
-            if (!data.auth) {
-                // Se o token não for válido, redireciona para o login
-                console.error("Token inválido. Redirecionando para o login...");
-                localStorage.removeItem('token');  // Remove o token inválido
-                window.location.href = '../login/login.html';
-            }
-        } catch (error) {
-            console.error('Erro na verificação do token:', error);
-            localStorage.removeItem('token');
-            window.location.href = '../login/login.html';
-        }
-    };
-
-    // Chama a função de validação de token ao carregar a página
-    validateToken();
-
-    // Função para exibir a mensagem temporária
-    function exibirMensagemTempora() {
-        mensagemTempora.style.display = 'block'; // Torna o elemento visível
-        mensagemTempora.style.right = '20px'; // Move para a tela
-        mensagemTempora.style.opacity = '1'; // Torna visível
+        mensagemErro.textContent = mensagem; // Define o texto da mensagem
+        mensagemErro.style.display = 'block'; // Torna o elemento visível
+        mensagemErro.style.right = '20px'; // Move para a tela
+        mensagemErro.style.opacity = '1'; // Torna visível
 
         // Ocultar a mensagem após 3 segundos
         setTimeout(() => {
-            mensagemTempora.style.right = '-300px'; // Move para fora da tela
-            mensagemTempora.style.opacity = '0'; // Torna invisível
+            mensagemErro.style.right = '-300px'; // Move para fora da tela
+            mensagemErro.style.opacity = '0'; // Torna invisível
 
             // Após a transição, esconde completamente
             setTimeout(() => {
-                mensagemTempora.style.display = 'none';
+                mensagemErro.style.display = 'none';
             }, 500); // Tempo correspondente à duração da transição de saída
         }, 3000); // Exibe a mensagem por 3 segundos
     }
+
+    // Função para validar o token
+    const validateToken = () => {
+        const token = localStorage.getItem('token');
+        if (!token) {
+            // Se não houver token, exibe a mensagem de erro e redireciona após um pequeno atraso
+            exibirMensagemErro('Você precisa estar autenticado para acessar esta página.');
+            setTimeout(() => {
+                window.location.href = '../login/login.html';  // Redireciona para o login após 3 segundos
+            }, 3500); // Aguarda o tempo da animação de erro para redirecionar
+            return;
+        }
+    };
 
     // Função para formatar a data no padrão brasileiro (dd/mm/aaaa)
     const formatDate = (dateString) => {
@@ -70,9 +57,15 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     // Função para buscar as manutenções
-    const fetchManutencao = async (filters = {}) => {
-        const token = localStorage.getItem('token');
-        if (!token) return;
+        const fetchManutencao = async (filters = {}) => {
+            const token = localStorage.getItem('token'); // Pegando o token armazenado no localStorage
+        if (!token) {
+            exibirMensagemErro('Você precisa estar autenticado para acessar os detalhes.');
+            setTimeout(() => {
+                window.location.href = '../login/login.html';  // Se não houver token, redireciona para o login
+            }, 3500); // Aguarda o tempo da animação de erro para redirecionar
+            return;
+        }
 
         try {
             const response = await fetch('http://localhost:3000/filtro', {
@@ -304,3 +297,9 @@ document.addEventListener('DOMContentLoaded', () => {
             console.error('Erro ao carregar o footer:', error);
         });
 });
+
+// Chama a função de validação de token ao carregar a página
+window.onload = () => {
+    fetchManutencao(); // Carrega os detalhes da manutenção após a validação
+    validateToken(); // Valida o token ao carregar a página
+};

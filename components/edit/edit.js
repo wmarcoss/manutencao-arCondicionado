@@ -167,18 +167,18 @@ document.addEventListener("DOMContentLoaded", function () {
     // Função para enviar o formulário de edição
     const handleEditSubmit = async (event) => {
         event.preventDefault(); // Prevenir o envio do formulário padrão
-
+    
         const id = new URLSearchParams(window.location.search).get('id');
         const formData = new FormData(document.getElementById('manutencao-form'));
         const data = Object.fromEntries(formData);
-
+    
         // Substituir campos vazios por null
         for (const key in data) {
             if (data[key] === '') {
-                data[key] = null; // Define como null se o campo estiver vazio
+                data[key] = null;
             }
         }
-
+    
         try {
             const response = await fetch(`http://localhost:3000/manutencao/${id}`, {
                 method: 'PUT',
@@ -188,22 +188,20 @@ document.addEventListener("DOMContentLoaded", function () {
                 },
                 body: JSON.stringify(data),
             });
-
+    
             if (!response.ok) {
                 throw new Error('Erro ao editar a manutenção.');
             }
-
-            // Exibir a mensagem temporária de sucesso
+    
             exibirMensagemTempora();
-
-            // Aguarda 3 segundos antes de redirecionar para a página de detalhes com o ID
+    
             setTimeout(() => {
                 window.location.href = `../detalhes/detalhes.html?id=${id}`;
-            }, 3500); // Redireciona após 3.5 segundos (ajustando para o tempo de transição da mensagem)
+            }, 3500);
         } catch (error) {
             console.error('Erro:', error);
         }
-    };
+    };    
 
     // Redirecionar para a página de detalhes com o ID ao cancelar
     const handleCancel = () => {

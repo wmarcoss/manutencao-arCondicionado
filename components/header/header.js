@@ -1,39 +1,34 @@
-document.addEventListener("DOMContentLoaded", function () {
-    const profileImage = document.getElementById('profile');
-    const profileOptions = document.getElementById('profileOptions');
+document.addEventListener("DOMContentLoaded", () => {
+    const menuButton = document.getElementById("menu-button");
+    const menuOptions = document.getElementById("menu-options");
 
-    // Alternar visibilidade do menu ao clicar na imagem
-    profileImage.addEventListener('click', function (event) {
-        event.stopPropagation(); // Impede que o clique feche o menu
-        profileOptions.classList.toggle('hidden'); // Mostra ou esconde o menu
+    // Alternar visibilidade ao clicar no botão Menu
+    menuButton.addEventListener("click", () => {
+        const isHidden = menuOptions.style.display === "none" || menuOptions.style.display === "";
+        menuOptions.style.display = isHidden ? "flex" : "none";
     });
 
-    // Adicionar ações ao clicar em cada opção
-    profileOptions.addEventListener('click', function (event) {
-        const selectedOption = event.target.getAttribute('data-value');
-
-        switch (selectedOption) {
-            case 'perfil':
-                alert('Abrindo página de perfil...');
-                break;
-            case 'config':
-                alert('Abrindo configurações...');
-                break;
-            case 'sair':
-                alert('Saindo...');
-                localStorage.removeItem('token'); // Exemplo: remover token
-                window.location.href = '../login/login.html'; // Redirecionar para login
-                break;
-            default:
-                break;
+    // Fechar menu se clicar fora
+    document.addEventListener("click", (event) => {
+        if (!menuButton.contains(event.target) && !menuOptions.contains(event.target)) {
+            menuOptions.style.display = "none";
         }
-
-        // Esconder o menu após selecionar uma opção
-        profileOptions.classList.add('hidden');
-    });
-
-    // Fecha o menu se clicar fora
-    document.addEventListener('click', function () {
-        profileOptions.classList.add('hidden');
     });
 });
+document.addEventListener('DOMContentLoaded', () => {
+    const menuButton = document.getElementById('menu-button');
+    const menuOptions = document.getElementById('menu-options');
+
+    if (menuButton && menuOptions) {
+        menuButton.addEventListener('click', () => {
+            menuOptions.classList.toggle('active');
+        });
+
+        document.addEventListener('click', (event) => {
+            if (!menuButton.contains(event.target) && !menuOptions.contains(event.target)) {
+                menuOptions.classList.remove('active');
+            }
+        });
+    }
+});
+

@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Header</title>
+    <link rel="stylesheet" href="header.css">
 </head>
 <body>
     <div class="fundo">
@@ -15,17 +16,18 @@
                 <li class="nav-link"><a href="../home/home.html">Página Inicial</a></li>
                 <li class="nav-link"><a href="../preenchimento/preenchimento.html">Adicionar Manutenção</a></li>
                 <li class="nav-link"><a href="../historico/historico.html">Ver Histórico</a></li>
-                <div class="profile-container">
-                    <img id="profile" src="../../assets/icons/profile.png" alt="profile" style="width: 35px; cursor: pointer;">
-                    <ul id="profileOptions" class="hidden">
-                        <li data-value="perfil">Perfil</li>
-                        <li data-value="config">Configurações</li>
-                        <li data-value="sair">Sair</li>
-                    </ul>
-                </div>
             </ul>
         </div>
-    </div>
+        <div class="user-menu">
+            <!-- Botão com imagem -->
+            <button id="menu-button">
+                <img src="../../assets/icons/profile.png" alt="Menu" style="width: 40px; height: 40px; border-radius: 50%;">
+            </button>
+            <div id="menu-options" class="hidden">
+                <a href="#" id="logout">Sair</a>
+            </div>
+        </div>
+        
     
     <script src="header.js" defer></script>
 </body>

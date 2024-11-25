@@ -35,7 +35,6 @@ document.addEventListener("DOMContentLoaded", function () {
         }, 3000);
     }
 
-    // Função para carregar o header
     function carregarHeader() {
         return new Promise((resolve, reject) => {
             const headerElement = document.getElementById('header-geral');
@@ -48,6 +47,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 })
                 .then(data => {
                     headerElement.innerHTML = data;
+                    inicializarHeader(); // Chama as funções do header após carregar
                     resolve();
                 })
                 .catch(error => {
@@ -56,6 +56,39 @@ document.addEventListener("DOMContentLoaded", function () {
                 });
         });
     }
+    // Função para inicializar os eventos do header
+    function inicializarHeader() {
+        const menuButton = document.getElementById("menu-button");
+        const menuOptions = document.getElementById("menu-options");
+    
+        if (menuButton && menuOptions) {
+            // Alternar visibilidade do menu ao clicar no botão
+            menuButton.addEventListener("click", () => {
+                const isHidden = menuOptions.style.display === "none" || menuOptions.style.display === "";
+                menuOptions.style.display = isHidden ? "flex" : "none";
+            });
+    
+            // Fechar menu ao clicar fora
+            document.addEventListener("click", (event) => {
+                if (!menuButton.contains(event.target) && !menuOptions.contains(event.target)) {
+                    menuOptions.style.display = "none";
+                }
+            });
+        } else {
+            console.error("Botão ou opções do menu não encontrados no header.");
+        }
+    }
+    
+    // Carregar o header e inicializar suas funcionalidades
+    document.addEventListener("DOMContentLoaded", () => {
+        carregarHeader()
+            .then(() => {
+                console.log("Header carregado e inicializado com sucesso.");
+            })
+            .catch(error => {
+                console.error("Erro ao carregar e inicializar o header:", error);
+            });
+    });
 
     // Função para carregar o footer
     function carregarFooter() {

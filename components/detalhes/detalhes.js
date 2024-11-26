@@ -36,8 +36,9 @@ const validateToken = () => {
         setTimeout(() => {
             window.location.href = '../login/login.html';  // Redireciona para o login após 3 segundos
         }, 3500); // Aguarda o tempo da animação de erro para redirecionar
-        return;
+        return false;
     }
+    return true;
 };
 
 // Função para formatar a data no formato brasileiro
@@ -47,42 +48,95 @@ const formatDate = (dateString) => {
     return date.toLocaleDateString('pt-BR', options);
 };
 
-// Função para carregar o Header
-const loadHeader = () => {
-    const headerElement = document.getElementById('header-geral');
-    fetch('../header/header.html')
-        .then(response => {
-            if (!response.ok) {
-                throw new Error('Erro ao carregar o header.');
-            }
-            return response.text();
-        })
-        .then(data => {
-            headerElement.innerHTML = data;
-        })
-        .catch(error => {
-            console.error('Erro ao carregar o header:', error);
-            exibirMensagemErro('Erro ao carregar o header. Tente novamente mais tarde.');
+// Função para carregar o header e garantir que o conteúdo seja carregado corretamente
+function carregarHeader() {
+    return new Promise((resolve, reject) => {
+        const headerElement = document.getElementById('header-geral');
+        fetch('../header/header.html')
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Erro ao carregar o header.');
+                }
+                return response.text();
+            })
+            .then(data => {
+                headerElement.innerHTML = data;
+                inicializarHeader(); // Inicializa os eventos após o carregamento do header
+                resolve();
+            })
+            .catch(error => {
+                console.error('Erro ao carregar o header:', error);
+                reject(error);
+            });
+    });
+}
+
+// Função para inicializar os eventos no header
+function inicializarHeader() {
+    console.log("Inicializando o header...");
+    const menuButton = document.getElementById("menu-button");
+    const menuOptions = document.getElementById("menu-options");
+    const logoutButton = document.getElementById("logout"); // Captura o botão de logout
+
+    if (menuButton && menuOptions) {
+        // Alternar a visibilidade do menu com a classe "active"
+        menuButton.addEventListener("click", (event) => {
+            event.stopPropagation(); // Impede que o clique no menu se propague
+            menuOptions.classList.toggle("active");
         });
-};
+
+        // Fechar o menu se clicar fora dele
+        document.addEventListener("click", (event) => {
+            if (!menuButton.contains(event.target) && !menuOptions.contains(event.target)) {
+                menuOptions.classList.remove("active");
+            }
+        });
+    } else {
+        console.error("Botão ou opções do menu não encontrados no header.");
+    }
+
+    // Verifica e adiciona a funcionalidade de logout
+    if (logoutButton) {
+        logoutButton.addEventListener("click", (event) => {
+            event.preventDefault(); // Impede o comportamento padrão do link
+
+            // Remover o token de autenticação do localStorage
+            if (localStorage.getItem("token")) {
+                console.log("Token encontrado no localStorage, removendo...");
+                localStorage.removeItem("token"); // Remove o token
+            } else {
+                console.log("Token não encontrado no localStorage.");
+            }
+
+            // Redirecionar para a página de login
+            window.location.href = "../login/login.html"; // Substitua pelo caminho correto da página de login
+        });
+    } else {
+        console.error("Botão de logout não encontrado no header.");
+    }
+}
 
 // Função para carregar o Footer
 const loadFooter = () => {
-    const footerElement = document.getElementById('footer-geral');
-    fetch('../footer/footer.html')
-        .then(response => {
-            if (!response.ok) {
-                throw new Error('Erro ao carregar o footer.');
-            }
-            return response.text();
-        })
-        .then(data => {
-            footerElement.innerHTML = data;
-        })
-        .catch(error => {
-            console.error('Erro ao carregar o footer:', error);
-            exibirMensagemErro('Erro ao carregar o footer. Tente novamente mais tarde.');
-        });
+    return new Promise((resolve, reject) => {
+        const footerElement = document.getElementById('footer-geral');
+        fetch('../footer/footer.html')
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Erro ao carregar o footer.');
+                }
+                return response.text();
+            })
+            .then(data => {
+                footerElement.innerHTML = data;
+                resolve();
+            })
+            .catch(error => {
+                console.error('Erro ao carregar o footer:', error);
+                exibirMensagemErro('Erro ao carregar o footer. Tente novamente mais tarde.');
+                reject(error);
+            });
+    });
 };
 
 // Função para carregar os detalhes da manutenção
@@ -138,10 +192,19 @@ const loadManutencaoDetails = async () => {
     }
 };
 
-// Chama a função de validação de token ao carregar a página
+// Função para carregar os recursos na página
 window.onload = () => {
-    validateToken(); // Valida o token ao carregar a página
-    loadHeader(); // Carrega o header
-    loadFooter(); // Carrega o footer
-    loadManutencaoDetails(); // Carrega os detalhes da manutenção após a validação
+    // Carrega o header e footer primeiro
+    Promise.all([carregarHeader(), loadFooter()])
+        .then(() => {
+            console.log("Header e Footer carregados com sucesso.");
+
+            // Valida o token após carregar o header e footer
+            if (validateToken()) {
+                loadManutencaoDetails(); // Carregar os detalhes da manutenção após validação do token
+            }
+        })
+        .catch(error => {
+            console.error("Erro ao carregar os recursos:", error);
+        });
 };

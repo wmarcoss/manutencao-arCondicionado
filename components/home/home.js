@@ -47,7 +47,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 })
                 .then(data => {
                     headerElement.innerHTML = data;
-                    inicializarHeader(); // Chama as funções do header após carregar
+                    inicializarHeader(); // Inicializa os eventos após o carregamento do header
                     resolve();
                 })
                 .catch(error => {
@@ -56,30 +56,51 @@ document.addEventListener("DOMContentLoaded", function () {
                 });
         });
     }
-    // Função para inicializar os eventos do header
+    
     function inicializarHeader() {
         const menuButton = document.getElementById("menu-button");
         const menuOptions = document.getElementById("menu-options");
+        const logoutButton = document.getElementById("logout"); // Adicionando a captura do botão de logout
     
         if (menuButton && menuOptions) {
-            // Alternar visibilidade do menu ao clicar no botão
-            menuButton.addEventListener("click", () => {
-                const isHidden = menuOptions.style.display === "none" || menuOptions.style.display === "";
-                menuOptions.style.display = isHidden ? "flex" : "none";
+            // Alternar a visibilidade do menu com a classe "active"
+            menuButton.addEventListener("click", (event) => {
+                event.stopPropagation(); // Impede que o clique no menu se propague
+                menuOptions.classList.toggle("active");
             });
     
-            // Fechar menu ao clicar fora
+            // Fechar o menu se clicar fora dele
             document.addEventListener("click", (event) => {
                 if (!menuButton.contains(event.target) && !menuOptions.contains(event.target)) {
-                    menuOptions.style.display = "none";
+                    menuOptions.classList.remove("active");
                 }
             });
         } else {
             console.error("Botão ou opções do menu não encontrados no header.");
         }
+    
+        // Verificar se o botão de logout está presente
+        if (logoutButton) {
+            logoutButton.addEventListener("click", (event) => {
+                event.preventDefault(); // Impede o comportamento padrão (caso haja)
+    
+                // Remover o token de autenticação do localStorage
+                if (localStorage.getItem("token")) {
+                    console.log("Token encontrado no localStorage, removendo...");
+                    localStorage.removeItem("token"); // Remove o token
+                } else {
+                    console.log("Token não encontrado no localStorage.");
+                }
+    
+                // Redirecionar para a página de login
+                window.location.href = "../login/login.html"; // Substitua pelo caminho correto da página de login
+            });
+        } else {
+            console.error("Botão de logout não encontrado no header.");
+        }
     }
     
-    // Carregar o header e inicializar suas funcionalidades
+    // Carregar o header e inicializar as funcionalidades
     document.addEventListener("DOMContentLoaded", () => {
         carregarHeader()
             .then(() => {
@@ -89,7 +110,8 @@ document.addEventListener("DOMContentLoaded", function () {
                 console.error("Erro ao carregar e inicializar o header:", error);
             });
     });
-
+    
+    
     // Função para carregar o footer
     function carregarFooter() {
         return new Promise((resolve, reject) => {

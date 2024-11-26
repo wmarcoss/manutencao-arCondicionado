@@ -32,9 +32,15 @@
     transition: color 0.3s ease, transform 0.3s ease; 
 }
 
+#hisEicon {
+    display: flex;
+}
+
 .user-menu {
+    margin-left: 250px;
+    margin-top: -10px;
     position: absolute;
-    right: 20px;
+    width: 80px;
 }
 
 #menu-button {
@@ -43,39 +49,41 @@
     border: none;
     font-weight: bold;
     cursor: pointer;
-    padding: 10px 20px;
     border-radius: 5px;
 }
 
 #menu-options {
-    position: absolute;
-    top: 50px;
-    right: 0;
-    background-color: white;
-    border: 1px solid rgba(0, 0, 0, 0.1);
-    border-radius: 5px;
-    display: flex;
+    border: 1px solid rgba(0, 0, 0, 0.116);
+    border-radius: 6px;
+    display: none; /* Hidden by default */
     flex-direction: column;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     z-index: 10;
 }
 
-#menu-options a {
-    text-decoration: none;
-    color: black;
-    padding: 10px;
-    font-weight: bold;
-    text-align: center;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-}
-
-#menu-options a:hover {
-    background-color: var(--cor3);
-    color: white;
+#menu-options.active {
+    display: flex;
+    margin-top: -10px;
+    margin-left: -150px;
 }
 
 .hidden {
     display: none;
 }
 
+#nome, #email {
+    padding: 4px 8px;
+    background-color: white;
+    color: blue;
+    display: block;
+}
 
+#logout {
+    padding: 4px 8px;
+    background-color: white;
+    color: blue;
+    display: block;
+    font-weight: bolder;
+    border-style: none;
+    cursor: pointer;
+}

@@ -15,20 +15,22 @@
             <ul class="nav-style">
                 <li class="nav-link"><a href="../home/home.html">Página Inicial</a></li>
                 <li class="nav-link"><a href="../preenchimento/preenchimento.html">Adicionar Manutenção</a></li>
-                <li class="nav-link"><a href="../historico/historico.html">Ver Histórico</a></li>
+                <div id="hisEicon">
+                    <li class="nav-link"><a href="../historico/historico.html">Ver Histórico</a></li>
+                    <div class="user-menu">
+                        <button id="menu-button">
+                            <img id="profile-icon" src="../../assets/icons/menu.png" alt="Menu" style="width: 40px; height: 40px; border-radius: 50%;">
+                        </button>
+                        <div id="menu-options" class="hidden">
+                            <p id="nome">Nome:</p>
+                            <p id="email">E-mail:</p>
+                            <button id="logout">SAIR</button>
+                        </div>
+                    </div>
+                </div>
             </ul>
         </div>
-        <div class="user-menu">
-            <!-- Botão com imagem -->
-            <button id="menu-button">
-                <img src="../../assets/icons/profile.png" alt="Menu" style="width: 40px; height: 40px; border-radius: 50%;">
-            </button>
-            <div id="menu-options" class="hidden">
-                <a href="#" id="logout">Sair</a>
-            </div>
-        </div>
         
-    
     <script src="header.js" defer></script>
 </body>
 </html>

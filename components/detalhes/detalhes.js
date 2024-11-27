@@ -50,69 +50,49 @@ const formatDate = (dateString) => {
 
 // Função para carregar o header e garantir que o conteúdo seja carregado corretamente
 function carregarHeader() {
-    return new Promise((resolve, reject) => {
-        const headerElement = document.getElementById('header-geral');
-        fetch('../header/header.html')
-            .then(response => {
-                if (!response.ok) {
-                    throw new Error('Erro ao carregar o header.');
-                }
-                return response.text();
-            })
-            .then(data => {
-                headerElement.innerHTML = data;
-                inicializarHeader(); // Inicializa os eventos após o carregamento do header
-                resolve();
-            })
-            .catch(error => {
-                console.error('Erro ao carregar o header:', error);
-                reject(error);
-            });
-    });
+    const headerElement = document.getElementById('header-geral');
+    fetch('../header/header.html')
+        .then(response => response.ok ? response.text() : Promise.reject('Erro ao carregar o header.'))
+        .then(data => {
+            headerElement.innerHTML = data;
+            inicializarHeader(); // Inicializa os eventos após o carregamento do header
+        })
+        .catch(error => console.error(error));
 }
 
-// Função para inicializar os eventos no header
 function inicializarHeader() {
-    console.log("Inicializando o header...");
     const menuButton = document.getElementById("menu-button");
     const menuOptions = document.getElementById("menu-options");
-    const logoutButton = document.getElementById("logout"); // Captura o botão de logout
+    const logoutButton = document.getElementById("logout");
 
+    // Exibir nome e e-mail do localStorage
+    const nome = localStorage.getItem("nomeUser");
+    const email = localStorage.getItem("email");
+
+    // Atualizar informações no menu
+    document.getElementById("nomeUser").textContent = nome ? `Nome: ${nome.split(" ")[0]}` : "Nome: Não disponível";
+    document.getElementById("email").textContent = email ? `E-mail: ${email}` : "E-mail: Não disponível";
+
+    // Alternar visibilidade do menu
     if (menuButton && menuOptions) {
-        // Alternar a visibilidade do menu com a classe "active"
         menuButton.addEventListener("click", (event) => {
-            event.stopPropagation(); // Impede que o clique no menu se propague
+            event.stopPropagation();
             menuOptions.classList.toggle("active");
         });
-
-        // Fechar o menu se clicar fora dele
         document.addEventListener("click", (event) => {
             if (!menuButton.contains(event.target) && !menuOptions.contains(event.target)) {
                 menuOptions.classList.remove("active");
             }
         });
-    } else {
-        console.error("Botão ou opções do menu não encontrados no header.");
     }
 
-    // Verifica e adiciona a funcionalidade de logout
+    // Logout: remover informações do localStorage
     if (logoutButton) {
         logoutButton.addEventListener("click", (event) => {
-            event.preventDefault(); // Impede o comportamento padrão do link
-
-            // Remover o token de autenticação do localStorage
-            if (localStorage.getItem("token")) {
-                console.log("Token encontrado no localStorage, removendo...");
-                localStorage.removeItem("token"); // Remove o token
-            } else {
-                console.log("Token não encontrado no localStorage.");
-            }
-
-            // Redirecionar para a página de login
-            window.location.href = "../login/login.html"; // Substitua pelo caminho correto da página de login
+            event.preventDefault();
+            localStorage.clear();  // Limpa o localStorage
+            window.location.href = "../login/login.html";  // Redireciona para o login
         });
-    } else {
-        console.error("Botão de logout não encontrado no header.");
     }
 }
 

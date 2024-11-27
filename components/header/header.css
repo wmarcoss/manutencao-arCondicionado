@@ -71,7 +71,7 @@
     display: none;
 }
 
-#nome, #email {
+#nomeUser, #email {
     padding: 4px 8px;
     background-color: white;
     color: blue;

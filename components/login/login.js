@@ -126,8 +126,18 @@ document.getElementById('login-form').addEventListener('submit', function (event
         } else if (data.error === 'Senha incorreta') {
             exibirMensagemTempora('mensagemCredenciaisInvalidas');
         } else if (data.token) {
-            // Armazena o token e redireciona para a página inicial
+            // Salvar o token no localStorage
             localStorage.setItem('token', data.token);
+
+            // Salvar o nome e o e-mail no localStorage
+            if (data.nome && data.email) {
+                localStorage.setItem('nomeUser', data.nome); // Corrigido para nome retornado pelo servidor
+                localStorage.setItem('email', data.email);
+            } else {
+                console.warn("O servidor não retornou o nome ou o e-mail do usuário.");
+            }
+
+            // Redirecionar para a página inicial
             window.location.href = '../home/home.html';
         } else {
             exibirMensagemTempora('mensagemErroGenerico');

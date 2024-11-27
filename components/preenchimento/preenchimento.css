@@ -212,7 +212,7 @@ textarea {
 
 ::placeholder {
     padding-left: 1px;
-    padding-top: 2px;
+    padding-top: 1px;
 }
 
 #detalhes, #observacoes {

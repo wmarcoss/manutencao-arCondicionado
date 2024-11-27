@@ -266,92 +266,61 @@ document.addEventListener('DOMContentLoaded', () => {
     fetchManutencao();
 
     //// Função para carregar o header e garantir que o conteúdo seja carregado corretamente
-function carregarHeader() {
-    return new Promise((resolve, reject) => {
+    function carregarHeader() {
         const headerElement = document.getElementById('header-geral');
         fetch('../header/header.html')
-            .then(response => {
-                if (!response.ok) {
-                    throw new Error('Erro ao carregar o header.');
-                }
-                return response.text();
-            })
+            .then(response => response.ok ? response.text() : Promise.reject('Erro ao carregar o header.'))
             .then(data => {
                 headerElement.innerHTML = data;
                 inicializarHeader(); // Inicializa os eventos após o carregamento do header
-                resolve();
             })
-            .catch(error => {
-                console.error('Erro ao carregar o header:', error);
-                reject(error);
+            .catch(error => console.error(error));
+    }
+    
+    function inicializarHeader() {
+        const menuButton = document.getElementById("menu-button");
+        const menuOptions = document.getElementById("menu-options");
+        const logoutButton = document.getElementById("logout");
+    
+        // Exibir nome e e-mail do localStorage
+        const nome = localStorage.getItem("nomeUser");
+        const email = localStorage.getItem("email");
+    
+        // Atualizar informações no menu
+        document.getElementById("nomeUser").textContent = nome ? `Nome: ${nome.split(" ")[0]}` : "Nome: Não disponível";
+        document.getElementById("email").textContent = email ? `E-mail: ${email}` : "E-mail: Não disponível";
+    
+        // Alternar visibilidade do menu
+        if (menuButton && menuOptions) {
+            menuButton.addEventListener("click", (event) => {
+                event.stopPropagation();
+                menuOptions.classList.toggle("active");
             });
+            document.addEventListener("click", (event) => {
+                if (!menuButton.contains(event.target) && !menuOptions.contains(event.target)) {
+                    menuOptions.classList.remove("active");
+                }
+            });
+        }
+    
+        // Logout: remover informações do localStorage
+        if (logoutButton) {
+            logoutButton.addEventListener("click", (event) => {
+                event.preventDefault();
+                localStorage.clear();  // Limpa o localStorage
+                window.location.href = "../login/login.html";  // Redireciona para o login
+            });
+        }
+    }
+
+    // Caso o código seja chamado em outras páginas após carregamento dinâmico do conteúdo (como a de preenchimento):
+    window.addEventListener('load', function () {
+        // Chama novamente a inicialização do header caso não tenha ocorrido na página preenchimento
+        if (document.getElementById('header-geral') && !document.querySelector('#header-geral .menu-button-inicializado')) {
+            console.log('Reinicializando o header na página preenchimento...');
+            carregarHeader();
+        }
     });
-}
-
-// Função para inicializar os eventos no header
-function inicializarHeader() {
-    console.log("Inicializando o header...");
-    const menuButton = document.getElementById("menu-button");
-    const menuOptions = document.getElementById("menu-options");
-    const logoutButton = document.getElementById("logout"); // Captura o botão de logout
-
-    if (menuButton && menuOptions) {
-        // Alternar a visibilidade do menu com a classe "active"
-        menuButton.addEventListener("click", (event) => {
-            event.stopPropagation(); // Impede que o clique no menu se propague
-            menuOptions.classList.toggle("active");
-        });
-
-        // Fechar o menu se clicar fora dele
-        document.addEventListener("click", (event) => {
-            if (!menuButton.contains(event.target) && !menuOptions.contains(event.target)) {
-                menuOptions.classList.remove("active");
-            }
-        });
-    } else {
-        console.error("Botão ou opções do menu não encontrados no header.");
-    }
-
-    // Verifica e adiciona a funcionalidade de logout
-    if (logoutButton) {
-        logoutButton.addEventListener("click", (event) => {
-            event.preventDefault(); // Impede o comportamento padrão do link
-
-            // Remover o token de autenticação do localStorage
-            if (localStorage.getItem("token")) {
-                console.log("Token encontrado no localStorage, removendo...");
-                localStorage.removeItem("token"); // Remove o token
-            } else {
-                console.log("Token não encontrado no localStorage.");
-            }
-
-            // Redirecionar para a página de login
-            window.location.href = "../login/login.html"; // Substitua pelo caminho correto da página de login
-        });
-    } else {
-        console.error("Botão de logout não encontrado no header.");
-    }
-}
-
-// Carregar o header e inicializar as funcionalidades na página de preenchimento
-document.addEventListener("DOMContentLoaded", () => {
-    carregarHeader()
-        .then(() => {
-            console.log("Header carregado e inicializado com sucesso.");
-        })
-        .catch(error => {
-            console.error("Erro ao carregar e inicializar o header:", error);
-        });
-});
-
-// Caso o código seja chamado em outras páginas após carregamento dinâmico do conteúdo (como a de preenchimento):
-window.addEventListener('load', function () {
-    // Chama novamente a inicialização do header caso não tenha ocorrido na página preenchimento
-    if (document.getElementById('header-geral') && !document.querySelector('#header-geral .menu-button-inicializado')) {
-        console.log('Reinicializando o header na página preenchimento...');
-        carregarHeader();
-    }
-});
 
     // Carregar o Footer
     const footerElement = document.getElementById('footer-geral');

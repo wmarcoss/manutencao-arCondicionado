@@ -89,7 +89,7 @@ input {
 
 #eye-icon, #eye-icon-confirm {
     position: absolute;
-    right: 10px; /* Alinha o ícone do olho para a direita */
+    right: 10px; 
     top: 50%;
     transform: translateY(-50%);
     cursor: pointer;
@@ -98,7 +98,7 @@ input {
 }
 
 input[type="password"] {
-    padding-right: 6px; /* Dá espaço para o ícone do olho */
+    padding-right: 6px; 
 }
 
 label {
@@ -147,7 +147,7 @@ p {
     transition: transform 0.3s ease, filter 0.3s ease; 
 }
 
-/* Estilo das mensagens de erro */
+
 .error-message {
     color: red;
     font-size: 12px;

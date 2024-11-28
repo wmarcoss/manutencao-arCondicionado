@@ -89,7 +89,7 @@ input {
 }
 
 input[type="password"] {
-    padding-right: 6px; /* Espaço para o ícone do olho */
+    padding-right: 6px; 
 }
 
 .botoes {
@@ -125,15 +125,14 @@ input[type="password"] {
     font-weight: bold;
 }
 
-/* Estilo para a mensagem de erro */
 .error-message {
     color: red;
     font-size: 12px;
     position: absolute;
-    top: 100%; /* Coloca a mensagem abaixo do campo */
+    top: 100%; 
     left: 0;
     margin-top: 4px;
-    display: none; /* Inicialmente escondido */
+    display: none; 
 }
 
 .mensagem_tempora {

@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Edit</title>
+    <link rel="shortcut icon" href="../../assets/images/logo.png" type="image/x-icon">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="./edit.css">
 </head>
@@ -20,7 +21,9 @@
             </div>
     
             <div class="select">
-                <label for="local">Local *
+                <label for="local">Local <span class="asterisco">*</span>
+                    <div>
+                        <img id="local-icon" src="../../assets/icons/local.png" alt="local">
                     <select name="lugar" id="local" required>
                         <option disabled selected value="">Selecione o local</option>
                         <option value="1° A">1° A</option>
@@ -35,9 +38,12 @@
                         <option value="Laboratorio de informática">Laboratorio de informática</option>
                         <option value="Sala de estudos">Sala de estudos</option>
                     </select>
+                </div>
                 </label>
             
-                <label for="modelo">Modelo e Marca * 
+                <label for="modelo">Modelo e Marca <span class="asterisco">*</span>
+                    <div>
+                        <img id="tipoManu-icon" src="../../assets/icons/modeloEmarca.png" alt="manutenção">
                     <select name="modelo_marca" id="modelo" required>
                         <option disabled selected value="">Selecione o fabricante e modelo</option>
                         <option value="Carrier Eco Saver Puron">Carrier Eco Saver Puron</option>
@@ -48,36 +54,42 @@
                         <option value="Gree Eco Garden">Gree Eco Garden</option>
                         <option value="Outros">Outros</option>
                     </select>
+                </div>
                 </label>
             </div>
             
             <div class="select">
-                <label for="tipo-manutencao">Tipo da manutenção *
-                    <select name="tipo_manutencao" id="tipo-manutencao" required>
-                        <option disabled selected value="">Selecione o tipo</option>
-                        <option value="Preventiva">Preventiva</option>
-                        <option value="Corretiva">Corretiva</option>
-                    </select>
-                </label>
-            
-                <label for="tipo-conserto">Tipo de conserto *
-                    <select name="tipo_conserto" id="tipo-conserto" required>
-                        <option disabled selected value="">Selecione o tipo</option>
-                        <option value="Limpeza dos filtros de ar">Limpeza dos filtros de ar</option>
-                        <option value="Substituição dos filtros">Substituição dos filtros</option>
-                        <option value="Limpeza de dreno">Limpeza de dreno</option>
-                        <option value="Medição de tensão elétrica">Medição de tensão elétrica</option>
-                        <option value="Medição de temperatura do ar">Medição de temperatura do ar</option>
-                        <option value="Verificação do estado dos filtros">Verificação do estado dos filtros</option>
-                        <option value="Outros">Outros</option>
-                    </select>
-                </label>
+                <label for="tipo-manutencao">Tipo da manutenção <span class="asterisco">*</span>
+                    <div>
+                        <img id="tipoManu-icon" src="../../assets/icons/tipoManu.png" alt="manutenção">
+                        <select name="tipo_manutencao" id="tipo-manutencao" required>
+                            <option disabled selected value="">Selecione o tipo</option>
+                            <option value="Preventiva">Preventiva</option>
+                            <option value="Corretiva">Corretiva</option>
+                        </select>
+                    </div>
+                </label>                
+                <label for="tipo-conserto">Tipo de conserto <span class="asterisco">*</span>
+                    <div>
+                        <img id="tipoManu-icon" src="../../assets/icons/tipoConsert.png" alt="manutenção">
+                        <select name="tipo_conserto" id="tipo-conserto" required>
+                            <option disabled selected value="">Selecione o tipo</option>
+                            <option value="Limpeza dos filtros de ar">Limpeza dos filtros de ar</option>
+                            <option value="Substituição dos filtros">Substituição dos filtros</option>
+                            <option value="Limpeza de dreno">Limpeza de dreno</option>
+                            <option value="Medição de tensão elétrica">Medição de tensão elétrica</option>
+                            <option value="Medição de temperatura do ar">Medição de temperatura do ar</option>
+                            <option value="Verificação do estado dos filtros">Verificação do estado dos filtros</option>
+                            <option value="Outros">Outros</option>
+                        </select>
+                    </div>
+                </label>                
             </div>            
     
             <div class="preenchiveis">
-                <label for="data">Data *
+                <label for="data">Data <span class="asterisco">*</span>                 
                     <input id="data" name="data_manutencao" type="date" required>
-                </label>
+                </label>                
                 
                 <label for="data2">Previsão da próxima manutenção
                     <input id="data2" name="data_previsao" type="date">
@@ -85,24 +97,31 @@
             </div>
     
             <div class="preenchiveis2">
-                <label for="nome">Profissional *
-                    <input id="nome" name="nome" type="text" placeholder="Digite seu nome" required>
+                <label for="nome">Profissional <span class="asterisco">*</span>
+                    <div>
+                        <img id="profissional-icon" src="../../assets/icons/user.png" alt="nome">
+                        <input id="nome" name="nome" type="text" placeholder="Digite seu nome" required>
+                    </div>
                 </label>
-    
+                
+            
                 <label for="custo">Custo (opcional, caso o profissional seja terceirizado)
-                    <input id="custo" name="custo" type="number" placeholder="R$">
-                </label>
+                    <div>
+                        <img id="custo-icon" src="../../assets/icons/custo.png" alt="custo">
+                        <input id="custo" name="custo" type="number" placeholder="R$" step="0.01" min="0">
+                    </div>
+                </label>                
             </div>
     
             <div class="text-box">
-                <label for="detalhes">Detalhes (opcional, para destacar peças trocadas, reparos, entre outros)
+                <label for="detalhes">Detalhes (opcional)
                     <textarea name="detalhes" id="detalhes" rows="6" placeholder="Digite aqui"></textarea>
                 </label>
             </div>
     
             <div class="text-box">
                 <div class="alinhar-botoes">
-                    <label for="observacoes">Observações (opcional, para anotar informações adicionais relevantes que o técnico tenha observado)
+                    <label for="observacoes">Observações (opcional)
                         <textarea name="observacoes" id="observacoes" rows="6" placeholder="Digite aqui"></textarea>
                     </label>
                     <div class="botoao-salvar">
@@ -117,6 +136,8 @@
         <div class="mensagem_tempora" id="mensagem_tempora" style="display: none;">
             <p>Manutenção editada com sucesso!</p>
         </div> 
+        <div id="mensagemErro" class="mensagem_erro"></div>
+
 
     </main>
 

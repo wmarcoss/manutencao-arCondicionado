@@ -5,6 +5,7 @@
     height: 130px;
     align-items: center;
     justify-content: center;
+    position: relative;
 }
 
 .logo {
@@ -19,7 +20,7 @@
     list-style: none;
 }
 
-.nav-link a{
+.nav-link a {
     text-decoration: none;
     color: white;
     font-weight: bold;
@@ -29,4 +30,60 @@
     color: rgb(0, 26, 83); 
     transform: scale(1.2); 
     transition: color 0.3s ease, transform 0.3s ease; 
+}
+
+#hisEicon {
+    display: flex;
+}
+
+.user-menu {
+    margin-left: 250px;
+    margin-top: -10px;
+    position: absolute;
+    width: 80px;
+}
+
+#menu-button {
+    background-color: var(--cor3);
+    color: white;
+    border: none;
+    font-weight: bold;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+#menu-options {
+    border: 1px solid rgba(0, 0, 0, 0.116);
+    border-radius: 6px;
+    display: none; /* Hidden by default */
+    flex-direction: column;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    z-index: 10;
+}
+
+#menu-options.active {
+    display: flex;
+    margin-top: -10px;
+    margin-left: -150px;
+}
+
+.hidden {
+    display: none;
+}
+
+#nomeUser, #email {
+    padding: 4px 8px;
+    background-color: white;
+    color: blue;
+    display: block;
+}
+
+#logout {
+    padding: 4px 8px;
+    background-color: white;
+    color: blue;
+    display: block;
+    font-weight: bolder;
+    border-style: none;
+    cursor: pointer;
 }

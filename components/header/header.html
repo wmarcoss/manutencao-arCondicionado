@@ -1,13 +1,36 @@
-<div class="fundo">
-    <div class="logo">
-        <a><img src="../../assets/images/logo.png" alt="logo" style="width: 90px;"></a>
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Header</title>
+    <link rel="stylesheet" href="header.css">
+</head>
+<body>
+    <div class="fundo">
+        <div class="logo">
+            <a><img src="../../assets/images/logo.png" alt="logo" style="width: 90px;"></a>
+        </div>
+        <div class="nav-bar">
+            <ul class="nav-style">
+                <li class="nav-link"><a href="../home/home.html">Página Inicial</a></li>
+                <li class="nav-link"><a href="../preenchimento/preenchimento.html">Adicionar Manutenção</a></li>
+                <div id="hisEicon">
+                    <li class="nav-link"><a href="../historico/historico.html">Ver Histórico</a></li>
+                    <div class="user-menu">
+                        <button id="menu-button">
+                            <img id="profile-icon" src="../../assets/icons/menu.png" alt="Menu" style="width: 40px; height: 40px; border-radius: 50%;">
+                        </button>
+                        <div id="menu-options" class="hidden">
+                            <p id="nomeUser">Nome: Carregando...</p> <!-- Alterado para ter um valor padrão -->
+                            <p id="email">E-mail: Carregando...</p> <!-- Alterado para ter um valor padrão -->
+                            <button id="logout">SAIR</button>
+                        </div>
+                    </div>
+                </div>
+            </ul>
+        </div>
     </div>
-    <div class="nav-bar">
-        <ul class="nav-style">
-            <li class="nav-link"><a href="../home/home.html">Página Inicial</a></li>
-            <li class="nav-link"><a href="../preenchimento/preenchimento.html">Adicionar Manutenção</a></li>
-            <li class="nav-link"><a href="../historico/historico.html">Ver Histórico</a></li>
-        </ul>
-    </div>
-</div>
-<link rel="stylesheet" href="./header.css">
+    <script src="header.js" defer></script>
+</body>
+</html>

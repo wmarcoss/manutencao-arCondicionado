@@ -53,7 +53,7 @@ body {
 }
 .botao-adicionar:hover, .botao-historico:hover {
     transform: scale(1.05);
-    filter: brightness(0.8); 
+    filter: brightness(0.92); 
     transition: transform 0.3s ease, filter 0.3s ease; 
 }
 
@@ -94,4 +94,19 @@ body {
     position: absolute;
     margin-top: 320px;
     color: black;
+}
+
+.mensagem_tempora {
+    display: none;
+    position: fixed;
+    top: 50px;
+    right: -300px;
+    background-color: rgba(232, 0, 0, 0.7);
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    opacity: 0;
+    transition: right 0.5s ease, opacity 0.5s ease;
 }

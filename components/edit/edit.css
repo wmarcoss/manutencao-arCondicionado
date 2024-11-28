@@ -144,7 +144,6 @@ textarea {
 }
 
 #salvar, #cancelar {
-    border: none;
     padding: 8px 16px;
     border-radius: 12px;
     cursor: pointer;
@@ -153,11 +152,14 @@ textarea {
 #salvar {
     background-color: var(--cor3);
     color: white;
+    border: 1.5px solid white;
 }
 
 #cancelar {
     background-color: white;
+    font-weight: bold;
     color: black;
+    border: none;
 }
 
 .mensagem_tempora {

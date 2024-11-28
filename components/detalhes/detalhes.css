@@ -64,10 +64,10 @@ body {
 #editar-text {
     padding: 8px 16px 8px 16px;
     border-radius: 12px;
-    background-color: white;
-    color: black;
+    background-color: var(--cor3);
+    color: white;
     cursor: pointer;
-    border: none;
+    border: 1px solid white;
     text-decoration: none;
 }
 

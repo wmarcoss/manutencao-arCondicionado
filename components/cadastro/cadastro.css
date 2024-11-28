@@ -109,18 +109,18 @@ input[type="password"] {
     transition: transform 0.3s ease, filter 0.3s ease; 
 }
 
-#botao-confirmar {
+#cancelar {
     background-color: white;
     color: black;
 }
 
-#cancelar {
+#botao-confirmar {
     background-color: var(--cor3);
     color: white;
     border: 1px solid white;
 }
 
-#textCancelar {
+#textconfirmar {
     text-decoration: none;
     font-weight: bold;
 }

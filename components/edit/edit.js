@@ -94,8 +94,8 @@ document.addEventListener("DOMContentLoaded", function () {
         const email = localStorage.getItem("email");
     
         // Atualizar informações no menu
-        document.getElementById("nomeUser").textContent = nome ? `Nome: ${nome.split(" ")[0]}` : "Nome: Não disponível";
-        document.getElementById("email").textContent = email ? `E-mail: ${email}` : "E-mail: Não disponível";
+        document.getElementById("nomeUser").textContent = nome ? ` ${nome.split(" ")[0]}` : " Não disponível";
+        document.getElementById("email").textContent = email ? ` ${email}` : " Não disponível";
     
         // Alternar visibilidade do menu
         if (menuButton && menuOptions) {

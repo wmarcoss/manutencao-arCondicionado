@@ -24,12 +24,11 @@
     text-decoration: none;
     color: white;
     font-weight: bold;
+    transition: color 0.3s ease, transform 0.3s ease;
 }
 
 .nav-style a:hover {
-    color: rgb(0, 26, 83); 
-    transform: scale(1.2); 
-    transition: color 0.3s ease, transform 0.3s ease; 
+    color: rgb(0, 26, 83);
 }
 
 #hisEicon {
@@ -47,43 +46,65 @@
     background-color: var(--cor3);
     color: white;
     border: none;
-    font-weight: bold;
-    cursor: pointer;
-    border-radius: 5px;
+    border-radius: 50%;
+    width: 50px;
+    height: 35px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
+
 
 #menu-options {
     border: 1px solid rgba(0, 0, 0, 0.116);
-    border-radius: 6px;
-    display: none; 
+    border-radius: 8px;
+    display: none;
     flex-direction: column;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background-color: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     z-index: 10;
+    opacity: 0;
 }
 
 #menu-options.active {
     display: flex;
     margin-top: -10px;
-    margin-left: -150px;
+    margin-left: -140px;
+    opacity: 1;
 }
 
-.hidden {
-    display: none;
+#menu-options div {
+    padding: 10px 16px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 14px;
+    font-weight: bold;
+    color: #333;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
 }
 
-#nomeUser, #email {
-    padding: 4px 8px;
-    background-color: white;
-    color: black;
-    display: block;
+#menu-options div:last-child {
+    border-bottom: none;
 }
 
 #logout {
-    padding: 4px 8px;
-    background-color: white;
-    color: blue;
-    display: block;
-    font-weight: bolder;
-    border-style: none;
+    padding: 12px;
+    text-align: center;
+    font-weight: bold;
+    border: none;
     cursor: pointer;
+    color: red;
+    border-radius: 8px;
+    margin-top: 8px
+}
+
+#logout:hover {
+    background-color: red;
+    color: white;
+}
+
+#nomeUser, #email {
+    color: black;
+    text-align: center;
 }

@@ -39,7 +39,7 @@
     margin-left: 250px;
     margin-top: -10px;
     position: absolute;
-    width: 80px;
+    width: 10px;
 }
 
 #menu-button {
@@ -48,12 +48,11 @@
     border: none;
     border-radius: 50%;
     width: 50px;
-    height: 35px;
+    height: 60px;
     display: flex;
     justify-content: center;
     align-items: center;
 }
-
 
 #menu-options {
     border: 1px solid rgba(0, 0, 0, 0.116);
@@ -64,6 +63,11 @@
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     z-index: 10;
     opacity: 0;
+    padding: 10px;
+    min-width: 160px; /* Largura mínima para a caixa */
+    max-width: 700px; /* Limite máximo de largura */
+    word-wrap: break-word; /* Quebra o texto longo */
+    white-space: normal; /* Permite quebras de linha */
 }
 
 #menu-options.active {
@@ -96,7 +100,7 @@
     cursor: pointer;
     color: red;
     border-radius: 8px;
-    margin-top: 8px
+    margin-top: 8px;
 }
 
 #logout:hover {
@@ -107,4 +111,7 @@
 #nomeUser, #email {
     color: black;
     text-align: center;
+    word-wrap: break-word;
+    overflow-wrap: break-word; /* Suporte para navegadores antigos */
+    white-space: normal; /* Permite quebrar o texto */
 }

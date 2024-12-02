@@ -7,47 +7,78 @@ document.addEventListener('DOMContentLoaded', () => {
     const refreshButton = document.getElementById('refresh');
     let currentDeleteId = null;
 
-    // Função para exibir mensagens temporárias de erro
-    function exibirMensagemTempora() {
-        let mensagemTempora = document.getElementById('mensagemTempora');
-    
+    // Função para exibir a mensagem temporária de erro
+    const exibirMensagemErro = (mensagem) => {
+        const mensagemErro = document.getElementById('mensagemErro');
+
         // Cria o elemento se ele não existir
-        if (!mensagemTempora) {
-            mensagemTempora = document.createElement('div');
-            mensagemTempora.id = 'mensagemTempora';
-            mensagemTempora.className = 'mensagem_tempora'; // Classe para a mensagem temporária
-            document.body.appendChild(mensagemTempora);
+        if (!mensagemErro) {
+            mensagemErro = document.createElement('div');
+            mensagemErro.id = 'mensagemErro';
+            mensagemErro.className = 'mensagem_erro';
+            document.body.appendChild(mensagemErro);
         }
-    
-        mensagemTempora.textContent = 'Manutenção excluída com sucesso!'; // Define o texto da mensagem
-        mensagemTempora.style.display = 'block'; // Torna o elemento visível
-        mensagemTempora.style.right = '20px'; // Move para a tela (mesmo comportamento de animação de erro)
-        mensagemTempora.style.opacity = '1'; // Torna visível
-    
+
+        mensagemErro.textContent = mensagem; // Define o texto da mensagem
+        mensagemErro.style.display = 'block'; // Torna o elemento visível
+        mensagemErro.style.right = '20px'; // Move para a tela
+        mensagemErro.style.opacity = '1'; // Torna visível
+
         // Ocultar a mensagem após 3 segundos
         setTimeout(() => {
-            mensagemTempora.style.right = '-300px'; // Move para fora da tela
-            mensagemTempora.style.opacity = '0'; // Torna invisível
-    
+            mensagemErro.style.right = '-300px'; // Move para fora da tela
+            mensagemErro.style.opacity = '0'; // Torna invisível
+
             // Após a transição, esconde completamente
             setTimeout(() => {
-                mensagemTempora.style.display = 'none';
+                mensagemErro.style.display = 'none';
             }, 500); // Tempo correspondente à duração da transição de saída
         }, 3000); // Exibe a mensagem por 3 segundos
-    }
-    
+    };
+
     // Função para validar o token
-    const validateToken = () => {
+    const validateToken = async () => {
         const token = localStorage.getItem('token');
+
         if (!token) {
             // Se não houver token, exibe a mensagem de erro e redireciona após um pequeno atraso
             exibirMensagemErro('Você precisa estar autenticado para acessar esta página.');
             setTimeout(() => {
-                window.location.href = '../login/login.html';  // Redireciona para o login após 3 segundos
+                window.location.href = '../login/login.html';
             }, 3500); // Aguarda o tempo da animação de erro para redirecionar
             return;
         }
+
+        try {
+            const response = await fetch('http://localhost:3000/verifica-token', {
+                method: 'POST',
+                headers: {
+                    'Authorization': `Bearer ${token}`,
+                    'Content-Type': 'application/json'
+                }
+            });
+
+            const data = await response.json();
+            if (!data.auth) {
+                // Se o token não for válido, exibe a mensagem de erro e redireciona para o login
+                exibirMensagemErro('Token inválido. Redirecionando para o login...');
+                localStorage.removeItem('token');  // Remove o token inválido
+                setTimeout(() => {
+                    window.location.href = '../login/login.html';
+                }, 3500); // Redireciona após o tempo de exibição da mensagem de erro
+            }
+        } catch (error) {
+            console.error('Erro na verificação do token:', error);
+            localStorage.removeItem('token');
+            exibirMensagemErro('Erro na verificação do token. Redirecionando para o login...');
+            setTimeout(() => {
+                window.location.href = '../login/login.html';
+            }, 3500); // Redireciona após o tempo de exibição da mensagem de erro
+        }
     };
+
+    // Chama a função de validação de token ao carregar a página
+    validateToken();
 
     // Função para formatar a data no padrão brasileiro (dd/mm/aaaa)
     const formatDate = (dateString) => {
@@ -159,6 +190,25 @@ document.addEventListener('DOMContentLoaded', () => {
         confirmarExcluirDiv.style.display = 'none';
         overlay.style.display = 'none';
     });
+
+    // Função para exibir a mensagem temporária de sucesso
+    const exibirMensagemTempora = () => {
+        const mensagemTempora = document.getElementById('mensagem_tempora');
+        mensagemTempora.style.display = 'block'; // Torna o elemento visível
+        mensagemTempora.style.right = '20px'; // Move para a tela
+        mensagemTempora.style.opacity = '1'; // Torna visível
+
+        // Ocultar a mensagem após 3 segundos
+        setTimeout(() => {
+            mensagemTempora.style.right = '-300px'; // Move para fora da tela
+            mensagemTempora.style.opacity = '0'; // Torna invisível
+
+            // Após a transição, esconde completamente
+            setTimeout(() => {
+                mensagemTempora.style.display = 'none';
+            }, 500); // Tempo correspondente à duração da transição de saída
+        }, 3000); // Exibe a mensagem por 3 segundos
+    };
 
     // Mostrar os selects com base na opção selecionada
     document.getElementById('filtrar').addEventListener('change', function () {

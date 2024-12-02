@@ -214,11 +214,6 @@ document.addEventListener("DOMContentLoaded", function () {
         document.getElementById('manutencao-form').reset(); // Reseta o formulário
     });
 
-    function mostrarCalendario() {
-        const inputDate = document.getElementById('calendario-icon');
-        inputDate.focus(); // Isso simula o clique e abre o seletor de data
-    }
-
     const trigger = document.getElementById('local-trigger', 'modelo-trigger');
     const optionsList = document.getElementById('local-options', 'modelo-options');
     const options = document.querySelectorAll('.custom-option');

@@ -7,35 +7,35 @@ document.addEventListener('DOMContentLoaded', () => {
     const refreshButton = document.getElementById('refresh');
     let currentDeleteId = null;
 
-        // Função para exibir mensagens temporárias de erro
-    function exibirMensagemErro(mensagem) {
-        let mensagemErro = document.getElementById('mensagemErro');
-
+    // Função para exibir mensagens temporárias de erro
+    function exibirMensagemTempora() {
+        let mensagemTempora = document.getElementById('mensagemTempora');
+    
         // Cria o elemento se ele não existir
-        if (!mensagemErro) {
-            mensagemErro = document.createElement('div');
-            mensagemErro.id = 'mensagemErro';
-            mensagemErro.className = 'mensagem_erro';
-            document.body.appendChild(mensagemErro);
+        if (!mensagemTempora) {
+            mensagemTempora = document.createElement('div');
+            mensagemTempora.id = 'mensagemTempora';
+            mensagemTempora.className = 'mensagem_tempora'; // Classe para a mensagem temporária
+            document.body.appendChild(mensagemTempora);
         }
-
-        mensagemErro.textContent = mensagem; // Define o texto da mensagem
-        mensagemErro.style.display = 'block'; // Torna o elemento visível
-        mensagemErro.style.right = '20px'; // Move para a tela
-        mensagemErro.style.opacity = '1'; // Torna visível
-
+    
+        mensagemTempora.textContent = 'Manutenção excluída com sucesso!'; // Define o texto da mensagem
+        mensagemTempora.style.display = 'block'; // Torna o elemento visível
+        mensagemTempora.style.right = '20px'; // Move para a tela (mesmo comportamento de animação de erro)
+        mensagemTempora.style.opacity = '1'; // Torna visível
+    
         // Ocultar a mensagem após 3 segundos
         setTimeout(() => {
-            mensagemErro.style.right = '-300px'; // Move para fora da tela
-            mensagemErro.style.opacity = '0'; // Torna invisível
-
+            mensagemTempora.style.right = '-300px'; // Move para fora da tela
+            mensagemTempora.style.opacity = '0'; // Torna invisível
+    
             // Após a transição, esconde completamente
             setTimeout(() => {
-                mensagemErro.style.display = 'none';
+                mensagemTempora.style.display = 'none';
             }, 500); // Tempo correspondente à duração da transição de saída
         }, 3000); // Exibe a mensagem por 3 segundos
     }
-
+    
     // Função para validar o token
     const validateToken = () => {
         const token = localStorage.getItem('token');
@@ -124,7 +124,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const deleteManutencao = async (id) => {
         const token = localStorage.getItem('token');
         if (!token) return;
-
+   
         try {
             const response = await fetch(`http://localhost:3000/manutencao/${id}`, {
                 method: 'DELETE',
@@ -133,19 +133,19 @@ document.addEventListener('DOMContentLoaded', () => {
                     'Content-Type': 'application/json',
                 },
             });
-
+   
             if (response.ok) {
                 confirmarExcluirDiv.style.display = 'none';
                 overlay.style.display = 'none';
                 exibirMensagemTempora(); // Exibe a mensagem temporária após exclusão
-                fetchManutencao();
+                fetchManutencao(); // Atualiza a lista de manutenções
             } else {
                 alert('Erro ao deletar manutenção');
             }
         } catch (error) {
             console.error('Erro ao deletar manutenção:', error);
         }
-    };
+    };   
 
     // Event listener para confirmar exclusão
     document.getElementById('check').addEventListener('click', () => {

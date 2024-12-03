@@ -256,40 +256,50 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     // Função para coletar os filtros selecionados
-    const getFilters = () => {
-        const lugar = document.getElementById('local').value;
-        const modelo_marca = document.getElementById('modelo').value;
-        const data_manutencao = document.getElementById('data').value;
-        const nome = document.getElementById('profissional').value;
-        const tipo_manutencao = document.getElementById('tipo_manutencao').value;
+const getFilters = () => {
+    const lugar = document.getElementById('local').value;
+    const modelo_marca = document.getElementById('modelo').value;
+    const data_manutencao = document.getElementById('data').value;
+    const nome = document.getElementById('profissional').value;
+    const tipo_manutencao = document.getElementById('tipo_manutencao').value;
 
-        return {
-            lugar: lugar !== '' ? lugar : null,
-            modelo_marca: modelo_marca !== '' ? modelo_marca : null,
-            periodo: data_manutencao !== '' ? data_manutencao : null,
-            nome: nome !== '' ? nome : null,
-            tipo_manutencao: tipo_manutencao !== '' ? tipo_manutencao : null,
-        };
+    return {
+        lugar: lugar !== '' ? lugar : null,
+        modelo_marca: modelo_marca !== '' ? modelo_marca : null,
+        periodo: data_manutencao !== '' ? data_manutencao : null,
+        nome: nome !== '' ? nome : null,
+        tipo_manutencao: tipo_manutencao !== '' ? tipo_manutencao : null,
     };
+};
 
-    // Event listener para o botão de buscar
-    buscarButton.addEventListener('click', () => {
-        const filters = getFilters();
+// Função para limpar os filtros
+const clearFilters = () => {
+    document.getElementById('local').value = '';
+    document.getElementById('modelo').value = '';
+    document.getElementById('data').value = '';
+    document.getElementById('profissional').value = '';
+    document.getElementById('tipo_manutencao').value = '';
+};
 
-        if (Object.values(filters).some(value => value !== null)) {
-            fetchManutencao(filters);
-        } else {
-            alert("Por favor, selecione um filtro antes de buscar.");
-        }
-    });
+// Event listener para o botão de buscar
+buscarButton.addEventListener('click', () => {
+    const filters = getFilters();
 
-    // Event listener para o botão de limpar filtro
-    refreshButton.addEventListener('click', () => {
-        location.reload();
-    });
+    if (Object.values(filters).some(value => value !== null)) {
+        clearFilters(); // Limpa os filtros antes de enviar a solicitação
+        fetchManutencao(filters);
+    } else {
+        alert("Por favor, selecione um filtro antes de buscar.");
+    }
+});
 
-    // Carregar as manutenções ao carregar a página
-    fetchManutencao();
+// Event listener para o botão de limpar filtro
+refreshButton.addEventListener('click', () => {
+    location.reload();
+});
+
+// Carregar as manutenções ao carregar a página
+fetchManutencao();
 
     //// Função para carregar o header e garantir que o conteúdo seja carregado corretamente
     function carregarHeader() {

@@ -272,35 +272,12 @@ document.addEventListener('DOMContentLoaded', () => {
         };
     };
 
-    // Desabilita os selects e botão de busca após o filtro ser aplicado
-    const disableFilterOptions = () => {
-        document.getElementById('filtrar').disabled = true;
-        document.getElementById('local').disabled = true;
-        document.getElementById('modelo').disabled = true;
-        document.getElementById('data').disabled = true;
-        document.getElementById('profissional').disabled = true;
-        document.getElementById('tipo_manutencao').disabled = true;
-        buscarButton.disabled = true;
-    };
-
-    // Habilita os selects e botão de busca ao limpar o filtro
-    const enableFilterOptions = () => {
-        document.getElementById('filtrar').disabled = false;
-        document.getElementById('local').disabled = false;
-        document.getElementById('modelo').disabled = false;
-        document.getElementById('data').disabled = false;
-        document.getElementById('profissional').disabled = false;
-        document.getElementById('tipo_manutencao').disabled = false;
-        buscarButton.disabled = false;
-    };
-
     // Event listener para o botão de buscar
     buscarButton.addEventListener('click', () => {
         const filters = getFilters();
 
         if (Object.values(filters).some(value => value !== null)) {
             fetchManutencao(filters);
-            disableFilterOptions();
         } else {
             alert("Por favor, selecione um filtro antes de buscar.");
         }
@@ -308,7 +285,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Event listener para o botão de limpar filtro
     refreshButton.addEventListener('click', () => {
-        enableFilterOptions();
         location.reload();
     });
 
